@@ -778,7 +778,7 @@ export default function CaseStudy() {
 
         {/* 04 System Thinking — wrapped in saturated purple background */}
         <div id="system" style={{ background: "#4E4577", marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", paddingLeft: "calc(50vw - 50%)", paddingRight: "calc(50vw - 50%)", paddingTop: isMobile ? 48 : 72, paddingBottom: isMobile ? 48 : 72, marginTop: isMobile ? -48 : -72, marginBottom: isMobile ? -48 : -72 }}>
-          <div style={{ maxWidth: 980, margin: "0 auto", paddingLeft: isMobile ? 24 : 0, paddingRight: isMobile ? 24 : 0 }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto", paddingLeft: isMobile ? 24 : 60, paddingRight: isMobile ? 24 : 60, boxSizing: "border-box" }}>
           <div style={{ fontSize: 11, color: "#EDE5FA", letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>04 — System Thinking</div>
           <h2 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 700, color: "#fff", marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>When the Product Grows Faster Than the System</h2>
           <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
