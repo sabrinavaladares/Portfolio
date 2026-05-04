@@ -332,7 +332,7 @@ function HomePage({ setPage }) {
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 24px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 32 : 80, alignItems: "center" }}>
               {/* Text first on both — on mobile, photo follows underneath */}
-              <div style={{ minHeight: isMobile ? "calc(100vh - 64px)" : "auto", display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: isMobile ? 24 : 0, paddingBottom: isMobile ? 24 : 0 }}>
+              <div style={{ minHeight: isMobile ? "calc(100vh - 64px)" : "auto", display: "flex", flexDirection: "column", justifyContent: isMobile ? "flex-start" : "center", paddingTop: isMobile ? 64 : 0, paddingBottom: isMobile ? 24 : 0 }}>
                 <h1 style={{ fontSize: isMobile ? 30 : 56, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.15, letterSpacing: isMobile ? -0.5 : 0 }}>
                   Designer.<br />System Thinker.<br />Foundation Builder.
                 </h1>
