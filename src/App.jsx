@@ -329,11 +329,11 @@ function HomePage({ setPage }) {
     <div style={{ paddingTop: 64 }}>
       <div style={{ background: C.bg, minHeight: isMobile ? "auto" : HERO_MIN_HEIGHT, display: "flex", flexDirection: "column" }}>
         <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "32px 24px 8px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 40 : 80, alignItems: "center" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 24px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 32 : 80, alignItems: "center" }}>
               {/* Text first on both — on mobile, photo follows underneath */}
-              <div>
-                <h1 style={{ fontSize: isMobile ? 36 : 56, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.1, letterSpacing: isMobile ? -0.5 : 0 }}>
+              <div style={{ minHeight: isMobile ? "calc(100vh - 64px)" : "auto", display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: isMobile ? 24 : 0, paddingBottom: isMobile ? 24 : 0 }}>
+                <h1 style={{ fontSize: isMobile ? 30 : 56, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.15, letterSpacing: isMobile ? -0.5 : 0 }}>
                   Designer.<br />System Thinker.<br />Foundation Builder.
                 </h1>
                 <p style={{ margin: "0 0 16px", color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75, maxWidth: 480 }}>
@@ -344,11 +344,11 @@ function HomePage({ setPage }) {
                 </p>
               </div>
 
-              <div style={{ position: "relative", maxWidth: isMobile ? 280 : "none", width: "100%", margin: isMobile ? "8px auto 24px" : 0 }}>
+              <div style={{ position: "relative", maxWidth: isMobile ? 200 : "none", width: "100%", margin: isMobile ? "0 auto 24px" : 0 }}>
                 <div style={{ width: "100%", aspectRatio: "3/4", borderRadius: 20, overflow: "hidden", background: C.lilacBg }}>
                   <img src="https://sabrinavaladares.github.io/portfolio-images/1516535750515.jpeg" alt="Sabrina Valadares" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
                 </div>
-                <div style={{ position: "absolute", bottom: -12, right: -12, width: isMobile ? 60 : 80, height: isMobile ? 60 : 80, borderRadius: 12, background: "#FFD230", zIndex: -1 }} />
+                <div style={{ position: "absolute", bottom: -12, right: -12, width: isMobile ? 50 : 80, height: isMobile ? 50 : 80, borderRadius: 12, background: "#FFD230", zIndex: -1 }} />
               </div>
             </div>
           </div>
