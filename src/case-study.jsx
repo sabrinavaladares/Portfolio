@@ -1,20 +1,7 @@
 import { useState, useRef, useEffect } from "react";
+import { useIsMobile } from "./App";
 
-// ─── Mobile detection hook ─────────────────────────────────────────────────
-function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.innerWidth < breakpoint;
-  });
-  useEffect(() => {
-    const handler = () => setIsMobile(window.innerWidth < breakpoint);
-    window.addEventListener("resize", handler);
-    return () => window.removeEventListener("resize", handler);
-  }, [breakpoint]);
-  return isMobile;
-}
-
-// ─── Palette (matches portfolio.jsx) ───────────────────────────────────────
+// ─── Palette (matches App.jsx) ─────────────────────────────────────────────
 const C = {
   bg: "#FAFAF7",
   bgAlt: "#F2F0E8",
@@ -273,6 +260,7 @@ function AfterView() {
 }
 
 function DataLibraryDiagram() {
+  const isMobile = useIsMobile();
   const [view, setView] = useState("before");
   const [animating, setAnimating] = useState(false);
   const toggle = (v) => {
@@ -285,7 +273,7 @@ function DataLibraryDiagram() {
       <div style={{ display: "flex", justifyContent: "center", padding: "28px 0 8px" }}>
         <div style={{ background: "rgba(255,255,255,0.08)", borderRadius: 50, padding: 4, display: "flex", gap: 4 }}>
           {["before", "after"].map(v => (
-            <button key={v} onClick={() => toggle(v)} style={{ padding: "8px 24px", borderRadius: 50, border: "none", cursor: "pointer", fontWeight: 600, fontSize: 13, background: view === v ? "rgba(255,255,255,0.95)" : "transparent", color: view === v ? "#4E4577" : "rgba(255,255,255,0.65)", transition: "all 0.25s" }}>
+            <button key={v} onClick={() => toggle(v)} style={{ padding: isMobile ? "8px 18px" : "8px 24px", borderRadius: 50, border: "none", cursor: "pointer", fontWeight: 600, fontSize: 13, background: view === v ? "rgba(255,255,255,0.95)" : "transparent", color: view === v ? "#4E4577" : "rgba(255,255,255,0.65)", transition: "all 0.25s" }}>
               {v === "before" ? "😵 Before" : "✨ After"}
             </button>
           ))}
@@ -362,6 +350,8 @@ function Carousel({ slides }) {
   const [index, setIndex] = useState(0);
   const total = slides.length;
   const videoRefs = useRef([]);
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
 
   const isFirst = index === 0;
   const isLast = index === total - 1;
@@ -390,9 +380,28 @@ function Carousel({ slides }) {
 
   const arrowBase = { width: isMobile ? 44 : 36, height: isMobile ? 44 : 36, borderRadius: "50%", border: "none", background: C.purple, display: "flex", alignItems: "center", justifyContent: "center", color: C.neon, transition: "all 0.2s", padding: 0 };
 
+  // Swipe gestures on mobile
+  const onTouchStart = (e) => {
+    if (!isMobile) return;
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+  const onTouchEnd = (e) => {
+    if (!isMobile || touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    // Only treat as swipe if horizontal motion clearly dominates
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) next();
+      else prev();
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
+
   return (
     <div>
-      <div style={{ overflow: "hidden" }}>
+      <div style={{ overflow: "hidden" }} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div style={{ display: "flex", transform: "translateX(" + offset + "%)", transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)", gap: gapPx }}>
           {slides.map((slide, i) => (
             <div key={i} style={{ flex: "0 0 " + slideWidthPct + "%", opacity: i === index ? 1 : 0.4, transition: "opacity 0.5s" }}>
@@ -415,16 +424,16 @@ function Carousel({ slides }) {
                   </>
                 )}
               </div>
-              <div style={{ marginTop: 28, maxWidth: 760, opacity: i === index ? 1 : 0, transition: "opacity 0.4s", pointerEvents: i === index ? "auto" : "none" }}>
-                <div style={{ fontSize: 17, fontWeight: 700, color: C.ink, marginBottom: 6, letterSpacing: -0.2 }}>{slide.title}</div>
-                <div style={{ fontSize: 14, color: C.muted, lineHeight: 1.6 }}>{slide.description}</div>
+              <div style={{ marginTop: isMobile ? 20 : 28, maxWidth: 760, opacity: i === index ? 1 : 0, transition: "opacity 0.4s", pointerEvents: i === index ? "auto" : "none" }}>
+                <div style={{ fontSize: isMobile ? 16 : 17, fontWeight: 700, color: C.ink, marginBottom: 6, letterSpacing: -0.2 }}>{slide.title}</div>
+                <div style={{ fontSize: isMobile ? 13 : 14, color: C.muted, lineHeight: 1.6 }}>{slide.description}</div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 16, marginTop: 28 }}>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 16, marginTop: isMobile ? 20 : 28 }}>
         <div style={{ display: "flex", gap: 6, fontSize: 13, color: C.muted, fontVariantNumeric: "tabular-nums" }}>
           <span style={{ color: C.ink, fontWeight: 600 }}>{String(index + 1).padStart(2, "0")}</span>
           <span>/</span>
@@ -550,7 +559,7 @@ function RestitutionComposition() {
         </div>
 
         {/* Two smaller stacked images */}
-        <div style={{ order: isMobile ? 2 : 1, width: isMobile ? "100%" : "38%", marginLeft: isMobile ? 0 : "4%", display: "flex", flexDirection: isMobile ? "row" : "column", gap: isMobile ? 12 : 24 }}>
+        <div style={{ order: isMobile ? 2 : 1, width: isMobile ? "100%" : "38%", marginLeft: isMobile ? 0 : "4%", display: "flex", flexDirection: isMobile ? "column" : "column", gap: isMobile ? 12 : 24 }}>
           <div style={{ flex: 1, ...cardBase, boxShadow: "0 8px 28px rgba(0,0,0,0.10)" }}>
             <img
               src="https://res.cloudinary.com/diso2uvpx/image/upload/v1777460282/Capture_d_e%CC%81cran_2026-04-29_a%CC%80_12.51.10_p4y2oc.png"
@@ -563,7 +572,7 @@ function RestitutionComposition() {
           </div>
         </div>
       </div>
-      <div style={{ fontSize: 14, color: "#555", marginTop: 16, textAlign: "center", fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif" }}>Document Restitution — process, biotopes, and user needs</div>
+      <div style={{ fontSize: isMobile ? 13 : 14, color: "#555", marginTop: 16, textAlign: "center", fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif" }}>Document Restitution — process, biotopes, and user needs</div>
     </div>
   );
 }
@@ -582,18 +591,21 @@ export default function CaseStudy() {
     }
   };
 
+  // Horizontal-scroll padding for mobile sticky nav so first/last items don't hug edges
+  const navInnerPadding = isMobile ? "0 16px" : "0 60px";
+
   return (
     <div style={{ fontFamily: "sans-serif", background: C.bg, color: C.ink }}>
 
       {/* Hero */}
       <div style={{ background: "#3d2f7a", display: "flex", alignItems: "center", paddingTop: isMobile ? 96 : 128 }}>
-        <div style={{ padding: isMobile ? "40px 24px 24px" : "64px 60px 32px", maxWidth: 1100, margin: "0 auto", width: "100%" }}>
+        <div style={{ padding: isMobile ? "32px 24px 24px" : "64px 60px 32px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
           <h1 style={{ fontSize: isMobile ? 36 : 56, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>PathFinder</h1>
-          <p style={{ fontSize: isMobile ? 16 : 20, color: "#f5f0ff", lineHeight: 1.5, margin: isMobile ? "0 0 32px" : "0 0 48px" }}>
+          <p style={{ fontSize: isMobile ? 15 : 20, color: "#f5f0ff", lineHeight: 1.5, margin: isMobile ? "0 0 32px" : "0 0 48px" }}>
             Redesigning a complex, content-heavy B2B insurance software — and building the systems that scale it.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.2fr 1fr 2fr", gap: isMobile ? 24 : 40 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1.2fr 1fr 2fr", gap: isMobile ? 24 : 40 }}>
             <div>
               <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Role</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14, color: "#ffffff", fontWeight: 500 }}>
@@ -605,7 +617,7 @@ export default function CaseStudy() {
               <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Team</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14, color: "#ffffff", fontWeight: 500 }}>
                 <div>Remote, distributed</div>
-                <div style={{ color: "#a594d4", fontSize: 13, fontWeight: 400 }}>France · Belgium · Morocco · Bulgaria · India</div>
+                <div style={{ color: "#a594d4", fontSize: 13, fontWeight: 400 }}>FR · BE · MA · BG · IN</div>
               </div>
             </div>
             <div>
@@ -615,10 +627,10 @@ export default function CaseStudy() {
                 <div style={{ color: "#a594d4", fontSize: 13, fontWeight: 400 }}>DXC Technology</div>
               </div>
             </div>
-            <div>
+            <div style={{ gridColumn: isMobile ? "span 2" : "auto" }}>
               <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Skills & Methods</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "flex-start" }}>
-                {["User Interviews", "Information Architecture", "UX Design", "Content", "Design System", "DesignOps", "Figma"].map(t => <span key={t} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 20, padding: "6px 16px", fontSize: 13, color: "#ffffff", fontWeight: 500 }}>{t}</span>)}
+                {["User Interviews", "Information Architecture", "UX Design", "Content", "Design System", "DesignOps", "Figma"].map(t => <span key={t} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 20, padding: "6px 14px", fontSize: 12, color: "#ffffff", fontWeight: 500 }}>{t}</span>)}
               </div>
             </div>
           </div>
@@ -641,21 +653,22 @@ export default function CaseStudy() {
       {/* Spacer between hero and sticky nav */}
       <div style={{ background: C.bg, height: isMobile ? 24 : 48 }} />
 
-      {/* Sticky Nav — horizontal scroll on mobile */}
-      <div style={{ position: "sticky", top: 0, zIndex: 50, background: C.bg, borderBottom: "1px solid " + C.border, WebkitPosition: "sticky" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0" : "0 60px" }}>
+      {/* Sticky Nav — horizontal scroll on mobile, sits below the global app nav (64px) */}
+      <div style={{ position: "sticky", top: 64, zIndex: 50, background: C.bg, borderBottom: "1px solid " + C.border }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: navInnerPadding }}>
           <div style={{ display: "flex", gap: 0, overflowX: isMobile ? "auto" : "visible", WebkitOverflowScrolling: "touch", scrollbarWidth: "none", msOverflowStyle: "none" }}>
+            <style>{`.cs-nav-scroll::-webkit-scrollbar{display:none}`}</style>
             {NAV.map(n => (
-              <button key={n.id} onClick={() => scrollTo(n.id)} style={{ background: "none", border: "none", cursor: "pointer", padding: isMobile ? "14px 16px" : "16px 20px", fontSize: 13, fontWeight: active === n.id ? 700 : 500, whiteSpace: "nowrap", color: active === n.id ? C.ink : C.muted, transition: "all 0.2s", fontFamily: "sans-serif", position: "relative", flexShrink: 0 }}>
+              <button key={n.id} onClick={() => scrollTo(n.id)} style={{ background: "none", border: "none", cursor: "pointer", padding: isMobile ? "14px 14px" : "16px 20px", fontSize: 13, fontWeight: active === n.id ? 700 : 500, whiteSpace: "nowrap", color: active === n.id ? C.ink : C.muted, transition: "all 0.2s", fontFamily: "sans-serif", position: "relative", flexShrink: 0 }}>
                 {n.label}
-                {active === n.id && <div style={{ position: "absolute", bottom: 0, left: isMobile ? 12 : 16, right: isMobile ? 12 : 16, height: 4, background: C.neon, borderRadius: 2 }} />}
+                {active === n.id && <div style={{ position: "absolute", bottom: 0, left: isMobile ? 10 : 16, right: isMobile ? 10 : 16, height: 4, background: C.neon, borderRadius: 2 }} />}
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "32px 24px 56px" : "32px 60px 56px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "32px 24px 56px" : "32px 60px 56px", boxSizing: "border-box" }}>
 
         {/* 01 Project Context */}
         <div id="context">
@@ -668,7 +681,7 @@ export default function CaseStudy() {
             <div style={{ borderRadius: 8, overflow: "hidden", border: "3px solid #E5E1D2" }}>
               <img src="https://sabrinavaladares.github.io/portfolio-images/Old_ClientView.png" alt="Old design — legacy interface" style={{ width: "100%", height: "auto", display: "block" }} />
             </div>
-            <div style={{ fontSize: 14, color: "#555", marginTop: 16, textAlign: "center", fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif" }}>The legacy interface — before redesign</div>
+            <div style={{ fontSize: isMobile ? 13 : 14, color: "#555", marginTop: 16, textAlign: "center", fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif" }}>The legacy interface — before redesign</div>
           </div>
         </div>
 
@@ -685,14 +698,14 @@ export default function CaseStudy() {
             To achieve this, we conducted user interviews with a range of profiles across the brands — from managers to brokers — to capture different perspectives, needs, and pain points.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 2fr 1fr", gap: isMobile ? 20 : 40, marginBottom: 48, padding: isMobile ? "20px" : "24px 32px", background: C.bgAlt, borderRadius: 12 }}>
-            <div style={{ paddingRight: isMobile ? 0 : 32, paddingBottom: isMobile ? 20 : 0, borderRight: isMobile ? "none" : "1px solid " + C.border, borderBottom: isMobile ? "1px solid " + C.border : "none" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 2fr 1fr", gap: isMobile ? 16 : 40, marginBottom: 48, padding: isMobile ? "20px" : "24px 32px", background: C.bgAlt, borderRadius: 12 }}>
+            <div style={{ paddingRight: isMobile ? 0 : 32, paddingBottom: isMobile ? 16 : 0, borderRight: isMobile ? "none" : "1px solid " + C.border, borderBottom: isMobile ? "1px solid " + C.border : "none" }}>
               <div style={{ fontSize: 9, color: C.muted, letterSpacing: 2, textTransform: "uppercase", marginBottom: 6 }}>Interviews conducted</div>
               <div style={{ fontSize: 15, color: C.ink, fontWeight: 500, lineHeight: 1.5 }}>
                 31 sessions — 62 hours
               </div>
             </div>
-            <div style={{ paddingRight: isMobile ? 0 : 32, paddingBottom: isMobile ? 20 : 0, borderRight: isMobile ? "none" : "1px solid " + C.border, borderBottom: isMobile ? "1px solid " + C.border : "none" }}>
+            <div style={{ paddingRight: isMobile ? 0 : 32, paddingBottom: isMobile ? 16 : 0, borderRight: isMobile ? "none" : "1px solid " + C.border, borderBottom: isMobile ? "1px solid " + C.border : "none" }}>
               <div style={{ fontSize: 9, color: C.muted, letterSpacing: 2, textTransform: "uppercase", marginBottom: 6 }}>Business profiles</div>
               <div style={{ fontSize: 15, color: C.ink, fontWeight: 500, lineHeight: 1.5 }}>
                 7 — brokers, managers, trainers, inspectors, etc.
@@ -704,14 +717,14 @@ export default function CaseStudy() {
             </div>
           </div>
 
-          <h3 style={{ fontSize: 20, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.2 }}>Interviews Restitution</h3>
+          <h3 style={{ fontSize: isMobile ? 18 : 20, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.2 }}>Interviews Restitution</h3>
           <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
             The interviews led to a structured restitution document — combining personas, main pain points per category, and a complete list of needs to be addressed in the redesign.
           </p>
 
           <RestitutionComposition />
 
-          <h3 style={{ fontSize: 20, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.2 }}>Legacy Audit</h3>
+          <h3 style={{ fontSize: isMobile ? 18 : 20, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.2 }}>Legacy Audit</h3>
           <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
             A thorough UX audit of the existing platform revealed a wide range of structural issues. Among the most critical were navigation, content hierarchy, heavy screens, and an outdated UI.
           </p>
@@ -720,7 +733,7 @@ export default function CaseStudy() {
             <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + C.border, background: C.bgAlt }}>
               <img src="https://res.cloudinary.com/diso2uvpx/image/upload/v1777457160/Audit_qfvysw.png" alt="Pain points identified across the legacy interface" style={{ width: "100%", height: "auto", display: "block" }} />
             </div>
-            <div style={{ fontSize: 14, color: "#555", marginTop: 16, textAlign: "center", fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif" }}>Pain points identified across the legacy interface</div>
+            <div style={{ fontSize: isMobile ? 13 : 14, color: "#555", marginTop: 16, textAlign: "center", fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif" }}>Pain points identified across the legacy interface</div>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "0" : "0 40px", marginTop: 40, borderTop: "1px solid " + C.border }}>
@@ -767,7 +780,7 @@ export default function CaseStudy() {
         <div id="system" style={{ background: "#4E4577", marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", paddingLeft: "calc(50vw - 50%)", paddingRight: "calc(50vw - 50%)", paddingTop: isMobile ? 48 : 72, paddingBottom: isMobile ? 48 : 72, marginTop: isMobile ? -48 : -72, marginBottom: isMobile ? -48 : -72 }}>
           <div style={{ maxWidth: 980, margin: "0 auto", paddingLeft: isMobile ? 24 : 0, paddingRight: isMobile ? 24 : 0 }}>
           <div style={{ fontSize: 11, color: "#EDE5FA", letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>04 — System Thinking</div>
-          <h2 style={{ fontSize: 28, fontWeight: 700, color: "#fff", marginBottom: 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>When the Product Grows Faster Than the System</h2>
+          <h2 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 700, color: "#fff", marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>When the Product Grows Faster Than the System</h2>
           <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
             As the product evolved and the team grew, inconsistencies began to spread. Designers created their own variations, components were modified without shared criteria, and decision ownership was unclear.
           </p>
@@ -778,7 +791,7 @@ export default function CaseStudy() {
             The consequences extended beyond design. QA testing became chaotic — with no single source of truth, testers couldn't tell whether the spec PDF, the design file, or the live application held the correct version. The result was duplicate Jira tickets, hours lost on alignment calls, and recurring client complaints about inconsistencies between specifications and the delivered product.
           </p>
 
-          <h3 style={{ fontSize: 18, fontWeight: 700, color: "#fff", margin: "40px 0 12px" }}>The Data Library</h3>
+          <h3 style={{ fontSize: isMobile ? 17 : 18, fontWeight: 700, color: "#fff", margin: "40px 0 12px" }}>The Data Library</h3>
           <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 16 }}>
             Solving these challenges required deep systems thinking — understanding how data relationships surface throughout the product, and defining patterns that other teams could build upon. I led the creation of the Data Library: a system of data-aware patterns built on top of the core design system, enabling consistent representation of complex insurance data across all workflows.
           </p>
@@ -790,7 +803,7 @@ export default function CaseStudy() {
 
           {/* Challenges — what the new workflow demands */}
           <div style={{ marginTop: 56, marginBottom: 32 }}>
-            <h3 style={{ fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
+            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
             <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
               The implementation of the Data Library has been facing some challenges, because it requires a shift in how the team works and how it's organized.
             </p>
@@ -798,21 +811,21 @@ export default function CaseStudy() {
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "32px 0" : "32px 40px" }}>
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>DesignOps</h4>
-                <p style={{ color: "#F5F1FC", fontSize: 15, lineHeight: 1.7, margin: 0 }}>
+                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
                   Someone has to create and feed the system continuously — defining patterns, maintaining variants, and making sure the library stays alive. This requires a transversal view of the product, not a single workflow perspective. It also means communicating how the system works, what's new, and why decisions were made.
                 </p>
               </div>
 
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Team practices</h4>
-                <p style={{ color: "#F5F1FC", fontSize: 15, lineHeight: 1.7, margin: 0 }}>
+                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
                   The system reshapes how designers work day-to-day — how they pick variants, when to propose new ones, and how they collaborate. It's not just a library; it's a new way of working together that the team has to learn and adopt.
                 </p>
               </div>
 
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Governance</h4>
-                <p style={{ color: "#F5F1FC", fontSize: 15, lineHeight: 1.7, margin: 0 }}>
+                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
                   Every change to a master component needs review and approval before reaching production. Without this layer, consistency breaks and the system loses trust. The reviewer becomes the gatekeeper of the cross-product experience.
                   <br /><br />
                   Today, I'm the only person on the team with the transversal view to play this role — and that's a real risk. A single maintainer becomes a bottleneck, and the system depends on one perspective. Distributing this responsibility is the next step.
@@ -821,7 +834,7 @@ export default function CaseStudy() {
 
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>AI's role in this</h4>
-                <p style={{ color: "#F5F1FC", fontSize: 15, lineHeight: 1.7, margin: 0 }}>
+                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
                   AI can be a real ally in maintaining a system like this — helping to spot inconsistencies, identify missing Lego pieces in the architecture, and generate documentation to communicate how the system works and what changes between versions. There's still a lot to explore here. Defining how AI fits into the workflow — as a contributor that supports the team without replacing the transversal judgment — is part of what comes next.
                 </p>
               </div>
