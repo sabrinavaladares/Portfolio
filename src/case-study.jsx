@@ -1,5 +1,19 @@
 import { useState, useRef, useEffect } from "react";
 
+// ─── Mobile detection hook ─────────────────────────────────────────────────
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth < breakpoint;
+  });
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < breakpoint);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, [breakpoint]);
+  return isMobile;
+}
+
 // ─── Palette (matches portfolio.jsx) ───────────────────────────────────────
 const C = {
   bg: "#FAFAF7",
@@ -84,12 +98,13 @@ function ProductGroup({ product }) {
 }
 
 function BeforeView() {
+  const isMobile = useIsMobile();
   return (
-    <div style={{ padding: 24 }}>
+    <div style={{ padding: isMobile ? 16 : 24 }}>
       {/* The Problem — title parallel to The Idea in After */}
       <div style={{ marginBottom: 28, textAlign: "center" }}>
         <div style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", letterSpacing: 2, textTransform: "uppercase", fontWeight: 700, marginBottom: 6 }}>The Problem</div>
-        <div style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, maxWidth: 820, margin: "0 auto" }}>
+        <div style={{ fontSize: isMobile ? 13 : 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, maxWidth: 820, margin: "0 auto" }}>
           <span style={{ color: "#fff", fontWeight: 600 }}>Example: Contract Details</span>, a transversal block — it lived inside every product, in every activity, with country-specific variants.
           <br />
           Each file below contained its own version.
@@ -97,7 +112,7 @@ function BeforeView() {
       </div>
 
       {/* Product grid */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+      <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 12 }}>
         {PRODUCTS.map((p, i) => <ProductGroup key={i} product={p} />)}
       </div>
 
@@ -199,12 +214,13 @@ function ScreenMockup({ label }) {
 }
 
 function AfterView() {
+  const isMobile = useIsMobile();
   return (
-    <div style={{ padding: 24 }}>
+    <div style={{ padding: isMobile ? 16 : 24 }}>
       {/* The Idea — title inside the After */}
       <div style={{ marginBottom: 28, textAlign: "center" }}>
         <div style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", letterSpacing: 2, textTransform: "uppercase", fontWeight: 700, marginBottom: 6 }}>The Idea</div>
-        <div style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, maxWidth: 820, margin: "0 auto" }}>
+        <div style={{ fontSize: isMobile ? 13 : 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, maxWidth: 820, margin: "0 auto" }}>
           <span style={{ color: "#fff", fontWeight: 600 }}>One master component contains every variant</span> — by context, by product, by market.
           <br />
           Designers pick the variant they need; the source of truth stays in one place.
@@ -220,8 +236,8 @@ function AfterView() {
         </div>
 
         {/* Dashed master container */}
-        <div style={{ border: "1.5px dashed rgba(255,255,255,0.35)", borderRadius: 10, padding: 16, background: "transparent" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+        <div style={{ border: "1.5px dashed rgba(255,255,255,0.35)", borderRadius: 10, padding: isMobile ? 12 : 16, background: "transparent" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(3, 1fr)", gap: isMobile ? 8 : 10 }}>
             {NINE_VARIANTS.map((v, i) => <VariantCard key={i} variant={v} n={i + 1} />)}
           </div>
         </div>
@@ -240,7 +256,7 @@ function AfterView() {
         {/* Section title — paralleling the master's introduction style */}
         <div style={{ marginBottom: 22, textAlign: "center" }}>
           <div style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", letterSpacing: 2, textTransform: "uppercase", fontWeight: 700, marginBottom: 8 }}>Screens where the component appears</div>
-          <div style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, maxWidth: 760, margin: "0 auto" }}>
+          <div style={{ fontSize: isMobile ? 13 : 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, maxWidth: 760, margin: "0 auto" }}>
             Each screen is itself a master component, instanced across every context document.
             <br />
             <span style={{ color: "#fff", fontWeight: 600 }}>When the component changes, this is where we check the impact</span> — select the affected screens, export, and replace them in their context documents.
@@ -248,7 +264,7 @@ function AfterView() {
         </div>
 
         {/* Screens grid — each one is its own component */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22 }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(3, 1fr)", gap: isMobile ? 14 : 22 }}>
           {REFERENCE_SCREENS.map((s, i) => <ScreenMockup key={i} label={s.label} />)}
         </div>
       </div>
@@ -307,11 +323,13 @@ function SectionLabel({ num, children }) {
 }
 
 function SectionTitle({ children }) {
-  return <h2 style={{ fontSize: 28, fontWeight: 700, color: C.ink, marginBottom: 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>{children}</h2>;
+  const isMobile = useIsMobile();
+  return <h2 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 700, color: C.ink, marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>{children}</h2>;
 }
 
 function CSDivider() {
-  return <div style={{ height: 1, background: C.border, margin: "72px 0" }} />;
+  const isMobile = useIsMobile();
+  return <div style={{ height: 1, background: C.border, margin: isMobile ? "48px 0" : "72px 0" }} />;
 }
 
 function ImpactPill({ icon, text }) {
@@ -340,6 +358,7 @@ function TestimonialCard({ name, role, text }) {
 
 // ─── Carousel (Clay-style) ─────────────────────────────────────────────────
 function Carousel({ slides }) {
+  const isMobile = useIsMobile();
   const [index, setIndex] = useState(0);
   const total = slides.length;
   const videoRefs = useRef([]);
@@ -365,11 +384,11 @@ function Carousel({ slides }) {
     });
   }, [index]);
 
-  const slideWidthPct = 78;
-  const gapPx = 16;
+  const slideWidthPct = isMobile ? 92 : 78;
+  const gapPx = isMobile ? 12 : 16;
   const offset = -index * slideWidthPct + (100 - slideWidthPct) / 2;
 
-  const arrowBase = { width: 36, height: 36, borderRadius: "50%", border: "none", background: C.purple, display: "flex", alignItems: "center", justifyContent: "center", color: C.neon, transition: "all 0.2s", padding: 0 };
+  const arrowBase = { width: isMobile ? 44 : 36, height: isMobile ? 44 : 36, borderRadius: "50%", border: "none", background: C.purple, display: "flex", alignItems: "center", justifyContent: "center", color: C.neon, transition: "all 0.2s", padding: 0 };
 
   return (
     <div>
@@ -509,6 +528,7 @@ function SlideUserNeeds() {
 }
 
 function RestitutionComposition() {
+  const isMobile = useIsMobile();
   const cardBase = {
     background: "#fff",
     borderRadius: 8,
@@ -519,26 +539,28 @@ function RestitutionComposition() {
 
   return (
     <div style={{ marginBottom: 48 }}>
-      <div style={{ background: C.bgAlt, borderRadius: 16, padding: "40px 0", position: "relative", display: "flex", alignItems: "center" }}>
-        <div style={{ width: "38%", marginLeft: "4%", display: "flex", flexDirection: "column", gap: 24 }}>
-          <div style={{ ...cardBase, boxShadow: "0 8px 28px rgba(0,0,0,0.10)" }}>
+      <div style={{ background: C.bgAlt, borderRadius: 16, padding: isMobile ? "24px 16px" : "40px 0", position: "relative", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", gap: isMobile ? 16 : 0 }}>
+        {/* Big image first on mobile (most important visual) */}
+        <div style={{ order: isMobile ? 1 : 2, width: isMobile ? "100%" : "52%", marginLeft: isMobile ? 0 : "auto", marginRight: isMobile ? 0 : "4%", ...cardBase, boxShadow: "0 24px 60px rgba(0,0,0,0.18)" }}>
+          <img
+            src="https://res.cloudinary.com/diso2uvpx/image/upload/v1777460282/Capture_d_e%CC%81cran_2026-04-29_a%CC%80_12.51.25_hi97as.png"
+            alt="Résultats des explorations"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+        </div>
+
+        {/* Two smaller stacked images */}
+        <div style={{ order: isMobile ? 2 : 1, width: isMobile ? "100%" : "38%", marginLeft: isMobile ? 0 : "4%", display: "flex", flexDirection: isMobile ? "row" : "column", gap: isMobile ? 12 : 24 }}>
+          <div style={{ flex: 1, ...cardBase, boxShadow: "0 8px 28px rgba(0,0,0,0.10)" }}>
             <img
               src="https://res.cloudinary.com/diso2uvpx/image/upload/v1777460282/Capture_d_e%CC%81cran_2026-04-29_a%CC%80_12.51.10_p4y2oc.png"
               alt="Démarche exploratoire"
               style={{ width: "100%", height: "auto", display: "block" }}
             />
           </div>
-          <div style={{ ...cardBase, boxShadow: "0 8px 28px rgba(0,0,0,0.10)" }}>
+          <div style={{ flex: 1, ...cardBase, boxShadow: "0 8px 28px rgba(0,0,0,0.10)" }}>
             <SlideUserNeeds />
           </div>
-        </div>
-
-        <div style={{ width: "52%", marginLeft: "auto", marginRight: "4%", ...cardBase, boxShadow: "0 24px 60px rgba(0,0,0,0.18)" }}>
-          <img
-            src="https://res.cloudinary.com/diso2uvpx/image/upload/v1777460282/Capture_d_e%CC%81cran_2026-04-29_a%CC%80_12.51.25_hi97as.png"
-            alt="Résultats des explorations"
-            style={{ width: "100%", height: "auto", display: "block" }}
-          />
         </div>
       </div>
       <div style={{ fontSize: 14, color: "#555", marginTop: 16, textAlign: "center", fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif" }}>Document Restitution — process, biotopes, and user needs</div>
@@ -549,6 +571,7 @@ function RestitutionComposition() {
 // ─── Main ─────────────────────────────────────────────
 export default function CaseStudy() {
   const [active, setActive] = useState("context");
+  const isMobile = useIsMobile();
 
   const scrollTo = (id) => {
     setActive(id);
@@ -563,14 +586,14 @@ export default function CaseStudy() {
     <div style={{ fontFamily: "sans-serif", background: C.bg, color: C.ink }}>
 
       {/* Hero */}
-      <div style={{ background: "#3d2f7a", display: "flex", alignItems: "center", paddingTop: 128 }}>
-        <div style={{ padding: "64px 60px 32px", maxWidth: 1100, margin: "0 auto", width: "100%" }}>
-          <h1 style={{ fontSize: 56, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>PathFinder</h1>
-          <p style={{ fontSize: 20, color: "#f5f0ff", lineHeight: 1.5, margin: "0 0 48px" }}>
+      <div style={{ background: "#3d2f7a", display: "flex", alignItems: "center", paddingTop: isMobile ? 96 : 128 }}>
+        <div style={{ padding: isMobile ? "40px 24px 24px" : "64px 60px 32px", maxWidth: 1100, margin: "0 auto", width: "100%" }}>
+          <h1 style={{ fontSize: isMobile ? 36 : 56, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>PathFinder</h1>
+          <p style={{ fontSize: isMobile ? 16 : 20, color: "#f5f0ff", lineHeight: 1.5, margin: isMobile ? "0 0 32px" : "0 0 48px" }}>
             Redesigning a complex, content-heavy B2B insurance software — and building the systems that scale it.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr 1fr 2fr", gap: 40 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.2fr 1fr 2fr", gap: isMobile ? 24 : 40 }}>
             <div>
               <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Role</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14, color: "#ffffff", fontWeight: 500 }}>
@@ -604,7 +627,7 @@ export default function CaseStudy() {
 
       {/* Hero image — sits inside the purple section, ends at its bottom */}
       <div style={{ background: "#3d2f7a", paddingTop: 8 }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 60px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 16px" : "0 60px" }}>
           <div style={{ background: C.lilacBg, borderRadius: "12px 12px 0 0", padding: 4, paddingBottom: 0, overflow: "hidden" }}>
             <img
               src="https://res.cloudinary.com/diso2uvpx/image/upload/v1777553891/Summary_ContractView_Savings_xulet4.png"
@@ -616,29 +639,29 @@ export default function CaseStudy() {
       </div>
 
       {/* Spacer between hero and sticky nav */}
-      <div style={{ background: C.bg, height: 48 }} />
+      <div style={{ background: C.bg, height: isMobile ? 24 : 48 }} />
 
-      {/* Sticky Nav */}
+      {/* Sticky Nav — horizontal scroll on mobile */}
       <div style={{ position: "sticky", top: 0, zIndex: 50, background: C.bg, borderBottom: "1px solid " + C.border, WebkitPosition: "sticky" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 60px" }}>
-          <div style={{ display: "flex", gap: 0 }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0" : "0 60px" }}>
+          <div style={{ display: "flex", gap: 0, overflowX: isMobile ? "auto" : "visible", WebkitOverflowScrolling: "touch", scrollbarWidth: "none", msOverflowStyle: "none" }}>
             {NAV.map(n => (
-              <button key={n.id} onClick={() => scrollTo(n.id)} style={{ background: "none", border: "none", cursor: "pointer", padding: "16px 20px", fontSize: 13, fontWeight: active === n.id ? 700 : 500, whiteSpace: "nowrap", color: active === n.id ? C.ink : C.muted, transition: "all 0.2s", fontFamily: "sans-serif", position: "relative" }}>
+              <button key={n.id} onClick={() => scrollTo(n.id)} style={{ background: "none", border: "none", cursor: "pointer", padding: isMobile ? "14px 16px" : "16px 20px", fontSize: 13, fontWeight: active === n.id ? 700 : 500, whiteSpace: "nowrap", color: active === n.id ? C.ink : C.muted, transition: "all 0.2s", fontFamily: "sans-serif", position: "relative", flexShrink: 0 }}>
                 {n.label}
-                {active === n.id && <div style={{ position: "absolute", bottom: 0, left: 16, right: 16, height: 4, background: C.neon, borderRadius: 2 }} />}
+                {active === n.id && <div style={{ position: "absolute", bottom: 0, left: isMobile ? 12 : 16, right: isMobile ? 12 : 16, height: 4, background: C.neon, borderRadius: 2 }} />}
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "32px 60px 56px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "32px 24px 56px" : "32px 60px 56px" }}>
 
         {/* 01 Project Context */}
         <div id="context">
           <SectionLabel num="01">Project Context</SectionLabel>
           <SectionTitle>From Legacy to Modern UX</SectionTitle>
-          <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
             GrathTalk is a B2B software solution for managing insurance contracts across multiple lines. Originally built in the 1990s, the platform had become outdated — cluttered screens, confusing navigation, poor content scanning, and an old-fashioned interface. Launched in 2020, the redesign aimed to improve the user experience and modernize the UI through a complete overhaul of the application.
           </p>
           <div>
@@ -655,21 +678,21 @@ export default function CaseStudy() {
         <div id="discovery">
           <SectionLabel num="02">Discovery</SectionLabel>
           <SectionTitle>Listening Before Designing</SectionTitle>
-          <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 24 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
             The project started with a deep research phase. Covea — one of the clients — operates through 3 distinct insurance brands under the same group. Each brand had its own workflows, terminology, and user expectations. The goal was ambitious: unify the UX experience across all 3 brands within a single platform.
           </p>
-          <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 48 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 48 }}>
             To achieve this, we conducted user interviews with a range of profiles across the brands — from managers to brokers — to capture different perspectives, needs, and pain points.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 40, marginBottom: 48, padding: "24px 32px", background: C.bgAlt, borderRadius: 12 }}>
-            <div style={{ paddingRight: 32, borderRight: "1px solid " + C.border }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 2fr 1fr", gap: isMobile ? 20 : 40, marginBottom: 48, padding: isMobile ? "20px" : "24px 32px", background: C.bgAlt, borderRadius: 12 }}>
+            <div style={{ paddingRight: isMobile ? 0 : 32, paddingBottom: isMobile ? 20 : 0, borderRight: isMobile ? "none" : "1px solid " + C.border, borderBottom: isMobile ? "1px solid " + C.border : "none" }}>
               <div style={{ fontSize: 9, color: C.muted, letterSpacing: 2, textTransform: "uppercase", marginBottom: 6 }}>Interviews conducted</div>
               <div style={{ fontSize: 15, color: C.ink, fontWeight: 500, lineHeight: 1.5 }}>
                 31 sessions — 62 hours
               </div>
             </div>
-            <div style={{ paddingRight: 32, borderRight: "1px solid " + C.border }}>
+            <div style={{ paddingRight: isMobile ? 0 : 32, paddingBottom: isMobile ? 20 : 0, borderRight: isMobile ? "none" : "1px solid " + C.border, borderBottom: isMobile ? "1px solid " + C.border : "none" }}>
               <div style={{ fontSize: 9, color: C.muted, letterSpacing: 2, textTransform: "uppercase", marginBottom: 6 }}>Business profiles</div>
               <div style={{ fontSize: 15, color: C.ink, fontWeight: 500, lineHeight: 1.5 }}>
                 7 — brokers, managers, trainers, inspectors, etc.
@@ -682,14 +705,14 @@ export default function CaseStudy() {
           </div>
 
           <h3 style={{ fontSize: 20, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.2 }}>Interviews Restitution</h3>
-          <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 24 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
             The interviews led to a structured restitution document — combining personas, main pain points per category, and a complete list of needs to be addressed in the redesign.
           </p>
 
           <RestitutionComposition />
 
           <h3 style={{ fontSize: 20, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.2 }}>Legacy Audit</h3>
-          <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
             A thorough UX audit of the existing platform revealed a wide range of structural issues. Among the most critical were navigation, content hierarchy, heavy screens, and an outdated UI.
           </p>
 
@@ -700,7 +723,7 @@ export default function CaseStudy() {
             <div style={{ fontSize: 14, color: "#555", marginTop: 16, textAlign: "center", fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif" }}>Pain points identified across the legacy interface</div>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 40px", marginTop: 40, borderTop: "1px solid " + C.border }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "0" : "0 40px", marginTop: 40, borderTop: "1px solid " + C.border }}>
             {[
               { label: "Irrelevant content for context", desc: "Information unrelated to the user's current task displayed alongside critical data, making it hard to focus on what matters" },
               { label: "Overloaded navigation", desc: "Too many tabs, often requiring horizontal scrolling to see them all — the information needed clearer organization and prioritization" },
@@ -726,7 +749,7 @@ export default function CaseStudy() {
         <div id="improvements">
           <SectionLabel num="03">Design Improvements</SectionLabel>
           <SectionTitle>Changes That Transformed the Experience</SectionTitle>
-          <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 40 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 40 }}>
             The audit revealed clear patterns. A set of structural improvements had the highest impact on usability, navigation clarity, and information hierarchy across the entire platform.
           </p>
 
@@ -741,25 +764,25 @@ export default function CaseStudy() {
         <CSDivider />
 
         {/* 04 System Thinking — wrapped in saturated purple background */}
-        <div id="system" style={{ background: "#4E4577", marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", paddingLeft: "calc(50vw - 50%)", paddingRight: "calc(50vw - 50%)", paddingTop: 72, paddingBottom: 72, marginTop: -72, marginBottom: -72 }}>
-          <div style={{ maxWidth: 980, margin: "0 auto" }}>
+        <div id="system" style={{ background: "#4E4577", marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", paddingLeft: "calc(50vw - 50%)", paddingRight: "calc(50vw - 50%)", paddingTop: isMobile ? 48 : 72, paddingBottom: isMobile ? 48 : 72, marginTop: isMobile ? -48 : -72, marginBottom: isMobile ? -48 : -72 }}>
+          <div style={{ maxWidth: 980, margin: "0 auto", paddingLeft: isMobile ? 24 : 0, paddingRight: isMobile ? 24 : 0 }}>
           <div style={{ fontSize: 11, color: "#EDE5FA", letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>04 — System Thinking</div>
           <h2 style={{ fontSize: 28, fontWeight: 700, color: "#fff", marginBottom: 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>When the Product Grows Faster Than the System</h2>
-          <p style={{ color: "#F5F1FC", fontSize: 17, lineHeight: 1.7, marginBottom: 24 }}>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
             As the product evolved and the team grew, inconsistencies began to spread. Designers created their own variations, components were modified without shared criteria, and decision ownership was unclear.
           </p>
-          <p style={{ color: "#F5F1FC", fontSize: 17, lineHeight: 1.7, marginBottom: 24 }}>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
             This lack of structure didn't just slow production — it affected product quality and team trust. The user experience became fragmented, coherence relied on manual oversight, and without a shared system, there was no foundation for scalability.
           </p>
-          <p style={{ color: "#F5F1FC", fontSize: 17, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
             The consequences extended beyond design. QA testing became chaotic — with no single source of truth, testers couldn't tell whether the spec PDF, the design file, or the live application held the correct version. The result was duplicate Jira tickets, hours lost on alignment calls, and recurring client complaints about inconsistencies between specifications and the delivered product.
           </p>
 
           <h3 style={{ fontSize: 18, fontWeight: 700, color: "#fff", margin: "40px 0 12px" }}>The Data Library</h3>
-          <p style={{ color: "#F5F1FC", fontSize: 17, lineHeight: 1.7, marginBottom: 16 }}>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 16 }}>
             Solving these challenges required deep systems thinking — understanding how data relationships surface throughout the product, and defining patterns that other teams could build upon. I led the creation of the Data Library: a system of data-aware patterns built on top of the core design system, enabling consistent representation of complex insurance data across all workflows.
           </p>
-          <p style={{ color: "#F5F1FC", fontSize: 17, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
             The diagram below illustrates how the team worked before — and how the Data Library reshaped that workflow.
           </p>
 
@@ -768,11 +791,11 @@ export default function CaseStudy() {
           {/* Challenges — what the new workflow demands */}
           <div style={{ marginTop: 56, marginBottom: 32 }}>
             <h3 style={{ fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
-            <p style={{ color: "#F5F1FC", fontSize: 17, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
+            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
               The implementation of the Data Library has been facing some challenges, because it requires a shift in how the team works and how it's organized.
             </p>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px 40px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "32px 0" : "32px 40px" }}>
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>DesignOps</h4>
                 <p style={{ color: "#F5F1FC", fontSize: 15, lineHeight: 1.7, margin: 0 }}>
@@ -814,16 +837,16 @@ export default function CaseStudy() {
           <SectionLabel num="05">Lessons</SectionLabel>
           <SectionTitle>Growing With the Product</SectionTitle>
           <div style={{ maxWidth: 820 }}>
-            <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 24 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
               Working on a project of this magnitude — and being there from the very beginning — is a rare professional experience. I lived through every phase of it.
             </p>
-            <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 24 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
               It started with deep exploration: user interviews with a large group of insurers like Covea, understanding how they work, where their pain points live, and what shapes their day-to-day. Then came the design phase, where I had to learn the insurance domain itself — the legacy screens, the vocabulary, the workflows — while collaborating with very different profiles across the team. Each iteration meant proposing solutions, gathering feedback, and refining patterns step by step.
             </p>
-            <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 24 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
               I was also the first person to build a UI system on the project, before we eventually hired someone dedicated to it. Then came the migration from XD to Figma — which became the moment I understood why we had to do things differently. The product was getting more complex, the inconsistencies were growing, and the way we were working couldn't scale.
             </p>
-            <p style={{ color: "#555", fontSize: 17, lineHeight: 1.7, marginBottom: 0 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 0 }}>
               That's how the Data Library was born. Building it while still producing designs, explaining its value to the team, taking real risks and responsibilities, and keeping clarity through all of it — these were intense phases, each with their own lessons. Together, they taught me what it really takes to redesign a back-end as complex as GrathTalk: not just good design, but the patience to build the systems that make good design possible.
             </p>
           </div>
@@ -835,7 +858,7 @@ export default function CaseStudy() {
         <div id="testimonials">
           <SectionLabel num="06">Appreciations</SectionLabel>
           <SectionTitle>What the Team Says</SectionTitle>
-          <div style={{ marginTop: 24, background: C.bgAlt, borderRadius: 16, padding: "32px", columnCount: 3, columnGap: 16 }}>
+          <div style={{ marginTop: 24, background: C.bgAlt, borderRadius: 16, padding: isMobile ? "20px" : "32px", columnCount: isMobile ? 1 : 3, columnGap: 16 }}>
             {[
               { name: "Christele Brunesseaux", role: "Principal Solution Architect", text: "Gaining experience and maturity in the project, Sabrina became central & instrumental to the product. Combining deep & precise analysis with sharp & efficient designs, she is leading the Design of the application very proactively." },
               { name: "Matthieu Lenoble", role: "Project Manager", text: "I appreciated the lead you took on Design System creation. It was a real challenge, a huge amount of work, and you succeeded in creating a tool that allows us to provide consistent design to our main client. With the Design System you became a hub for all design decisions." },
