@@ -140,6 +140,8 @@ const REFERENCE_SCREENS = [
 ];
 
 function VariantCard({ variant, n }) {
+  const isMobile = useIsMobile();
+  const labelMinWidth = isMobile ? 52 : 64;
   return (
     <div style={{ background: "#5D5589", borderRadius: 6, overflow: "hidden" }}>
       {/* Header — variant number */}
@@ -150,16 +152,16 @@ function VariantCard({ variant, n }) {
       {/* Body — three attributes */}
       <div style={{ padding: "10px", display: "flex", flexDirection: "column", gap: 4 }}>
         <div style={{ display: "flex", gap: 6, fontSize: 11, lineHeight: 1.4 }}>
-          <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, minWidth: 64 }}>Context:</span>
-          <span style={{ color: "#fff", fontWeight: 500 }}>{variant.ctx}</span>
+          <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, minWidth: labelMinWidth, flexShrink: 0 }}>Context:</span>
+          <span style={{ color: "#fff", fontWeight: 500, wordBreak: "break-word", minWidth: 0 }}>{variant.ctx}</span>
         </div>
         <div style={{ display: "flex", gap: 6, fontSize: 11, lineHeight: 1.4 }}>
-          <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, minWidth: 64 }}>Product:</span>
-          <span style={{ color: "#fff", fontWeight: 500 }}>{variant.prod}</span>
+          <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, minWidth: labelMinWidth, flexShrink: 0 }}>Product:</span>
+          <span style={{ color: "#fff", fontWeight: 500, wordBreak: "break-word", minWidth: 0 }}>{variant.prod}</span>
         </div>
         <div style={{ display: "flex", gap: 6, fontSize: 11, lineHeight: 1.4 }}>
-          <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, minWidth: 64 }}>BE market:</span>
-          <span style={{ color: "#fff", fontWeight: 500 }}>{variant.be ? "Yes" : "No"}</span>
+          <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, minWidth: labelMinWidth, flexShrink: 0 }}>BE market:</span>
+          <span style={{ color: "#fff", fontWeight: 500, wordBreak: "break-word", minWidth: 0 }}>{variant.be ? "Yes" : "No"}</span>
         </div>
       </div>
     </div>
@@ -168,12 +170,13 @@ function VariantCard({ variant, n }) {
 
 // Wireframe mockup of a screen — each screen is itself a Figma component
 function ScreenMockup({ label }) {
+  const isMobile = useIsMobile();
   return (
-    <div style={{ position: "relative", paddingTop: 22 }}>
+    <div style={{ position: "relative", paddingTop: isMobile ? 36 : 22 }}>
       {/* Component label above — Figma-style ❖ marker */}
-      <div style={{ position: "absolute", top: 0, left: 0, fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 600, display: "flex", alignItems: "center", gap: 5 }}>
-        <span style={{ fontSize: 12 }}>❖</span>
-        {label}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, fontSize: isMobile ? 11 : 12, color: "rgba(255,255,255,0.85)", fontWeight: 600, display: "flex", alignItems: "flex-start", gap: 5, lineHeight: 1.3 }}>
+        <span style={{ fontSize: 12, flexShrink: 0 }}>❖</span>
+        <span style={{ wordBreak: "break-word" }}>{label}</span>
       </div>
 
       {/* Wireframe inside dashed border — its own component */}
@@ -402,34 +405,34 @@ function Carousel({ slides }) {
   return (
     <div>
       <div style={{ overflow: "hidden" }} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-        <div style={{ display: "flex", alignItems: "flex-start", transform: "translateX(" + offset + "%)", transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)", gap: gapPx }}>
-          {slides.map((slide, i) => (
-            <div key={i} style={{ flex: "0 0 " + slideWidthPct + "%", opacity: isMobile ? 1 : (i === index ? 1 : 0.4), transition: "opacity 0.5s" }}>
-              <div style={{ aspectRatio: "16 / 9", background: C.lilacBg, borderRadius: 12, border: "1px solid " + C.lilacBorder, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12, color: "#8878c4", position: "relative" }}>
-                {slide.videoUrl ? (
-                  <video
-                    ref={el => { videoRefs.current[i] = el; }}
-                    src={slide.videoUrl}
-                    poster={slide.poster}
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                  />
-                ) : (
-                  <>
-                    <span style={{ fontSize: 40 }}>{slide.icon || "🖼️"}</span>
-                    <span style={{ fontSize: 14, fontWeight: 600, color: "#4a3a8a" }}>{slide.title}</span>
-                  </>
-                )}
-              </div>
-              <div style={{ marginTop: isMobile ? 20 : 28, maxWidth: 760, opacity: i === index ? 1 : 0, transition: "opacity 0.4s", pointerEvents: i === index ? "auto" : "none" }}>
-                <div style={{ fontSize: isMobile ? 16 : 17, fontWeight: 700, color: C.ink, marginBottom: 6, letterSpacing: -0.2 }}>{slide.title}</div>
-                <div style={{ fontSize: isMobile ? 13 : 14, color: C.muted, lineHeight: 1.6 }}>{slide.description}</div>
-
-                {/* On mobile, controls live inside each slide so they sit right after the text — no matter the text length */}
-                {isMobile && (
+        {isMobile ? (
+          // Mobile: render only active slide so container height matches it exactly
+          <div key={index} style={{ animation: "slideFade 0.35s ease" }}>
+            <style>{`@keyframes slideFade { from { opacity: 0; } to { opacity: 1; } }`}</style>
+            {slides.map((slide, i) => i === index && (
+              <div key={i}>
+                <div style={{ aspectRatio: "16 / 9", background: C.lilacBg, borderRadius: 12, border: "1px solid " + C.lilacBorder, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12, color: "#8878c4", position: "relative" }}>
+                  {slide.videoUrl ? (
+                    <video
+                      ref={el => { videoRefs.current[i] = el; }}
+                      src={slide.videoUrl}
+                      poster={slide.poster}
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    />
+                  ) : (
+                    <>
+                      <span style={{ fontSize: 40 }}>{slide.icon || "🖼️"}</span>
+                      <span style={{ fontSize: 14, fontWeight: 600, color: "#4a3a8a" }}>{slide.title}</span>
+                    </>
+                  )}
+                </div>
+                <div style={{ marginTop: 20, maxWidth: 760 }}>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: C.ink, marginBottom: 6, letterSpacing: -0.2 }}>{slide.title}</div>
+                  <div style={{ fontSize: 13, color: C.muted, lineHeight: 1.6 }}>{slide.description}</div>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, marginTop: 20 }}>
                     <div style={{ display: "flex", gap: 6, fontSize: 13, color: C.muted, fontVariantNumeric: "tabular-nums" }}>
                       <span style={{ color: C.ink, fontWeight: 600 }}>{String(index + 1).padStart(2, "0")}</span>
@@ -445,11 +448,41 @@ function Carousel({ slides }) {
                       </button>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ display: "flex", alignItems: "flex-start", transform: "translateX(" + offset + "%)", transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)", gap: gapPx }}>
+            {slides.map((slide, i) => (
+              <div key={i} style={{ flex: "0 0 " + slideWidthPct + "%", opacity: i === index ? 1 : 0.4, transition: "opacity 0.5s" }}>
+                <div style={{ aspectRatio: "16 / 9", background: C.lilacBg, borderRadius: 12, border: "1px solid " + C.lilacBorder, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12, color: "#8878c4", position: "relative" }}>
+                  {slide.videoUrl ? (
+                    <video
+                      ref={el => { videoRefs.current[i] = el; }}
+                      src={slide.videoUrl}
+                      poster={slide.poster}
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    />
+                  ) : (
+                    <>
+                      <span style={{ fontSize: 40 }}>{slide.icon || "🖼️"}</span>
+                      <span style={{ fontSize: 14, fontWeight: 600, color: "#4a3a8a" }}>{slide.title}</span>
+                    </>
+                  )}
+                </div>
+                <div style={{ marginTop: 28, maxWidth: 760, opacity: i === index ? 1 : 0, transition: "opacity 0.4s", pointerEvents: i === index ? "auto" : "none" }}>
+                  <div style={{ fontSize: 17, fontWeight: 700, color: C.ink, marginBottom: 6, letterSpacing: -0.2 }}>{slide.title}</div>
+                  <div style={{ fontSize: 14, color: C.muted, lineHeight: 1.6 }}>{slide.description}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Desktop only — fixed control bar below the carousel */}
@@ -793,8 +826,8 @@ export default function CaseStudy() {
               { label: "Empty sections shown by default", desc: "Sections rendered with no content or feedback, leaving users uncertain whether information was missing, loading, or simply not applicable" },
               { label: "Excessive nesting", desc: "Components stacked within components — sections inside sections, accordions inside accordions — creating a structure that's hard to follow and visually cluttered" },
               { label: "Misleading pagination", desc: "Next/Previous controls used in contexts with no meaningful sequence, leading users to unexpected places instead of guiding them through a flow" },
-            ].map((item, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 14, paddingTop: 18, paddingBottom: 18, borderBottom: "1px solid " + C.border }}>
+            ].map((item, i, arr) => (
+              <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 14, paddingTop: 18, paddingBottom: 18, borderBottom: i < arr.length - 1 ? "1px solid " + C.border : "none" }}>
                 <div style={{ fontSize: 13, fontWeight: 700, color: C.purple, letterSpacing: 1, flexShrink: 0, width: 18 }}>{String(i + 1).padStart(2, "0")}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 600, fontSize: 14, color: C.ink, marginBottom: 6 }}>{item.label}</div>
