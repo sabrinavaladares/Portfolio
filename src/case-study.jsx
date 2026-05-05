@@ -639,7 +639,7 @@ export default function CaseStudy() {
                   <div key={row.label} style={{ display: "grid", gridTemplateColumns: "82px 1fr", gap: 12, padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.12)", alignItems: "baseline" }}>
                     <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", fontWeight: 500 }}>{row.label}</div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                      <div style={{ fontSize: 14, color: "#ffffff", fontWeight: 500, lineHeight: 1.4 }}>{row.primary}</div>
+                      <div style={{ fontSize: 14, color: "#ffffff", fontWeight: 400, lineHeight: 1.4 }}>{row.primary}</div>
                       <div style={{ fontSize: 12, color: "#a594d4", fontWeight: 400, lineHeight: 1.4 }}>{row.secondary}</div>
                     </div>
                   </div>
