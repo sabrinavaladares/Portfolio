@@ -402,7 +402,7 @@ function Carousel({ slides }) {
   return (
     <div>
       <div style={{ overflow: "hidden" }} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-        <div style={{ display: "flex", transform: "translateX(" + offset + "%)", transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)", gap: gapPx }}>
+        <div style={{ display: "flex", alignItems: "flex-start", transform: "translateX(" + offset + "%)", transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)", gap: gapPx }}>
           {slides.map((slide, i) => (
             <div key={i} style={{ flex: "0 0 " + slideWidthPct + "%", opacity: isMobile ? 1 : (i === index ? 1 : 0.4), transition: "opacity 0.5s" }}>
               <div style={{ aspectRatio: "16 / 9", background: C.lilacBg, borderRadius: 12, border: "1px solid " + C.lilacBorder, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12, color: "#8878c4", position: "relative" }}>
@@ -825,7 +825,9 @@ export default function CaseStudy() {
 
         <CSDivider />
 
-        {/* 04 System Thinking — wrapped in saturated purple background */}
+        {/* 04 System Thinking — wrapped in saturated purple background.
+            Negative margins cancel the adjacent CSDivider's vertical margins,
+            so the gap between sections matches the rest of the page. */}
         <div id="system" style={{ background: "#4E4577", marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", paddingLeft: "calc(50vw - 50%)", paddingRight: "calc(50vw - 50%)", paddingTop: isMobile ? 48 : 72, paddingBottom: isMobile ? 48 : 72, marginTop: isMobile ? -48 : -72, marginBottom: isMobile ? -48 : -72 }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", boxSizing: "border-box" }}>
           <div style={{ fontSize: 11, color: "#EDE5FA", letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>04 — System Thinking</div>
@@ -930,6 +932,35 @@ export default function CaseStudy() {
               { name: "Jean François Mouffle", role: "Principal Solution Architect", text: "It's a real pleasure to work with Sabrina, as she's always eager to learn about the Insurance business as well as the existing GT UI. She always takes the time to understand what the business needs and to find the best proposition for the new UI." },
             ].map((t, i) => <TestimonialCard key={i} {...t} />)}
           </div>
+        </div>
+
+        {/* Back to top */}
+        <div style={{ display: "flex", justifyContent: "center", marginTop: isMobile ? 56 : 80 }}>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            style={{
+              background: "transparent",
+              border: "1px solid " + C.border,
+              borderRadius: 50,
+              padding: "12px 22px",
+              fontSize: 13,
+              fontWeight: 500,
+              color: C.muted,
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              fontFamily: "sans-serif",
+              letterSpacing: 0.2,
+              transition: "border-color 0.2s, color 0.2s",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.lilacBorder; e.currentTarget.style.color = C.ink; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.color = C.muted; }}
+            aria-label="Back to top"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            Back to top
+          </button>
         </div>
 
       </div>
