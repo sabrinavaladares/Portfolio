@@ -427,28 +427,50 @@ function Carousel({ slides }) {
               <div style={{ marginTop: isMobile ? 20 : 28, maxWidth: 760, opacity: i === index ? 1 : 0, transition: "opacity 0.4s", pointerEvents: i === index ? "auto" : "none" }}>
                 <div style={{ fontSize: isMobile ? 16 : 17, fontWeight: 700, color: C.ink, marginBottom: 6, letterSpacing: -0.2 }}>{slide.title}</div>
                 <div style={{ fontSize: isMobile ? 13 : 14, color: C.muted, lineHeight: 1.6 }}>{slide.description}</div>
+
+                {/* On mobile, controls live inside each slide so they sit right after the text — no matter the text length */}
+                {isMobile && (
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, marginTop: 20 }}>
+                    <div style={{ display: "flex", gap: 6, fontSize: 13, color: C.muted, fontVariantNumeric: "tabular-nums" }}>
+                      <span style={{ color: C.ink, fontWeight: 600 }}>{String(index + 1).padStart(2, "0")}</span>
+                      <span>/</span>
+                      <span>{String(total).padStart(2, "0")}</span>
+                    </div>
+                    <div style={{ display: "flex", gap: 8 }}>
+                      <button onClick={prev} disabled={isFirst} aria-label="Previous" style={{ ...arrowBase, cursor: isFirst ? "not-allowed" : "pointer", opacity: isFirst ? 0.3 : 1 }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                      </button>
+                      <button onClick={next} disabled={isLast} aria-label="Next" style={{ ...arrowBase, cursor: isLast ? "not-allowed" : "pointer", opacity: isLast ? 0.3 : 1 }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 16, marginTop: isMobile ? 20 : 28 }}>
-        <div style={{ display: "flex", gap: 6, fontSize: 13, color: C.muted, fontVariantNumeric: "tabular-nums" }}>
-          <span style={{ color: C.ink, fontWeight: 600 }}>{String(index + 1).padStart(2, "0")}</span>
-          <span>/</span>
-          <span>{String(total).padStart(2, "0")}</span>
-        </div>
+      {/* Desktop only — fixed control bar below the carousel */}
+      {!isMobile && (
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 16, marginTop: 28 }}>
+          <div style={{ display: "flex", gap: 6, fontSize: 13, color: C.muted, fontVariantNumeric: "tabular-nums" }}>
+            <span style={{ color: C.ink, fontWeight: 600 }}>{String(index + 1).padStart(2, "0")}</span>
+            <span>/</span>
+            <span>{String(total).padStart(2, "0")}</span>
+          </div>
 
-        <div style={{ display: "flex", gap: 8 }}>
-          <button onClick={prev} disabled={isFirst} aria-label="Previous" style={{ ...arrowBase, cursor: isFirst ? "not-allowed" : "pointer", opacity: isFirst ? 0.3 : 1 }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          </button>
-          <button onClick={next} disabled={isLast} aria-label="Next" style={{ ...arrowBase, cursor: isLast ? "not-allowed" : "pointer", opacity: isLast ? 0.3 : 1 }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
+          <div style={{ display: "flex", gap: 8 }}>
+            <button onClick={prev} disabled={isFirst} aria-label="Previous" style={{ ...arrowBase, cursor: isFirst ? "not-allowed" : "pointer", opacity: isFirst ? 0.3 : 1 }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            </button>
+            <button onClick={next} disabled={isLast} aria-label="Next" style={{ ...arrowBase, cursor: isLast ? "not-allowed" : "pointer", opacity: isLast ? 0.3 : 1 }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -605,35 +627,62 @@ export default function CaseStudy() {
             Redesigning a complex, content-heavy B2B insurance software — and building the systems that scale it.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1.2fr 1fr 2fr", gap: isMobile ? 24 : 40 }}>
+          {isMobile ? (
             <div>
-              <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Role</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14, color: "#ffffff", fontWeight: 500 }}>
-                <div>Senior Product Designer</div>
-                <div style={{ color: "#a594d4", fontSize: 13, fontWeight: 400 }}>2020 → Present</div>
+              {/* Compact spec sheet — label / value rows with subtle dividers */}
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}>
+                {[
+                  { label: "Role", primary: "Senior Product Designer", secondary: "2020 → Present" },
+                  { label: "Team", primary: "Remote, distributed", secondary: "FR · BE · MA · BG · IN" },
+                  { label: "Context", primary: "B2B Insurance", secondary: "DXC Technology" },
+                ].map((row) => (
+                  <div key={row.label} style={{ display: "grid", gridTemplateColumns: "82px 1fr", gap: 12, padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.12)", alignItems: "baseline" }}>
+                    <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", fontWeight: 500 }}>{row.label}</div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                      <div style={{ fontSize: 14, color: "#ffffff", fontWeight: 500, lineHeight: 1.4 }}>{row.primary}</div>
+                      <div style={{ fontSize: 12, color: "#a594d4", fontWeight: 400, lineHeight: 1.4 }}>{row.secondary}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 24 }}>
+                <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 12, fontWeight: 500 }}>Skills & Methods</div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, alignItems: "flex-start" }}>
+                  {["User Interviews", "Information Architecture", "UX Design", "Content", "Design System", "DesignOps", "Figma"].map(t => <span key={t} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 20, padding: "5px 12px", fontSize: 12, color: "#ffffff", fontWeight: 500 }}>{t}</span>)}
+                </div>
               </div>
             </div>
-            <div>
-              <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Team</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14, color: "#ffffff", fontWeight: 500 }}>
-                <div>Remote, distributed</div>
-                <div style={{ color: "#a594d4", fontSize: 13, fontWeight: 400 }}>FR · BE · MA · BG · IN</div>
+          ) : (
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr 1fr 2fr", gap: 40 }}>
+              <div>
+                <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Role</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14, color: "#ffffff", fontWeight: 500 }}>
+                  <div>Senior Product Designer</div>
+                  <div style={{ color: "#a594d4", fontSize: 13, fontWeight: 400 }}>2020 → Present</div>
+                </div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Team</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14, color: "#ffffff", fontWeight: 500 }}>
+                  <div>Remote, distributed</div>
+                  <div style={{ color: "#a594d4", fontSize: 13, fontWeight: 400 }}>FR · BE · MA · BG · IN</div>
+                </div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Context</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14, color: "#ffffff", fontWeight: 500 }}>
+                  <div>B2B Insurance</div>
+                  <div style={{ color: "#a594d4", fontSize: 13, fontWeight: 400 }}>DXC Technology</div>
+                </div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Skills & Methods</div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "flex-start" }}>
+                  {["User Interviews", "Information Architecture", "UX Design", "Content", "Design System", "DesignOps", "Figma"].map(t => <span key={t} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 20, padding: "6px 14px", fontSize: 12, color: "#ffffff", fontWeight: 500 }}>{t}</span>)}
+                </div>
               </div>
             </div>
-            <div>
-              <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Context</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14, color: "#ffffff", fontWeight: 500 }}>
-                <div>B2B Insurance</div>
-                <div style={{ color: "#a594d4", fontSize: 13, fontWeight: 400 }}>DXC Technology</div>
-              </div>
-            </div>
-            <div style={{ gridColumn: isMobile ? "span 2" : "auto" }}>
-              <div style={{ fontSize: 10, color: "#a594d4", letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>Skills & Methods</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "flex-start" }}>
-                {["User Interviews", "Information Architecture", "UX Design", "Content", "Design System", "DesignOps", "Figma"].map(t => <span key={t} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 20, padding: "6px 14px", fontSize: 12, color: "#ffffff", fontWeight: 500 }}>{t}</span>)}
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
 
