@@ -296,12 +296,12 @@ function CaseStudyCard({ setPage }) {
       onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.lilacBorder; e.currentTarget.style.transform = "translateY(-2px)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; }}
     >
-      <div style={{ height: isMobile ? "auto" : 500, aspectRatio: isMobile ? "16 / 10" : "auto", overflow: "hidden", position: "relative", background: isMobile ? C.neon : "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ height: isMobile ? "auto" : 500, aspectRatio: isMobile ? "16 / 10" : "auto", overflow: "hidden", position: "relative", background: isMobile ? "#B6CF73" : "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <img
           src="https://res.cloudinary.com/diso2uvpx/image/upload/hero-image_omdqpa.png"
           alt="PathFinder hero"
           style={isMobile
-            ? { width: "100%", height: "100%", objectFit: "contain", display: "block" }
+            ? { width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block" }
             : { position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
         />
       </div>
@@ -311,7 +311,7 @@ function CaseStudyCard({ setPage }) {
           <p style={{ margin: "0 0 16px", color: "#ffffff", fontSize: isMobile ? 14 : 15, lineHeight: 1.7 }}>
             Redesigning a complex B2B insurance software and building the design systems that scale it.
           </p>
-          <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: isMobile ? 8 : 0 }}>
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: isMobile ? 16 : 0 }}>
             <Tag dark>UX Design</Tag>
             <Tag dark>DesignOps</Tag>
             <Tag dark>Design System</Tag>
@@ -321,10 +321,10 @@ function CaseStudyCard({ setPage }) {
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); setPage("casestudy"); }}
-            style={{ background: C.neon, color: C.purpleDark, border: "none", borderRadius: 50, padding: "12px 20px", fontSize: 14, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: "sans-serif", width: "100%" }}
+            style={{ background: "transparent", color: "#ffffff", border: "1px solid rgba(255,255,255,0.35)", borderRadius: 50, padding: "10px 18px", fontSize: 13, fontWeight: 500, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: "sans-serif", letterSpacing: 0.2, alignSelf: "flex-start", transition: "border-color 0.2s, background 0.2s" }}
           >
             See more
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </button>
         ) : (
           <div style={{ width: 44, height: 44, borderRadius: "50%", background: C.purpleDark, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0, color: C.neon, fontWeight: 700 }}>&#8594;</div>
