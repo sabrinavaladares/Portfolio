@@ -827,7 +827,7 @@ export default function CaseStudy() {
               { label: "Excessive nesting", desc: "Components stacked within components — sections inside sections, accordions inside accordions — creating a structure that's hard to follow and visually cluttered" },
               { label: "Misleading pagination", desc: "Next/Previous controls used in contexts with no meaningful sequence, leading users to unexpected places instead of guiding them through a flow" },
             ].map((item, i, arr) => (
-              <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 14, paddingTop: 18, paddingBottom: 18, borderBottom: i < arr.length - 1 ? "1px solid " + C.border : "none" }}>
+              <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 14, paddingTop: 18, paddingBottom: 18, borderBottom: isMobile && i === arr.length - 1 ? "none" : "1px solid " + C.border }}>
                 <div style={{ fontSize: 13, fontWeight: 700, color: C.purple, letterSpacing: 1, flexShrink: 0, width: 18 }}>{String(i + 1).padStart(2, "0")}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 600, fontSize: 14, color: C.ink, marginBottom: 6 }}>{item.label}</div>
