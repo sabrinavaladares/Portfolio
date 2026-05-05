@@ -374,8 +374,8 @@ function Carousel({ slides }) {
     });
   }, [index]);
 
-  const slideWidthPct = isMobile ? 92 : 78;
-  const gapPx = isMobile ? 12 : 16;
+  const slideWidthPct = isMobile ? 100 : 78;
+  const gapPx = isMobile ? 0 : 16;
   const offset = -index * slideWidthPct + (100 - slideWidthPct) / 2;
 
   const arrowBase = { width: isMobile ? 44 : 36, height: isMobile ? 44 : 36, borderRadius: "50%", border: "none", background: C.purple, display: "flex", alignItems: "center", justifyContent: "center", color: C.neon, transition: "all 0.2s", padding: 0 };
@@ -404,7 +404,7 @@ function Carousel({ slides }) {
       <div style={{ overflow: "hidden" }} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div style={{ display: "flex", transform: "translateX(" + offset + "%)", transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)", gap: gapPx }}>
           {slides.map((slide, i) => (
-            <div key={i} style={{ flex: "0 0 " + slideWidthPct + "%", opacity: i === index ? 1 : 0.4, transition: "opacity 0.5s" }}>
+            <div key={i} style={{ flex: "0 0 " + slideWidthPct + "%", opacity: isMobile ? 1 : (i === index ? 1 : 0.4), transition: "opacity 0.5s" }}>
               <div style={{ aspectRatio: "16 / 9", background: C.lilacBg, borderRadius: 12, border: "1px solid " + C.lilacBorder, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12, color: "#8878c4", position: "relative" }}>
                 {slide.videoUrl ? (
                   <video
