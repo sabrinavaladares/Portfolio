@@ -372,13 +372,13 @@ function HomePage({ setPage }) {
         <div style={{ width: "100%" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "8px 24px 24px" : "24px 60px", boxSizing: "border-box", width: "100%" }}>
             {isMobile ? (
-              <div style={{ borderTop: "1px solid " + C.border }}>
+              <div>
                 {[
                   { label: "Role", value: "Senior Product Designer" },
                   { label: "Experience", value: "8 years" },
                   { label: "Company", value: "DXC Technology" },
-                ].map((item) => (
-                  <div key={item.label} style={{ display: "grid", gridTemplateColumns: "92px 1fr", gap: 12, padding: "12px 0", borderBottom: "1px solid " + C.border, alignItems: "baseline" }}>
+                ].map((item, i, arr) => (
+                  <div key={item.label} style={{ display: "grid", gridTemplateColumns: "92px 1fr", gap: 12, padding: "12px 0", borderBottom: i < arr.length - 1 ? "1px solid " + C.border : "none", alignItems: "baseline" }}>
                     <div style={{ fontSize: 9, color: "#555", letterSpacing: 2, textTransform: "uppercase", fontWeight: 500 }}>{item.label}</div>
                     <div style={{ fontSize: 13, color: C.ink, fontWeight: 400, lineHeight: 1.4 }}>{item.value}</div>
                   </div>
