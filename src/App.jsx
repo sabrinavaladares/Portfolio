@@ -370,25 +370,34 @@ function HomePage({ setPage }) {
         <Divider />
 
         <div style={{ width: "100%" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "20px 24px" : "24px 60px", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: isMobile ? 16 : 40, boxSizing: "border-box", width: "100%" }}>
-            {[
-              { label: "Role", value: "Senior Product Designer" },
-              { label: "Experience", value: "8 years" },
-              { label: "Company", value: "DXC Technology" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  paddingRight: isMobile ? 0 : 40,
-                  paddingBottom: isMobile && i < 2 ? 16 : 0,
-                  borderRight: !isMobile && i < 2 ? "1px solid " + C.border : "none",
-                  borderBottom: isMobile && i < 2 ? "1px solid " + C.border : "none",
-                }}
-              >
-                <div style={{ fontSize: 9, color: "#555", letterSpacing: 2, textTransform: "uppercase", marginBottom: 3 }}>{item.label}</div>
-                <div style={{ fontSize: 13, color: C.ink, fontWeight: 500 }}>{item.value}</div>
+          <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "8px 24px 24px" : "24px 60px", boxSizing: "border-box", width: "100%" }}>
+            {isMobile ? (
+              <div style={{ borderTop: "1px solid " + C.border }}>
+                {[
+                  { label: "Role", value: "Senior Product Designer" },
+                  { label: "Experience", value: "8 years" },
+                  { label: "Company", value: "DXC Technology" },
+                ].map((item) => (
+                  <div key={item.label} style={{ display: "grid", gridTemplateColumns: "92px 1fr", gap: 12, padding: "12px 0", borderBottom: "1px solid " + C.border, alignItems: "baseline" }}>
+                    <div style={{ fontSize: 9, color: "#555", letterSpacing: 2, textTransform: "uppercase", fontWeight: 500 }}>{item.label}</div>
+                    <div style={{ fontSize: 13, color: C.ink, fontWeight: 400, lineHeight: 1.4 }}>{item.value}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            ) : (
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40 }}>
+                {[
+                  { label: "Role", value: "Senior Product Designer" },
+                  { label: "Experience", value: "8 years" },
+                  { label: "Company", value: "DXC Technology" },
+                ].map((item, i) => (
+                  <div key={item.label} style={{ paddingRight: 40, borderRight: i < 2 ? "1px solid " + C.border : "none" }}>
+                    <div style={{ fontSize: 9, color: "#555", letterSpacing: 2, textTransform: "uppercase", marginBottom: 3 }}>{item.label}</div>
+                    <div style={{ fontSize: 13, color: C.ink, fontWeight: 500 }}>{item.value}</div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
