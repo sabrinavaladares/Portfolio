@@ -868,16 +868,13 @@ export default function CaseStudy() {
           <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
             As the product evolved and the team grew, inconsistencies began to spread. Designers created their own variations, components were modified without shared criteria, and decision ownership was unclear.
           </p>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
-            This lack of structure didn't just slow production — it affected product quality and team trust. The user experience became fragmented, coherence relied on manual oversight, and without a shared system, there was no foundation for scalability.
-          </p>
           <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
-            The consequences extended beyond design. QA testing became chaotic — with no single source of truth, testers couldn't tell whether the spec PDF, the design file, or the live application held the correct version. The result was duplicate Jira tickets, hours lost on alignment calls, and recurring client complaints about inconsistencies between specifications and the delivered product.
+            The consequences went beyond design. With no single source of truth, QA testers couldn't tell whether the spec PDF, the design file, or the live app held the correct version — leading to duplicate Jira tickets, hours lost on alignment calls, and recurring client complaints about inconsistencies between specifications and the delivered product.
           </p>
 
           <h3 style={{ fontSize: isMobile ? 17 : 18, fontWeight: 700, color: "#fff", margin: "40px 0 12px" }}>The Data Library</h3>
           <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 16 }}>
-            Solving these challenges required deep systems thinking — understanding how data relationships surface throughout the product, and defining patterns that other teams could build upon. I led the creation of the Data Library: a system of data-aware patterns built on top of the core design system, enabling consistent representation of complex insurance data across all workflows.
+            I led the creation of the Data Library: a system of data-aware patterns built on top of the core design system, enabling consistent representation of complex insurance data across all workflows.
           </p>
           <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
             The diagram below illustrates how the team worked before — and how the Data Library reshaped that workflow.
@@ -889,37 +886,37 @@ export default function CaseStudy() {
           <div style={{ marginTop: 56, marginBottom: 32 }}>
             <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
             <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
-              The implementation of the Data Library has been facing some challenges, because it requires a shift in how the team works and how it's organized.
+              Implementing the Data Library requires a shift in how the team works and organizes itself.
             </p>
 
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "32px 0" : "32px 40px" }}>
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>DesignOps</h4>
                 <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  Someone has to create and feed the system continuously — defining patterns, maintaining variants, and making sure the library stays alive. This requires a transversal view of the product, not a single workflow perspective. It also means communicating how the system works, what's new, and why decisions were made.
+                  Someone has to feed the system continuously — defining patterns, maintaining variants, and keeping the library alive. This requires a transversal view of the product, not a single workflow perspective, and constant communication about what changes and why.
                 </p>
               </div>
 
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Team practices</h4>
                 <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  The system reshapes how designers work day-to-day — how they pick variants, when to propose new ones, and how they collaborate. It's not just a library; it's a new way of working together that the team has to learn and adopt.
+                  The system reshapes how designers work day-to-day — how they pick variants, when to propose new ones, and how they collaborate.
                 </p>
               </div>
 
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Governance</h4>
                 <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  Every change to a master component needs review and approval before reaching production. Without this layer, consistency breaks and the system loses trust. The reviewer becomes the gatekeeper of the cross-product experience.
+                  Every change to a master component needs review and approval before reaching production — the reviewer becomes the gatekeeper of the cross-product experience.
                   <br /><br />
-                  Today, I'm the only person on the team with the transversal view to play this role — and that's a real risk. A single maintainer becomes a bottleneck, and the system depends on one perspective. Distributing this responsibility is the next step.
+                  Today, I'm the only person on the team with the transversal view to play this role — a real risk. Distributing this responsibility is the next step.
                 </p>
               </div>
 
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>AI's role in this</h4>
                 <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  AI can be a real ally in maintaining a system like this — helping to spot inconsistencies, identify missing Lego pieces in the architecture, and generate documentation to communicate how the system works and what changes between versions. There's still a lot to explore here. Defining how AI fits into the workflow — as a contributor that supports the team without replacing the transversal judgment — is part of what comes next.
+                  AI can be a real ally here — spotting inconsistencies, identifying missing Lego pieces in the architecture, and generating documentation about what changes between versions. Defining how it fits into the workflow — as a contributor that supports the team without replacing the transversal judgment — is part of what comes next.
                 </p>
               </div>
             </div>
