@@ -339,7 +339,7 @@ function HomePage({ setPage }) {
   const shell = useShell();
 
   return (
-    <div style={{ paddingTop: 64 }}>
+    <div style={{ paddingTop: 64, overflowX: "hidden" }}>
       <div style={{ background: C.bg, minHeight: isMobile ? "auto" : HERO_MIN_HEIGHT, display: "flex", flexDirection: "column" }}>
         <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 24px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
@@ -425,7 +425,7 @@ function AboutPage() {
   const shell = useShell();
 
   return (
-    <div style={{ paddingTop: 64, background: C.bg, minHeight: "100vh" }}>
+    <div style={{ paddingTop: 64, background: C.bg, minHeight: "100vh", overflowX: "hidden" }}>
       <div style={shell}>
         <h1 style={{ fontSize: isMobile ? 32 : 42, fontWeight: 800, margin: isMobile ? "0 0 20px" : "0 0 32px", color: C.ink, letterSpacing: isMobile ? -0.5 : 0, lineHeight: 1.1 }}>Hi, I'm Sabrina</h1>
 
@@ -512,7 +512,7 @@ export default function App() {
   }, [page]);
 
   return (
-    <div style={{ fontFamily: "sans-serif", background: C.bg, minHeight: "100vh", color: C.ink, overflowX: "hidden" }}>
+    <div style={{ fontFamily: "sans-serif", background: C.bg, minHeight: "100vh", color: C.ink }}>
       <Nav page={page} setPage={setPage} />
       {page === "home" && <HomePage setPage={setPage} />}
       {page === "about" && <AboutPage />}
