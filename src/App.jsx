@@ -250,9 +250,9 @@ function Nav({ page, setPage }) {
         )}
       </div>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile dropdown menu — dark purple background, white text */}
       {isMobile && menuOpen && (
-        <div style={{ position: "absolute", top: 64, left: 0, right: 0, background: navBg, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderBottom: navBorder, padding: "8px 0 12px", animation: "navSlideDown 0.2s ease-out" }}>
+        <div style={{ position: "absolute", top: 64, left: 0, right: 0, background: C.purpleDark, borderBottom: "1px solid rgba(255,255,255,0.12)", padding: "8px 0 12px", animation: "navSlideDown 0.2s ease-out", boxShadow: "0 8px 24px rgba(0,0,0,0.18)" }}>
           <style>{`@keyframes navSlideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }`}</style>
           {links.map(([id, label]) => {
             const isActive = page === id;
@@ -268,7 +268,7 @@ function Nav({ page, setPage }) {
                   cursor: "pointer",
                   fontSize: 16,
                   fontFamily: "sans-serif",
-                  color: isActive ? activeLinkColor : inactiveLinkColor,
+                  color: isActive ? "#ffffff" : "rgba(255,255,255,0.65)",
                   fontWeight: isActive ? 600 : 400,
                   padding: "14px 24px",
                   textAlign: "left",
@@ -296,26 +296,39 @@ function CaseStudyCard({ setPage }) {
       onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.lilacBorder; e.currentTarget.style.transform = "translateY(-2px)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; }}
     >
-      <div style={{ height: isMobile ? 240 : 500, overflow: "hidden", position: "relative" }}>
+      <div style={{ height: isMobile ? "auto" : 500, aspectRatio: isMobile ? "16 / 10" : "auto", overflow: "hidden", position: "relative", background: C.lilacBg, padding: isMobile ? 12 : 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <img
           src="https://res.cloudinary.com/diso2uvpx/image/upload/hero-image_omdqpa.png"
           alt="PathFinder hero"
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+          style={isMobile
+            ? { maxWidth: "100%", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain", display: "block" }
+            : { position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
         />
       </div>
-      <div style={{ padding: isMobile ? "20px 20px" : "24px 32px", background: C.purple, display: "grid", gridTemplateColumns: isMobile ? "1fr auto" : "1fr auto", alignItems: "center", gap: isMobile ? 16 : 24 }}>
+      <div style={{ padding: isMobile ? "20px 20px" : "24px 32px", background: C.purple, display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr auto", alignItems: "center", gap: isMobile ? 16 : 24 }}>
         <div>
           <h3 style={{ fontSize: isMobile ? 20 : 24, fontWeight: 700, margin: "0 0 10px", color: "#fff" }}>PathFinder</h3>
           <p style={{ margin: "0 0 16px", color: "#ffffff", fontSize: isMobile ? 14 : 15, lineHeight: 1.7 }}>
             Redesigning a complex B2B insurance software and building the design systems that scale it.
           </p>
-          <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: isMobile ? 8 : 0 }}>
             <Tag dark>UX Design</Tag>
             <Tag dark>DesignOps</Tag>
             <Tag dark>Design System</Tag>
           </div>
         </div>
-        <div style={{ width: isMobile ? 36 : 44, height: isMobile ? 36 : 44, borderRadius: "50%", background: C.purpleDark, display: "flex", alignItems: "center", justifyContent: "center", fontSize: isMobile ? 18 : 22, flexShrink: 0, color: C.neon, fontWeight: 700 }}>&#8594;</div>
+        {isMobile ? (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setPage("casestudy"); }}
+            style={{ background: C.neon, color: C.purpleDark, border: "none", borderRadius: 50, padding: "12px 20px", fontSize: 14, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: "sans-serif", width: "100%" }}
+          >
+            See more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        ) : (
+          <div style={{ width: 44, height: 44, borderRadius: "50%", background: C.purpleDark, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0, color: C.neon, fontWeight: 700 }}>&#8594;</div>
+        )}
       </div>
     </div>
   );
@@ -330,9 +343,9 @@ function HomePage({ setPage }) {
       <div style={{ background: C.bg, minHeight: isMobile ? "auto" : HERO_MIN_HEIGHT, display: "flex", flexDirection: "column" }}>
         <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 24px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 32 : 80, alignItems: "center" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 20 : 80, alignItems: "center" }}>
               {/* Text first on both — on mobile, photo follows underneath */}
-              <div style={{ minHeight: isMobile ? "calc(100vh - 64px)" : "auto", display: "flex", flexDirection: "column", justifyContent: isMobile ? "flex-start" : "center", paddingTop: isMobile ? 64 : 0, paddingBottom: isMobile ? 24 : 0 }}>
+              <div style={{ paddingTop: isMobile ? 24 : 0 }}>
                 <h1 style={{ fontSize: isMobile ? 30 : 56, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.15, letterSpacing: isMobile ? -0.5 : 0 }}>
                   Designer.<br />System Thinker.<br />Foundation Builder.
                 </h1>
@@ -344,7 +357,7 @@ function HomePage({ setPage }) {
                 </p>
               </div>
 
-              <div style={{ position: "relative", maxWidth: isMobile ? 200 : "none", width: "100%", margin: isMobile ? "0 auto 24px" : 0 }}>
+              <div style={{ position: "relative", maxWidth: isMobile ? 170 : "none", width: "100%", margin: isMobile ? "0 auto 16px" : 0 }}>
                 <div style={{ width: "100%", aspectRatio: "3/4", borderRadius: 20, overflow: "hidden", background: C.lilacBg }}>
                   <img src="https://sabrinavaladares.github.io/portfolio-images/1516535750515.jpeg" alt="Sabrina Valadares" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
                 </div>
