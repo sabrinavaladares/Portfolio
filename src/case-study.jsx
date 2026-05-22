@@ -952,10 +952,9 @@ export default function CaseStudy() {
 
           <DataLibraryDiagram />
 
-          {/* Where it stands today */}
-          <h4 style={{ fontSize: isMobile ? 15 : 16, fontWeight: 700, color: "#fff", margin: "8px 0 12px" }}>Where it stands today</h4>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
-            The system is in place. Below: what's built, and how it's being adopted.
+          {/* Where it stands today — inline caption above the StateOfPlay card */}
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: "8px 0 0", maxWidth: 820 }}>
+            <span style={{ color: "#fff", fontWeight: 600 }}>Where it stands today:</span> below, what's built and how it's being adopted.
           </p>
           <StateOfPlayBlock />
 
@@ -988,13 +987,9 @@ export default function CaseStudy() {
             </p>
           </div>
 
-          {/* Challenges — CURRENT VERSION (4 cards: DesignOps, Team practices, Governance, AI).
-              Now full-width single column. Delete one of the two later. */}
+          {/* Challenges — 4 cards: DesignOps, Team practices, Governance, AI. Full-width single column. */}
           <div style={{ marginTop: 56, marginBottom: 32 }}>
-            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>
-              Challenges
-              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", fontWeight: 400, letterSpacing: 1, textTransform: "uppercase", marginLeft: 8 }}>· current version</span>
-            </h3>
+            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
             <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
               Implementing the Data Library requires a shift in how the team works and organizes itself.
             </p>
@@ -1027,55 +1022,6 @@ export default function CaseStudy() {
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>AI's role in this</h4>
                 <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
                   AI can be a real ally here — spotting inconsistencies, identifying missing Lego pieces in the architecture, and generating documentation about what changes between versions. Defining how it fits into the workflow — as a contributor that supports the team without replacing the transversal judgment — is part of what comes next.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Challenges — NEW VERSION (compact, full-width). Delete one of the two later. */}
-          <div style={{ marginTop: 56, marginBottom: 32 }}>
-            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>
-              Challenges
-              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", fontWeight: 400, letterSpacing: 1, textTransform: "uppercase", marginLeft: 8 }}>· new version</span>
-            </h3>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 28 : 32 }}>
-              <div>
-                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>Scope is incomplete by constraint, not design</h4>
-                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  The library covers transversal patterns — contract details, person/organization data. Main navigation qualifies as transversal and should be in the library, but it's not yet. Integrating work I didn't author takes time I don't have without a formal mandate. That's known debt — a direct consequence of single-threaded integration.
-                </p>
-              </div>
-
-              <div>
-                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>AI has a real role to play here</h4>
-                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  A maintained library generates a constant stream of work that doesn't need human judgment: spotting inconsistencies between files and the source of truth, flagging missing pieces in the architecture, documenting what changed between versions. That's the kind of load that's quietly capping how far one person can take the system. Designing how AI fits into this workflow — as a contributor, not a replacement for transversal judgment — is part of what comes next.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* What I'm learning */}
-          <div style={{ marginTop: 56, marginBottom: 0 }}>
-            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>What I'm learning</h3>
-
-            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 28, maxWidth: 820 }}>
-              Building a system without a formal mandate has clarified what governance actually requires.
-            </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 28 : 32 }}>
-              <div>
-                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>Systems need organizational sponsorship, not just technical quality</h4>
-                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  A well-built library doesn't drive its own adoption. The library is sound; what's missing is the role that makes maintaining it part of someone's allocated work. I'd build the system again. I'd negotiate the mandate in parallel this time, not after.
-                </p>
-              </div>
-
-              <div>
-                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>Pace matters more than coverage</h4>
-                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  I used to think a library's value scaled with how much it covered. It doesn't. An immature library that covers everything multiplies debt; a stable library that covers less is the asset. Knowing what to leave out — and being willing to defend it — is part of the work.
                 </p>
               </div>
             </div>
