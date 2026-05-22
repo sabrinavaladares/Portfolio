@@ -976,7 +976,7 @@ export default function CaseStudy() {
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, margin: 0 }}>
-                    <span style={{ color: "#fff", fontWeight: 600 }}>{item.label}</span> {item.text}
+                    <span style={{ color: "#fff", fontWeight: 500 }}>{item.label}</span> {item.text}
                   </p>
                 </div>
               ))}
