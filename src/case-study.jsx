@@ -1031,14 +1031,14 @@ export default function CaseStudy() {
             </div>
           </div>
 
-          {/* Challenges — NEW VERSION (compact, 2 columns). Delete one of the two later. */}
+          {/* Challenges — NEW VERSION (compact, full-width). Delete one of the two later. */}
           <div style={{ marginTop: 56, marginBottom: 32 }}>
             <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>
               Challenges
               <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", fontWeight: 400, letterSpacing: 1, textTransform: "uppercase", marginLeft: 8 }}>· new version</span>
             </h3>
 
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 28 : 40, maxWidth: 1000 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 28 : 32, maxWidth: 820 }}>
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>Scope is incomplete by constraint, not design</h4>
                 <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
@@ -1063,7 +1063,7 @@ export default function CaseStudy() {
               Building a system without a formal mandate has clarified what governance actually requires.
             </p>
 
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 28 : 40, maxWidth: 1000 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 28 : 32, maxWidth: 820 }}>
               <div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>Systems need organizational sponsorship, not just technical quality</h4>
                 <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
