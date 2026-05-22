@@ -429,25 +429,20 @@ function AboutPage() {
       <div style={shell}>
         <h1 style={{ fontSize: isMobile ? 32 : 42, fontWeight: 800, margin: isMobile ? "0 0 20px" : "0 0 32px", color: C.ink, letterSpacing: isMobile ? -0.5 : 0, lineHeight: 1.1 }}>Hi, I'm Sabrina</h1>
 
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 320px", gap: isMobile ? 32 : 80, marginBottom: isMobile ? 56 : 80, alignItems: "start" }}>
-          {/* Photo placeholder appears AFTER text on mobile (text-first), before on desktop layout but visually it's right column */}
-          <div style={{ order: isMobile ? 1 : 1 }}>
-            <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
-              I'm a curious, creative Brazilian with a love for adventure!
-            </p>
-            <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
-              I studied Industrial Design in Rio de Janeiro before moving to France to pursue a Master's in Design &amp; Management, where I wrote my thesis on Design Thinking. That move across the Atlantic was the first of many bold decisions.
-            </p>
-            <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
-              My career shifted from physical to digital products when I joined DXC Technology — where I've spent the past 8 years redesigning a complex B2B insurance platform. What started as a UX redesign became something much bigger: building the systems, frameworks, and foundations that help a whole team design better.
-            </p>
-            <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
-              What drives me most is spotting tensions — the moments where something feels harder than it should — and finding the clearest, simplest path through. My mission is the same whether I'm designing for users or guiding my team: make it so obvious that nobody needs to ask. I am driven by the title of a book: <em>Don't Make Me Think.</em>
-            </p>
-          </div>
-          <div style={{ order: isMobile ? 2 : 2, width: "100%", maxWidth: "100%", borderRadius: 20, overflow: "hidden", background: C.lilacBg, display: "flex", alignItems: "center", justifyContent: "center", color: C.faint, fontSize: 13, border: "1px solid " + C.lilacBorder, height: isMobile ? "auto" : "100%", aspectRatio: isMobile ? "4/3" : "auto", boxSizing: "border-box" }}>
-            Profile photo
-          </div>
+        {/* Bio — full width now that the profile photo block is removed */}
+        <div style={{ maxWidth: 720, marginBottom: isMobile ? 56 : 80 }}>
+          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
+            I'm a curious, creative Brazilian with a love for adventure!
+          </p>
+          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
+            I studied Industrial Design in Rio de Janeiro before moving to France to pursue a Master's in Design &amp; Management, where I wrote my thesis on Design Thinking. That move across the Atlantic was the first of many bold decisions.
+          </p>
+          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
+            My career shifted from physical to digital products when I joined DXC Technology — where I've spent the past 8 years redesigning a complex B2B insurance platform. What started as a UX redesign became something much bigger: building the systems, frameworks, and foundations that help a whole team design better.
+          </p>
+          <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
+            What drives me most is spotting tensions — the moments where something feels harder than it should — and finding the clearest, simplest path through. My mission is the same whether I'm designing for users or guiding my team: make it so obvious that nobody needs to ask. I am driven by the title of a book: <em>Don't Make Me Think.</em>
+          </p>
         </div>
 
         <Divider />
