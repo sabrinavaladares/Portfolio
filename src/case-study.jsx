@@ -962,7 +962,7 @@ export default function CaseStudy() {
           <div style={{ marginTop: 56, marginBottom: 32 }}>
             <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>Trade-offs</h3>
             <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
-              Single-threaded integration is a deliberate trade-off — for now. I considered Figma branches and distributed edit rights, and chose centralized ownership instead, for three reasons:
+              For the moment, the library stays under single ownership, even though this might not be the optimal solution and could become a bottleneck. These are the reasons:
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 24, maxWidth: 820 }}>
