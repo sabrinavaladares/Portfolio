@@ -983,7 +983,7 @@ export default function CaseStudy() {
             </div>
 
             <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
-              Designers work autonomously in their files; integration into the source of truth is single-threaded through me. This doesn't scale, and that's the point. Scaling an immature library multiplies debt instead of resolving it. Distributing ownership is the next phase — when the construction logic is stable enough to teach, and when the mandate makes governance reviewable rather than personal.
+              Designers can work in parallel in their files, without being blocked by the library. But integration into the source of truth still passes through me. Scaling this right now would be premature — it would multiply debt on an immature library. Keeping it small and slow is deliberate. Distributing ownership is the next phase — when the construction logic is stable enough to teach, and when the mandate makes governance reviewable rather than personal.
             </p>
           </div>
 
