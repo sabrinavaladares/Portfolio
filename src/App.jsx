@@ -435,7 +435,7 @@ function AboutPage() {
             I'm a curious, creative Brazilian with a love for adventure!
           </p>
           <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
-            I studied Industrial Design in Rio de Janeiro before moving to France to pursue a Master's in Design &amp; Management, where I wrote my thesis on Design Thinking. That move across the Atlantic was the first of many bold decisions.
+            I studied Industrial Design in Rio de Janeiro before moving to France to pursue a Master's in Design &amp; Management, where I wrote my thesis on Design Thinking. 
           </p>
           <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
             My career shifted from physical to digital products when I joined DXC Technology — where I've spent the past 8 years redesigning a complex B2B insurance platform. What started as a UX redesign became something much bigger: building the systems, frameworks, and foundations that help a whole team design better.
