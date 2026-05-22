@@ -290,9 +290,10 @@ function DataLibraryDiagram() {
 }
 
 // ─── State of Play Block ────────────────────────────────────────────────────
-// Two-floor layout: Components (what's built) + Adoption (how it's received).
-// Both floors share the same 1fr/2fr grid so columns align vertically across
-// floors. Lives inside System Thinking (purple section).
+// Two-column layout on desktop: Components (what's built) on the left,
+// Adoption (how it's received) on the right, with a thin vertical divider.
+// On mobile, stacks vertically. Uses the same #3F3863 background as the
+// Data Library diagram card for visual coherence inside System Thinking.
 function StateOfPlayBlock() {
   const isMobile = useIsMobile();
 
@@ -313,40 +314,36 @@ function StateOfPlayBlock() {
     </div>
   );
 
-  // Same grid used in both floors → vertical alignment between columns
-  const floorGrid = {
-    display: "grid",
-    gridTemplateColumns: isMobile ? "1fr" : "1fr 2fr",
-    gap: isMobile ? 20 : 32,
-    alignItems: "start",
-  };
-
   return (
     <div style={{
-      background: "#5D5589",
+      background: "#3F3863",
       borderRadius: 12,
       padding: isMobile ? 24 : 32,
       marginTop: 24,
+      display: "grid",
+      gridTemplateColumns: isMobile ? "1fr" : "1fr 1px 1fr",
+      gap: isMobile ? 28 : 32,
+      alignItems: "stretch",
     }}>
-      {/* Floor 1 — Components */}
+      {/* Column 1 — Components */}
       <div>
         <EyebrowLabel>Components</EyebrowLabel>
-        <div style={floorGrid}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <Stat value="567" label="business patterns" />
           <Stat value="162" label="person & organization patterns" />
         </div>
       </div>
 
-      {/* Spacer between floors */}
-      <div style={{ height: isMobile ? 28 : 32 }} />
+      {/* Vertical divider — desktop only */}
+      {!isMobile && (
+        <div style={{ background: "rgba(255,255,255,0.12)", width: 1 }} />
+      )}
 
-      {/* Floor 2 — Adoption */}
+      {/* Column 2 — Adoption */}
       <div>
         <EyebrowLabel>Adoption</EyebrowLabel>
-        <div style={floorGrid}>
-          {/* Left — stat */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <Stat value="2 of 3" label="designers on the team using as source of truth (excluding me)" />
-          {/* Right — quote */}
           <div>
             <div style={{ fontSize: isMobile ? 14 : 15, color: "#fff", lineHeight: 1.7, fontStyle: "italic", marginBottom: 12 }}>
               "Your solution is the best one currently available given Figma's limitations. Even though it implies significant human work, it's still less painful than what Figma offers."
