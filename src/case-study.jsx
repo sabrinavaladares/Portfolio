@@ -962,7 +962,7 @@ export default function CaseStudy() {
           <div style={{ marginTop: 56, marginBottom: 32 }}>
             <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>Trade-offs</h3>
             <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
-              I'm the bottleneck — by design, for now. I considered Figma branches and distributed edit rights. I chose centralized ownership, for three reasons:
+              Single-threaded integration is a deliberate trade-off — for now. I considered Figma branches and distributed edit rights, and chose centralized ownership instead, for three reasons:
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 24, maxWidth: 820 }}>
@@ -972,10 +972,10 @@ export default function CaseStudy() {
                 { label: "Figma branches review the surface, not the structure.", text: "The library's value is in how components are constructed — variants, data shapes, nesting. Branches validate visuals; they don't validate architecture." },
               ].map((item, i) => (
                 <div key={i} style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", opacity: 0.5, letterSpacing: 1, flexShrink: 0, width: 22, paddingTop: 2 }}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", opacity: 0.5, letterSpacing: 1, flexShrink: 0, width: 24, paddingTop: 3 }}>
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
+                  <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, margin: 0 }}>
                     <span style={{ color: "#fff", fontWeight: 600 }}>{item.label}</span> {item.text}
                   </p>
                 </div>
