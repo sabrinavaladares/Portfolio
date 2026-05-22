@@ -289,6 +289,78 @@ function DataLibraryDiagram() {
   );
 }
 
+// ─── State of Play Block ────────────────────────────────────────────────────
+// Two-floor layout: Components (what's built) + Adoption (how it's received).
+// Both floors share the same 1fr/2fr grid so columns align vertically across
+// floors. Lives inside System Thinking (purple section).
+function StateOfPlayBlock() {
+  const isMobile = useIsMobile();
+
+  const EyebrowLabel = ({ children }) => (
+    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.6)", letterSpacing: 2, textTransform: "uppercase", fontWeight: 600, marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid rgba(255,255,255,0.15)" }}>
+      {children}
+    </div>
+  );
+
+  const Stat = ({ value, label }) => (
+    <div>
+      <div style={{ fontSize: isMobile ? 20 : 24, fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 8, letterSpacing: -0.3 }}>
+        {value}
+      </div>
+      <div style={{ fontSize: isMobile ? 12 : 13, color: "rgba(255,255,255,0.75)", lineHeight: 1.5 }}>
+        {label}
+      </div>
+    </div>
+  );
+
+  // Same grid used in both floors → vertical alignment between columns
+  const floorGrid = {
+    display: "grid",
+    gridTemplateColumns: isMobile ? "1fr" : "1fr 2fr",
+    gap: isMobile ? 20 : 32,
+    alignItems: "start",
+  };
+
+  return (
+    <div style={{
+      background: "#5D5589",
+      borderRadius: 12,
+      padding: isMobile ? 24 : 32,
+      marginTop: 24,
+    }}>
+      {/* Floor 1 — Components */}
+      <div>
+        <EyebrowLabel>Components</EyebrowLabel>
+        <div style={floorGrid}>
+          <Stat value="567" label="business patterns" />
+          <Stat value="162" label="person & organization patterns" />
+        </div>
+      </div>
+
+      {/* Spacer between floors */}
+      <div style={{ height: isMobile ? 28 : 32 }} />
+
+      {/* Floor 2 — Adoption */}
+      <div>
+        <EyebrowLabel>Adoption</EyebrowLabel>
+        <div style={floorGrid}>
+          {/* Left — stat */}
+          <Stat value="2 of 3" label="designers on the team using as source of truth (excluding me)" />
+          {/* Right — quote */}
+          <div>
+            <div style={{ fontSize: isMobile ? 14 : 15, color: "#fff", lineHeight: 1.7, fontStyle: "italic", marginBottom: 12 }}>
+              "Your solution is the best one currently available given Figma's limitations. Even though it implies significant human work, it's still less painful than what Figma offers."
+            </div>
+            <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>
+              — Senior designer, 6 years on the project, initially skeptical
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Nav ───────────────────────────────────────────────────────────────────
 const NAV = [
   { id: "context",      label: "Project Context" },
@@ -865,14 +937,15 @@ export default function CaseStudy() {
           <div style={{ maxWidth: 1100, margin: "0 auto", boxSizing: "border-box" }}>
           <div style={{ fontSize: 11, color: "#EDE5FA", letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>04 — System Thinking</div>
           <h2 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 700, color: "#fff", marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>When the Product Grows Faster Than the System</h2>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
-            As the product evolved and the team grew, inconsistencies began to spread. Designers created their own variations, components were modified without shared criteria, and decision ownership was unclear.
-          </p>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
-            The consequences went beyond design. With no single source of truth, QA testers couldn't tell whether the spec PDF, the design file, or the live app held the correct version — leading to duplicate Jira tickets, hours lost on alignment calls, and recurring client complaints about inconsistencies between specifications and the delivered product.
+
+          {/* Problem */}
+          <h3 style={{ fontSize: isMobile ? 17 : 18, fontWeight: 700, color: "#fff", margin: "0 0 12px" }}>Problem</h3>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 40 }}>
+            As the product evolved and the team grew, inconsistencies began to spread. With no single source of truth, QA testers couldn't tell whether the spec, the design file, or the live app held the correct version — leading to duplicate tickets, alignment calls, and client complaints. In one retrospective, my manager named inconsistency and duplicate tickets as a recurring pain point.
           </p>
 
-          <h3 style={{ fontSize: isMobile ? 17 : 18, fontWeight: 700, color: "#fff", margin: "40px 0 12px" }}>The Data Library</h3>
+          {/* Solution */}
+          <h3 style={{ fontSize: isMobile ? 17 : 18, fontWeight: 700, color: "#fff", margin: "0 0 12px" }}>Solution</h3>
           <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 16 }}>
             I led the creation of the Data Library: a system of data-aware patterns built on top of the core design system, enabling consistent representation of complex insurance data across all workflows.
           </p>
@@ -882,9 +955,48 @@ export default function CaseStudy() {
 
           <DataLibraryDiagram />
 
-          {/* Challenges — what the new workflow demands */}
+          {/* Where it stands today */}
+          <h4 style={{ fontSize: isMobile ? 15 : 16, fontWeight: 700, color: "#fff", margin: "8px 0 12px" }}>Where it stands today</h4>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
+            The system is in place. Below: what's built, and how it's being adopted.
+          </p>
+          <StateOfPlayBlock />
+
+          {/* Trade-offs */}
           <div style={{ marginTop: 56, marginBottom: 32 }}>
-            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
+            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>Trade-offs</h3>
+            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
+              I'm the bottleneck — by design, for now. I considered Figma branches and distributed edit rights. I chose centralized ownership, for three reasons:
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 24, maxWidth: 820 }}>
+              {[
+                { label: "The library is still maturing.", text: "I'm refining the construction logic as patterns emerge. Distributing edit rights now would lock in decisions that aren't stable yet." },
+                { label: "Single-author ownership keeps debugging tight.", text: "When something breaks, the root cause is one decision away, not four." },
+                { label: "Figma branches review the surface, not the structure.", text: "The library's value is in how components are constructed — variants, data shapes, nesting. Branches validate visuals; they don't validate architecture." },
+              ].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", opacity: 0.5, letterSpacing: 1, flexShrink: 0, width: 22, paddingTop: 2 }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
+                    <span style={{ color: "#fff", fontWeight: 600 }}>{item.label}</span> {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
+              Designers work autonomously in their files; integration into the source of truth is single-threaded through me. This doesn't scale, and that's the point. Scaling an immature library multiplies debt instead of resolving it. Distributing ownership is the next phase — when the construction logic is stable enough to teach, and when the mandate makes governance reviewable rather than personal.
+            </p>
+          </div>
+
+          {/* Challenges — CURRENT VERSION (4 cards: DesignOps, Team practices, Governance, AI). Delete one of the two later. */}
+          <div style={{ marginTop: 56, marginBottom: 32 }}>
+            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>
+              Challenges
+              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", fontWeight: 400, letterSpacing: 1, textTransform: "uppercase", marginLeft: 8 }}>· current version</span>
+            </h3>
             <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
               Implementing the Data Library requires a shift in how the team works and organizes itself.
             </p>
@@ -921,6 +1033,56 @@ export default function CaseStudy() {
               </div>
             </div>
           </div>
+
+          {/* Challenges — NEW VERSION (compact, 2 columns). Delete one of the two later. */}
+          <div style={{ marginTop: 56, marginBottom: 32 }}>
+            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>
+              Challenges
+              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", fontWeight: 400, letterSpacing: 1, textTransform: "uppercase", marginLeft: 8 }}>· new version</span>
+            </h3>
+
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 28 : 40, maxWidth: 1000 }}>
+              <div>
+                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>Scope is incomplete by constraint, not design</h4>
+                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
+                  The library covers transversal patterns — contract details, person/organization data. Main navigation qualifies as transversal and should be in the library, but it's not yet. Integrating work I didn't author takes time I don't have without a formal mandate. That's known debt — a direct consequence of single-threaded integration.
+                </p>
+              </div>
+
+              <div>
+                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>AI has a real role to play here</h4>
+                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
+                  A maintained library generates a constant stream of work that doesn't need human judgment: spotting inconsistencies between files and the source of truth, flagging missing pieces in the architecture, documenting what changed between versions. That's the kind of load that's quietly capping how far one person can take the system. Designing how AI fits into this workflow — as a contributor, not a replacement for transversal judgment — is part of what comes next.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* What I'm learning */}
+          <div style={{ marginTop: 56, marginBottom: 0 }}>
+            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>What I'm learning</h3>
+
+            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 28, maxWidth: 820 }}>
+              Building a system without a formal mandate has clarified what governance actually requires.
+            </p>
+
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 28 : 40, maxWidth: 1000 }}>
+              <div>
+                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>Systems need organizational sponsorship, not just technical quality</h4>
+                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
+                  A well-built library doesn't drive its own adoption. The library is sound; what's missing is the role that makes maintaining it part of someone's allocated work. I'd build the system again. I'd negotiate the mandate in parallel this time, not after.
+                </p>
+              </div>
+
+              <div>
+                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, letterSpacing: 0.3, textTransform: "uppercase" }}>Pace matters more than coverage</h4>
+                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
+                  I used to think a library's value scaled with how much it covered. It doesn't. An immature library that covers everything multiplies debt; a stable library that covers less is the asset. Knowing what to leave out — and being willing to defend it — is part of the work.
+                </p>
+              </div>
+            </div>
+          </div>
+
           </div>
         </div>
 
