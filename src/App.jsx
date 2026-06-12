@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import CaseStudy from "./case-study";
-import DataLibrary from "./data-library";
+import DataLibrary, { DataLibraryHero } from "./data-library";
 
 const C = {
   bg: "#FAFAF7",
@@ -321,7 +321,7 @@ function Nav({ page, setPage }) {
 
 function CaseStudyCard({ setPage, config, index }) {
   const isMobile = useIsMobile();
-  const { targetPage, title, description, tags, image, frame } = config;
+  const { targetPage, title, description, tags, image, imageComponent: ImageComponent, frame } = config;
   const hasFrame = frame !== false;
 
   return (
@@ -341,7 +341,9 @@ function CaseStudyCard({ setPage, config, index }) {
           marginBottom: 32,
         }}
       >
-        {image ? (
+        {ImageComponent ? (
+          <ImageComponent />
+        ) : image ? (
           <img
             src={image}
             alt={title + " hero"}
@@ -442,8 +444,9 @@ export const CASE_STUDIES = [
     title: "Data Library",
     description: "Building cross-cutting design infrastructure for a complex B2B platform.",
     tags: ["Design Systems", "DesignOps", "Systems Thinking"],
-    image: null, // placeholder for now
-    wash: "#EDE8FF",
+    image: null,
+    imageComponent: DataLibraryHero,
+    frame: false,
   },
 ];
 
