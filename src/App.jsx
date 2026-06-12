@@ -362,7 +362,7 @@ function CaseStudyCard({ setPage, config, index }) {
               style={{
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
+                objectFit: "contain",
                 borderRadius: wash ? 6 : 16,
                 display: "block",
               }}
@@ -378,25 +378,11 @@ function CaseStudyCard({ setPage, config, index }) {
 
       {/* Text side */}
       <div style={{ order: isMobile ? 2 : (imageOnRight ? 1 : 2) }}>
-        {/* Eyebrow tags */}
-        <div
-          style={{
-            fontSize: 11,
-            color: C.muted,
-            letterSpacing: 2.5,
-            textTransform: "uppercase",
-            marginBottom: 18,
-            fontWeight: 500,
-          }}
-        >
-          {tags.join(" · ")}
-        </div>
-
         <h3
           style={{
             fontSize: isMobile ? 22 : 28,
             fontWeight: 700,
-            margin: "0 0 18px",
+            margin: "0 0 14px",
             color: C.ink,
             letterSpacing: -0.3,
             lineHeight: 1.2,
@@ -407,7 +393,7 @@ function CaseStudyCard({ setPage, config, index }) {
 
         <p
           style={{
-            margin: "0 0 32px",
+            margin: "0 0 18px",
             color: "#555",
             fontSize: isMobile ? 15 : 16,
             lineHeight: 1.7,
@@ -416,6 +402,18 @@ function CaseStudyCard({ setPage, config, index }) {
         >
           {description}
         </p>
+
+        {/* Tags — below the description */}
+        <div
+          style={{
+            fontSize: 12,
+            color: C.faint,
+            marginBottom: 32,
+            fontWeight: 400,
+          }}
+        >
+          {tags.join("  ·  ")}
+        </div>
 
         <button
           type="button"
