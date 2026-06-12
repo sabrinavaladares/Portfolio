@@ -381,7 +381,6 @@ function CaseStudyCard({ setPage, config, index }) {
             color: "#555",
             fontSize: isMobile ? 17 : 19,
             lineHeight: 1.65,
-            maxWidth: 680,
           }}
         >
           {description}
