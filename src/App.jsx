@@ -375,7 +375,7 @@ function CaseStudyCard({ setPage, config }) {
 }
 
 // Case study configs — easy to edit in one place
-const CASE_STUDIES = [
+export const CASE_STUDIES = [
   {
     targetPage: "pathfinder",
     title: "PathFinder",
@@ -571,8 +571,8 @@ export default function App() {
       <Nav page={page} setPage={setPage} />
       {page === "home" && <HomePage setPage={setPage} />}
       {page === "about" && <AboutPage />}
-      {page === "pathfinder" && <CaseStudy />}
-      {page === "datalibrary" && <DataLibrary />}
+      {page === "pathfinder" && <CaseStudy setPage={setPage} />}
+      {page === "datalibrary" && <DataLibrary setPage={setPage} />}
       <ContactBar />
     </div>
   );
