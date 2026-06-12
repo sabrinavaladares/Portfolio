@@ -321,7 +321,8 @@ function Nav({ page, setPage }) {
 
 function CaseStudyCard({ setPage, config, index }) {
   const isMobile = useIsMobile();
-  const { targetPage, title, description, tags, image } = config;
+  const { targetPage, title, description, tags, image, frame } = config;
+  const hasFrame = frame !== false;
 
   return (
     <article
@@ -330,18 +331,15 @@ function CaseStudyCard({ setPage, config, index }) {
         cursor: "pointer",
       }}
     >
-      {/* Full-width image with lilac frame (matches case study hero styling) */}
+      {/* Image — optionally framed with lilac wash */}
       <div
         style={{
-          background: C.lilacBg,
-          borderRadius: 12,
-          padding: 4,
+          background: hasFrame ? C.lilacBg : "transparent",
+          borderRadius: hasFrame ? 12 : 8,
+          padding: hasFrame ? 4 : 0,
           overflow: "hidden",
           marginBottom: 32,
-          transition: "transform 0.35s ease",
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; }}
-        onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
       >
         {image ? (
           <img
@@ -350,7 +348,7 @@ function CaseStudyCard({ setPage, config, index }) {
             style={{
               width: "100%",
               height: "auto",
-              borderRadius: 8,
+              borderRadius: hasFrame ? 8 : 8,
               display: "block",
             }}
           />
@@ -437,6 +435,7 @@ export const CASE_STUDIES = [
     description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
     tags: ["UX Design", "DesignOps", "Design System"],
     image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781269013/hero-image_tn8nwf.png",
+    frame: false,
     wash: null,
   },
   {
