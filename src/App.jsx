@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CaseStudy from "./case-study";
+import DataLibrary from "./data-library";
 
 const C = {
   bg: "#FAFAF7",
@@ -178,7 +179,7 @@ function Nav({ page, setPage }) {
   const isMobile = useIsMobile();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const isWork = page === "casestudy";
+  const isWork = page === "pathfinder" || page === "datalibrary";
   const navBg = isWork ? "rgba(61, 47, 122, 0.92)" : C.bg + "f0";
   const navBorder = isWork ? "1px solid rgba(255,255,255,0.12)" : "1px solid " + C.border;
   const nameColor = isWork ? "#ffffff" : C.ink;
@@ -198,11 +199,42 @@ function Nav({ page, setPage }) {
     }
   }, [menuOpen]);
 
+  // "Work" → scroll to the Case Studies section on the home page
+  const handleWorkClick = () => {
+    if (page === "home") {
+      const el = document.getElementById("work");
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    } else {
+      setPage("home");
+      setTimeout(() => {
+        const el = document.getElementById("work");
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }, 80);
+    }
+  };
+
+  const handleNavClick = (id) => {
+    if (id === "work") handleWorkClick();
+    else setPage(id);
+  };
+
   const links = [
     ["home", "Home"],
-    ["casestudy", "Work"],
+    ["work", "Work"],
     ["about", "About"],
   ];
+
+  // Active state — Work is "active" when on either case study
+  const isLinkActive = (id) => {
+    if (id === "work") return isWork;
+    return page === id;
+  };
 
   // Icon colors for hamburger / contact icons inside nav
   const iconColor = isWork ? "rgba(255,255,255,0.7)" : C.muted;
@@ -220,9 +252,9 @@ function Nav({ page, setPage }) {
         {!isMobile && (
           <div style={{ display: "flex", gap: 36 }}>
             {links.map(([id, label]) => {
-              const isActive = page === id;
+              const isActive = isLinkActive(id);
               return (
-                <button key={id} onClick={() => setPage(id)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 13, fontFamily: "sans-serif", color: isActive ? activeLinkColor : inactiveLinkColor, fontWeight: isActive ? 600 : 400, borderBottom: isActive ? "2px solid " + C.neon : "2px solid transparent", paddingBottom: 4, transition: "color 0.25s ease, border-color 0.25s ease" }}>
+                <button key={id} onClick={() => handleNavClick(id)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 13, fontFamily: "sans-serif", color: isActive ? activeLinkColor : inactiveLinkColor, fontWeight: isActive ? 600 : 400, borderBottom: isActive ? "2px solid " + C.neon : "2px solid transparent", paddingBottom: 4, transition: "color 0.25s ease, border-color 0.25s ease" }}>
                   {label}
                 </button>
               );
@@ -255,11 +287,11 @@ function Nav({ page, setPage }) {
         <div style={{ position: "absolute", top: 64, left: 0, right: 0, background: C.purpleDark, borderBottom: "1px solid rgba(255,255,255,0.12)", padding: "8px 0 12px", animation: "navSlideDown 0.2s ease-out", boxShadow: "0 8px 24px rgba(0,0,0,0.18)" }}>
           <style>{`@keyframes navSlideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }`}</style>
           {links.map(([id, label]) => {
-            const isActive = page === id;
+            const isActive = isLinkActive(id);
             return (
               <button
                 key={id}
-                onClick={() => setPage(id)}
+                onClick={() => handleNavClick(id)}
                 style={{
                   display: "block",
                   width: "100%",
@@ -287,40 +319,48 @@ function Nav({ page, setPage }) {
   );
 }
 
-function CaseStudyCard({ setPage }) {
+function CaseStudyCard({ setPage, config }) {
   const isMobile = useIsMobile();
+  const { targetPage, title, description, tags, image, mobileBg } = config;
+
   return (
     <div
-      onClick={() => setPage("casestudy")}
+      onClick={() => setPage(targetPage)}
       style={{ borderRadius: 16, overflow: "hidden", cursor: "pointer", border: "1px solid " + C.border, transition: "all 0.25s" }}
       onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.lilacBorder; e.currentTarget.style.transform = "translateY(-2px)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; }}
     >
-      <div style={{ height: isMobile ? "auto" : 500, aspectRatio: isMobile ? "16 / 10" : "auto", overflow: "hidden", position: "relative", background: isMobile ? "#B6CF73" : "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <img
-          src="https://res.cloudinary.com/diso2uvpx/image/upload/hero-image_omdqpa.png"
-          alt="PathFinder hero"
-          style={isMobile
-            ? { width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block" }
-            : { position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
-        />
+      <div style={{ height: isMobile ? "auto" : 500, aspectRatio: isMobile ? "16 / 10" : "auto", overflow: "hidden", position: "relative", background: isMobile ? (mobileBg || "#B6CF73") : "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        {image ? (
+          <img
+            src={image}
+            alt={title + " hero"}
+            style={isMobile
+              ? { width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block" }
+              : { position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+          />
+        ) : (
+          // Placeholder when no image is provided
+          <div style={{ width: "100%", height: "100%", background: "#3F3863", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12, color: "rgba(255,255,255,0.5)" }}>
+            <div style={{ fontSize: 40 }}>🖼️</div>
+            <div style={{ fontSize: 13, fontWeight: 500, letterSpacing: 0.5 }}>Hero image — to replace</div>
+          </div>
+        )}
       </div>
       <div style={{ padding: isMobile ? "20px 20px" : "24px 32px", background: C.purple, display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr auto", alignItems: "center", gap: isMobile ? 16 : 24 }}>
         <div>
-          <h3 style={{ fontSize: isMobile ? 20 : 24, fontWeight: 700, margin: "0 0 10px", color: "#fff" }}>PathFinder</h3>
+          <h3 style={{ fontSize: isMobile ? 20 : 24, fontWeight: 700, margin: "0 0 10px", color: "#fff" }}>{title}</h3>
           <p style={{ margin: "0 0 16px", color: "#ffffff", fontSize: isMobile ? 14 : 15, lineHeight: 1.7 }}>
-            Redesigning a complex B2B insurance software and building the design systems that scale it.
+            {description}
           </p>
           <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: isMobile ? 16 : 0 }}>
-            <Tag dark>UX Design</Tag>
-            <Tag dark>DesignOps</Tag>
-            <Tag dark>Design System</Tag>
+            {tags.map(t => <Tag dark key={t}>{t}</Tag>)}
           </div>
         </div>
         {isMobile ? (
           <button
             type="button"
-            onClick={(e) => { e.stopPropagation(); setPage("casestudy"); }}
+            onClick={(e) => { e.stopPropagation(); setPage(targetPage); }}
             style={{ background: "transparent", color: "#ffffff", border: "1px solid rgba(255,255,255,0.35)", borderRadius: 50, padding: "10px 18px", fontSize: 13, fontWeight: 500, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: "sans-serif", letterSpacing: 0.2, alignSelf: "flex-start", transition: "border-color 0.2s, background 0.2s" }}
           >
             See more
@@ -333,6 +373,25 @@ function CaseStudyCard({ setPage }) {
     </div>
   );
 }
+
+// Case study configs — easy to edit in one place
+const CASE_STUDIES = [
+  {
+    targetPage: "pathfinder",
+    title: "PathFinder",
+    description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
+    tags: ["UX Design", "DesignOps", "Design System"],
+    image: "https://res.cloudinary.com/diso2uvpx/image/upload/hero-image_omdqpa.png",
+    mobileBg: "#B6CF73",
+  },
+  {
+    targetPage: "datalibrary",
+    title: "Data Library",
+    description: "Building cross-cutting design infrastructure for a complex B2B platform.",
+    tags: ["Design Systems", "DesignOps", "Systems Thinking"],
+    image: null, // placeholder for now
+  },
+];
 
 function HomePage({ setPage }) {
   const isMobile = useIsMobile();
@@ -404,13 +463,17 @@ function HomePage({ setPage }) {
 
       <Divider />
 
-      <div style={{ background: C.bg }}>
+      <div style={{ background: C.bg }} id="work">
         <div style={shell}>
           <div style={{ marginBottom: isMobile ? 32 : 48 }}>
             <Label>Selected Work</Label>
             <h2 style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.3 }}>Case Studies</h2>
           </div>
-          <CaseStudyCard setPage={setPage} />
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {CASE_STUDIES.map((cs) => (
+              <CaseStudyCard key={cs.targetPage} setPage={setPage} config={cs} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -508,7 +571,8 @@ export default function App() {
       <Nav page={page} setPage={setPage} />
       {page === "home" && <HomePage setPage={setPage} />}
       {page === "about" && <AboutPage />}
-      {page === "casestudy" && <CaseStudy />}
+      {page === "pathfinder" && <CaseStudy />}
+      {page === "datalibrary" && <DataLibrary />}
       <ContactBar />
     </div>
   );
