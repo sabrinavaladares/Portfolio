@@ -332,8 +332,8 @@ function CaseStudyCard({ setPage, config, index }) {
       onClick={() => setPage(targetPage)}
       style={{
         display: "grid",
-        gridTemplateColumns: isMobile ? "1fr" : (imageOnRight ? "1fr 1.4fr" : "1.4fr 1fr"),
-        gap: isMobile ? 24 : 60,
+        gridTemplateColumns: isMobile ? "1fr" : (imageOnRight ? "1fr 1.8fr" : "1.8fr 1fr"),
+        gap: isMobile ? 24 : 48,
         alignItems: "center",
         cursor: "pointer",
       }}
