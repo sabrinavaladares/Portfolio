@@ -379,7 +379,7 @@ function CaseStudyCard({ setPage, config, index }) {
       <div style={{ order: isMobile ? 2 : (imageOnRight ? 1 : 2) }}>
         <h3
           style={{
-            fontSize: isMobile ? 24 : 28,
+            fontSize: isMobile ? 28 : 36,
             fontWeight: 700,
             margin: "0 0 16px",
             color: C.ink,
@@ -450,7 +450,7 @@ export const CASE_STUDIES = [
     title: "PathFinder",
     description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
     tags: ["UX Design", "DesignOps", "Design System"],
-    image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781267060/hero-image_lk73mq.png",
+    image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781268811/hero-image_hq90y6.png",
     wash: null,
   },
   {
@@ -537,7 +537,7 @@ function HomePage({ setPage }) {
         <div style={shell}>
           <div style={{ marginBottom: isMobile ? 32 : 48 }}>
             <Label>Selected Work</Label>
-            <h2 style={{ fontSize: isMobile ? 38 : 56, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.5 }}>Case Studies</h2>
+            <h2 style={{ fontSize: isMobile ? 42 : 64, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.5 }}>Case Studies</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 80 : 140 }}>
             {CASE_STUDIES.map((cs, idx) => (
