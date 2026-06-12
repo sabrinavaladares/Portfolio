@@ -411,9 +411,6 @@ function HomePage({ setPage }) {
             <h2 style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.3 }}>Case Studies</h2>
           </div>
           <CaseStudyCard setPage={setPage} />
-          <div style={{ marginTop: 16, background: C.bgAlt, borderRadius: 16, padding: isMobile ? "20px 24px" : "28px 40px", border: "1px dashed " + C.border, textAlign: "center", color: C.faint, fontSize: 13 }}>
-            More case studies coming soon
-          </div>
         </div>
       </div>
     </div>
