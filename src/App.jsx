@@ -319,58 +319,131 @@ function Nav({ page, setPage }) {
   );
 }
 
-function CaseStudyCard({ setPage, config }) {
+function CaseStudyCard({ setPage, config, index }) {
   const isMobile = useIsMobile();
-  const { targetPage, title, description, tags, image, mobileBg } = config;
+  const { targetPage, title, description, tags, image, wash } = config;
+
+  // Alternate sides on desktop — first card image-left, second image-right
+  const imageOnRight = !isMobile && index % 2 === 1;
+  const washColor = wash || C.lilacBg;
 
   return (
-    <div
+    <article
       onClick={() => setPage(targetPage)}
-      style={{ borderRadius: 16, overflow: "hidden", cursor: "pointer", border: "1px solid " + C.border, transition: "all 0.25s" }}
-      onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.lilacBorder; e.currentTarget.style.transform = "translateY(-2px)"; }}
-      onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; }}
+      style={{
+        display: "grid",
+        gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+        gap: isMobile ? 24 : 80,
+        alignItems: "center",
+        cursor: "pointer",
+      }}
     >
-      <div style={{ height: isMobile ? "auto" : 500, aspectRatio: isMobile ? "16 / 10" : "auto", overflow: "hidden", position: "relative", background: isMobile ? (mobileBg || "#B6CF73") : "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        {image ? (
-          <img
-            src={image}
-            alt={title + " hero"}
-            style={isMobile
-              ? { width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block" }
-              : { position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
-          />
-        ) : (
-          // Placeholder when no image is provided
-          <div style={{ width: "100%", height: "100%", background: "#3F3863", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12, color: "rgba(255,255,255,0.5)" }}>
-            <div style={{ fontSize: 40 }}>🖼️</div>
-            <div style={{ fontSize: 13, fontWeight: 500, letterSpacing: 0.5 }}>Hero image — to replace</div>
-          </div>
-        )}
-      </div>
-      <div style={{ padding: isMobile ? "20px 20px" : "24px 32px", background: C.purple, display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr auto", alignItems: "center", gap: isMobile ? 16 : 24 }}>
-        <div>
-          <h3 style={{ fontSize: isMobile ? 20 : 24, fontWeight: 700, margin: "0 0 10px", color: "#fff" }}>{title}</h3>
-          <p style={{ margin: "0 0 16px", color: "#ffffff", fontSize: isMobile ? 14 : 15, lineHeight: 1.7 }}>
-            {description}
-          </p>
-          <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: isMobile ? 16 : 0 }}>
-            {tags.map(t => <Tag dark key={t}>{t}</Tag>)}
-          </div>
+      {/* Image side */}
+      <div style={{ order: isMobile ? 1 : (imageOnRight ? 2 : 1) }}>
+        <div
+          style={{
+            background: washColor,
+            borderRadius: 16,
+            padding: isMobile ? 24 : 40,
+            aspectRatio: "4 / 3",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+            transition: "transform 0.35s ease",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
+        >
+          {image ? (
+            <img
+              src={image}
+              alt={title + " hero"}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "100%",
+                objectFit: "contain",
+                borderRadius: 6,
+                boxShadow: "0 16px 40px rgba(45, 31, 94, 0.18)",
+                display: "block",
+              }}
+            />
+          ) : (
+            <div style={{ color: C.faint, textAlign: "center" }}>
+              <div style={{ fontSize: 44, marginBottom: 10, opacity: 0.4 }}>🖼️</div>
+              <div style={{ fontSize: 12, letterSpacing: 0.5 }}>Hero image — to add</div>
+            </div>
+          )}
         </div>
-        {isMobile ? (
-          <button
-            type="button"
-            onClick={(e) => { e.stopPropagation(); setPage(targetPage); }}
-            style={{ background: "transparent", color: "#ffffff", border: "1px solid rgba(255,255,255,0.35)", borderRadius: 50, padding: "10px 18px", fontSize: 13, fontWeight: 500, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: "sans-serif", letterSpacing: 0.2, alignSelf: "flex-start", transition: "border-color 0.2s, background 0.2s" }}
-          >
-            See more
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        ) : (
-          <div style={{ width: 44, height: 44, borderRadius: "50%", background: C.purpleDark, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0, color: C.neon, fontWeight: 700 }}>&#8594;</div>
-        )}
       </div>
-    </div>
+
+      {/* Text side */}
+      <div style={{ order: isMobile ? 2 : (imageOnRight ? 1 : 2) }}>
+        {/* Eyebrow tags */}
+        <div
+          style={{
+            fontSize: 11,
+            color: C.muted,
+            letterSpacing: 2.5,
+            textTransform: "uppercase",
+            marginBottom: 18,
+            fontWeight: 500,
+          }}
+        >
+          {tags.join(" · ")}
+        </div>
+
+        <h3
+          style={{
+            fontSize: isMobile ? 28 : 36,
+            fontWeight: 700,
+            margin: "0 0 18px",
+            color: C.ink,
+            letterSpacing: -0.5,
+            lineHeight: 1.15,
+          }}
+        >
+          {title}
+        </h3>
+
+        <p
+          style={{
+            margin: "0 0 32px",
+            color: "#555",
+            fontSize: isMobile ? 15 : 16,
+            lineHeight: 1.7,
+            maxWidth: 480,
+          }}
+        >
+          {description}
+        </p>
+
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); setPage(targetPage); }}
+          style={{
+            background: C.purple,
+            color: "#fff",
+            border: "none",
+            borderRadius: 50,
+            padding: "12px 24px",
+            fontSize: 13,
+            fontWeight: 500,
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            fontFamily: "sans-serif",
+            transition: "background 0.2s",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = C.purpleDark; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = C.purple; }}
+        >
+          See more
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </article>
   );
 }
 
@@ -382,7 +455,7 @@ export const CASE_STUDIES = [
     description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
     tags: ["UX Design", "DesignOps", "Design System"],
     image: "https://res.cloudinary.com/diso2uvpx/image/upload/hero-image_omdqpa.png",
-    mobileBg: "#B6CF73",
+    wash: "#EDE8FF",
   },
   {
     targetPage: "datalibrary",
@@ -390,6 +463,7 @@ export const CASE_STUDIES = [
     description: "Building cross-cutting design infrastructure for a complex B2B platform.",
     tags: ["Design Systems", "DesignOps", "Systems Thinking"],
     image: null, // placeholder for now
+    wash: "#EDE8FF",
   },
 ];
 
@@ -469,9 +543,9 @@ function HomePage({ setPage }) {
             <Label>Selected Work</Label>
             <h2 style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.3 }}>Case Studies</h2>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            {CASE_STUDIES.map((cs) => (
-              <CaseStudyCard key={cs.targetPage} setPage={setPage} config={cs} />
+          <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 80 : 140 }}>
+            {CASE_STUDIES.map((cs, idx) => (
+              <CaseStudyCard key={cs.targetPage} setPage={setPage} config={cs} index={idx} />
             ))}
           </div>
         </div>
