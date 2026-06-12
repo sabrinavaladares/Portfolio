@@ -450,7 +450,7 @@ export const CASE_STUDIES = [
     title: "PathFinder",
     description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
     tags: ["UX Design", "DesignOps", "Design System"],
-    image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781268811/hero-image_hq90y6.png",
+    image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781269013/hero-image_tn8nwf.png",
     wash: null,
   },
   {
