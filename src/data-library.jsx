@@ -31,92 +31,98 @@ export function DataLibraryHero() {
         <circle cx="60" cy="290" r="1.2"/><circle cx="140" cy="290" r="1.2"/><circle cx="220" cy="290" r="1.2"/><circle cx="300" cy="290" r="1.2"/><circle cx="380" cy="290" r="1.2"/><circle cx="460" cy="290" r="1.2"/><circle cx="540" cy="290" r="1.2"/><circle cx="620" cy="290" r="1.2"/>
       </g>
 
-      <g transform="translate(120, 115)">
-        <rect width="180" height="120" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.22)" strokeWidth="0.75" strokeDasharray="5 3" rx="6"/>
+      <g transform="translate(140, 130)">
+        <rect width="150" height="100" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.22)" strokeWidth="0.75" strokeDasharray="5 3" rx="6"/>
         <text x="0" y="-10" fill="rgba(255,255,255,0.6)" fontFamily="sans-serif" fontSize="9" fontWeight="600" letterSpacing="2">❖ MASTER COMPONENT</text>
 
-        <circle cx="32" cy="40" r="6.5" fill="#EDE8FF"/>
-        <circle cx="58" cy="40" r="6.5" fill="#EDE8FF"/>
-        <circle cx="84" cy="40" r="6.5" fill="#EDE8FF"/>
-        <circle cx="110" cy="40" r="6.5" fill="#EDE8FF"/>
-        <circle cx="136" cy="40" r="6.5" fill="#EDE8FF"/>
-        <circle cx="32" cy="40" r="3.5" fill="#C4B8F0"/>
-        <circle cx="58" cy="40" r="3.5" fill="#C4B8F0"/>
-        <circle cx="84" cy="40" r="3.5" fill="#C4B8F0"/>
-        <circle cx="110" cy="40" r="3.5" fill="#C4B8F0"/>
-        <circle cx="136" cy="40" r="3.5" fill="#C4B8F0"/>
+        <circle cx="30" cy="33" r="5.5" fill="#EDE8FF"/>
+        <circle cx="52" cy="33" r="5.5" fill="#EDE8FF"/>
+        <circle cx="74" cy="33" r="5.5" fill="#EDE8FF"/>
+        <circle cx="96" cy="33" r="5.5" fill="#EDE8FF"/>
+        <circle cx="118" cy="33" r="5.5" fill="#EDE8FF"/>
+        <circle cx="30" cy="33" r="3" fill="#C4B8F0"/>
+        <circle cx="52" cy="33" r="3" fill="#C4B8F0"/>
+        <circle cx="74" cy="33" r="3" fill="#C4B8F0"/>
+        <circle cx="96" cy="33" r="3" fill="#C4B8F0"/>
+        <circle cx="118" cy="33" r="3" fill="#C4B8F0"/>
 
-        <rect x="17" y="44" width="146" height="60" fill="#EDE8FF" rx="3"/>
-        <text x="90" y="76" fill="#3d2f7a" fontFamily="sans-serif" fontSize="13" fontWeight="700" textAnchor="middle">Block</text>
-        <text x="90" y="93" fill="#5a4a8a" fontFamily="sans-serif" fontSize="10" textAnchor="middle">Contract Details</text>
+        <rect x="17" y="36" width="116" height="50" fill="#EDE8FF" rx="3"/>
+        <text x="75" y="60" fill="#3d2f7a" fontFamily="sans-serif" fontSize="11" fontWeight="700" textAnchor="middle">Block</text>
+        <text x="75" y="75" fill="#5a4a8a" fontFamily="sans-serif" fontSize="9" textAnchor="middle">Contract Details</text>
       </g>
 
-      <path d="M 300 165 Q 350 100 400 95" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="0.75" strokeDasharray="3 3"/>
-      <path d="M 300 175 Q 350 170 400 165" fill="none" stroke="rgba(225,251,98,0.5)" strokeWidth="1.25" strokeDasharray="3 3"/>
-      <path d="M 300 185 Q 350 235 400 235" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="0.75" strokeDasharray="3 3"/>
+      <path d="M 290 160 Q 340 95 390 90" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="0.75" strokeDasharray="3 3"/>
+      <path d="M 290 175 Q 340 170 390 165" fill="none" stroke="rgba(225,251,98,0.5)" strokeWidth="1.25" strokeDasharray="3 3"/>
+      <path d="M 290 190 Q 340 235 390 240" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="0.75" strokeDasharray="3 3"/>
 
-      <g transform="translate(400, 70)">
-        <circle cx="22" cy="0" r="5" fill="#7F77DD"/>
-        <circle cx="44" cy="0" r="5" fill="#7F77DD"/>
-        <circle cx="66" cy="0" r="5" fill="#7F77DD"/>
-        <circle cx="88" cy="0" r="5" fill="#7F77DD"/>
-        <circle cx="110" cy="0" r="5" fill="#7F77DD"/>
-        <circle cx="132" cy="0" r="5" fill="#7F77DD"/>
-        <circle cx="22" cy="0" r="2.8" fill="#5B4BC4"/>
-        <circle cx="44" cy="0" r="2.8" fill="#5B4BC4"/>
-        <circle cx="66" cy="0" r="2.8" fill="#5B4BC4"/>
-        <circle cx="88" cy="0" r="2.8" fill="#5B4BC4"/>
-        <circle cx="110" cy="0" r="2.8" fill="#5B4BC4"/>
-        <circle cx="132" cy="0" r="2.8" fill="#5B4BC4"/>
-        <rect x="10" y="3" width="140" height="36" fill="#5B4BC4" rx="2.5"/>
-        <text x="80" y="26" fill="#fff" fontFamily="sans-serif" fontSize="11" fontWeight="500" textAnchor="middle">Savings</text>
+      <g transform="translate(390, 70)">
+        <circle cx="18" cy="0" r="4" fill="#7F77DD"/>
+        <circle cx="36" cy="0" r="4" fill="#7F77DD"/>
+        <circle cx="54" cy="0" r="4" fill="#7F77DD"/>
+        <circle cx="72" cy="0" r="4" fill="#7F77DD"/>
+        <circle cx="90" cy="0" r="4" fill="#7F77DD"/>
+        <circle cx="108" cy="0" r="4" fill="#7F77DD"/>
+        <circle cx="18" cy="0" r="2.2" fill="#5B4BC4"/>
+        <circle cx="36" cy="0" r="2.2" fill="#5B4BC4"/>
+        <circle cx="54" cy="0" r="2.2" fill="#5B4BC4"/>
+        <circle cx="72" cy="0" r="2.2" fill="#5B4BC4"/>
+        <circle cx="90" cy="0" r="2.2" fill="#5B4BC4"/>
+        <circle cx="108" cy="0" r="2.2" fill="#5B4BC4"/>
+        <rect x="8" y="3" width="116" height="30" fill="#5B4BC4" rx="2"/>
+        <text x="66" y="22" fill="#fff" fontFamily="sans-serif" fontSize="10" fontWeight="500" textAnchor="middle">Savings</text>
       </g>
 
-      <g transform="translate(400, 140)">
-        <circle cx="22" cy="0" r="5" fill="#E1FB62"/>
-        <circle cx="44" cy="0" r="5" fill="#E1FB62"/>
-        <circle cx="66" cy="0" r="5" fill="#E1FB62"/>
-        <circle cx="88" cy="0" r="5" fill="#E1FB62"/>
-        <circle cx="110" cy="0" r="5" fill="#E1FB62"/>
-        <circle cx="132" cy="0" r="5" fill="#E1FB62"/>
-        <circle cx="22" cy="0" r="2.8" fill="#b8cf45"/>
-        <circle cx="44" cy="0" r="2.8" fill="#b8cf45"/>
-        <circle cx="66" cy="0" r="2.8" fill="#b8cf45"/>
-        <circle cx="88" cy="0" r="2.8" fill="#b8cf45"/>
-        <circle cx="110" cy="0" r="2.8" fill="#b8cf45"/>
-        <circle cx="132" cy="0" r="2.8" fill="#b8cf45"/>
-        <rect x="10" y="3" width="140" height="36" fill="#4E4577" stroke="#E1FB62" strokeWidth="1.5" rx="2.5"/>
-        <text x="80" y="26" fill="#E1FB62" fontFamily="sans-serif" fontSize="11" fontWeight="600" textAnchor="middle">P&amp;C</text>
+      <g transform="translate(390, 145)">
+        <circle cx="18" cy="0" r="4" fill="#E1FB62"/>
+        <circle cx="36" cy="0" r="4" fill="#E1FB62"/>
+        <circle cx="54" cy="0" r="4" fill="#E1FB62"/>
+        <circle cx="72" cy="0" r="4" fill="#E1FB62"/>
+        <circle cx="90" cy="0" r="4" fill="#E1FB62"/>
+        <circle cx="108" cy="0" r="4" fill="#E1FB62"/>
+        <circle cx="18" cy="0" r="2.2" fill="#b8cf45"/>
+        <circle cx="36" cy="0" r="2.2" fill="#b8cf45"/>
+        <circle cx="54" cy="0" r="2.2" fill="#b8cf45"/>
+        <circle cx="72" cy="0" r="2.2" fill="#b8cf45"/>
+        <circle cx="90" cy="0" r="2.2" fill="#b8cf45"/>
+        <circle cx="108" cy="0" r="2.2" fill="#b8cf45"/>
+        <rect x="8" y="3" width="116" height="30" fill="#4E4577" stroke="#E1FB62" strokeWidth="1.25" rx="2"/>
+        <text x="66" y="22" fill="#E1FB62" fontFamily="sans-serif" fontSize="10" fontWeight="600" textAnchor="middle">P&amp;C</text>
       </g>
 
-      <g transform="translate(400, 210)">
-        <circle cx="22" cy="0" r="5" fill="#7AB8A0"/>
-        <circle cx="44" cy="0" r="5" fill="#7AB8A0"/>
-        <circle cx="66" cy="0" r="5" fill="#7AB8A0"/>
-        <circle cx="88" cy="0" r="5" fill="#7AB8A0"/>
-        <circle cx="110" cy="0" r="5" fill="#7AB8A0"/>
-        <circle cx="132" cy="0" r="5" fill="#7AB8A0"/>
-        <circle cx="22" cy="0" r="2.8" fill="#3D9C7A"/>
-        <circle cx="44" cy="0" r="2.8" fill="#3D9C7A"/>
-        <circle cx="66" cy="0" r="2.8" fill="#3D9C7A"/>
-        <circle cx="88" cy="0" r="2.8" fill="#3D9C7A"/>
-        <circle cx="110" cy="0" r="2.8" fill="#3D9C7A"/>
-        <circle cx="132" cy="0" r="2.8" fill="#3D9C7A"/>
-        <rect x="10" y="3" width="140" height="36" fill="#3D9C7A" rx="2.5"/>
-        <text x="80" y="26" fill="#fff" fontFamily="sans-serif" fontSize="11" fontWeight="500" textAnchor="middle">TradLife</text>
+      <g transform="translate(390, 220)">
+        <circle cx="18" cy="0" r="4" fill="#7AB8A0"/>
+        <circle cx="36" cy="0" r="4" fill="#7AB8A0"/>
+        <circle cx="54" cy="0" r="4" fill="#7AB8A0"/>
+        <circle cx="72" cy="0" r="4" fill="#7AB8A0"/>
+        <circle cx="90" cy="0" r="4" fill="#7AB8A0"/>
+        <circle cx="108" cy="0" r="4" fill="#7AB8A0"/>
+        <circle cx="18" cy="0" r="2.2" fill="#3D9C7A"/>
+        <circle cx="36" cy="0" r="2.2" fill="#3D9C7A"/>
+        <circle cx="54" cy="0" r="2.2" fill="#3D9C7A"/>
+        <circle cx="72" cy="0" r="2.2" fill="#3D9C7A"/>
+        <circle cx="90" cy="0" r="2.2" fill="#3D9C7A"/>
+        <circle cx="108" cy="0" r="2.2" fill="#3D9C7A"/>
+        <rect x="8" y="3" width="116" height="30" fill="#3D9C7A" rx="2"/>
+        <text x="66" y="22" fill="#fff" fontFamily="sans-serif" fontSize="10" fontWeight="500" textAnchor="middle">TradLife</text>
       </g>
 
+      <g opacity="0.22">
+        <rect x="60" y="295" width="32" height="11" fill="#EDE8FF" rx="1.5"/>
+        <circle cx="66" cy="293.5" r="2.2" fill="#EDE8FF"/>
+        <circle cx="76" cy="293.5" r="2.2" fill="#EDE8FF"/>
+        <circle cx="86" cy="293.5" r="2.2" fill="#EDE8FF"/>
+      </g>
       <g opacity="0.18">
-        <rect x="50" y="305" width="28" height="10" fill="#EDE8FF" rx="1.5"/>
-        <circle cx="56" cy="303.5" r="2" fill="#EDE8FF"/>
-        <circle cx="64" cy="303.5" r="2" fill="#EDE8FF"/>
-        <circle cx="72" cy="303.5" r="2" fill="#EDE8FF"/>
+        <rect x="324" y="308" width="32" height="11" fill="#EDE8FF" rx="1.5"/>
+        <circle cx="330" cy="306.5" r="2.2" fill="#EDE8FF"/>
+        <circle cx="340" cy="306.5" r="2.2" fill="#EDE8FF"/>
+        <circle cx="350" cy="306.5" r="2.2" fill="#EDE8FF"/>
       </g>
-      <g opacity="0.15">
-        <rect x="605" y="305" width="28" height="10" fill="#EDE8FF" rx="1.5"/>
-        <circle cx="611" cy="303.5" r="2" fill="#EDE8FF"/>
-        <circle cx="619" cy="303.5" r="2" fill="#EDE8FF"/>
-        <circle cx="627" cy="303.5" r="2" fill="#EDE8FF"/>
+      <g opacity="0.2">
+        <rect x="588" y="295" width="32" height="11" fill="#EDE8FF" rx="1.5"/>
+        <circle cx="594" cy="293.5" r="2.2" fill="#EDE8FF"/>
+        <circle cx="604" cy="293.5" r="2.2" fill="#EDE8FF"/>
+        <circle cx="614" cy="293.5" r="2.2" fill="#EDE8FF"/>
       </g>
     </svg>
   );
