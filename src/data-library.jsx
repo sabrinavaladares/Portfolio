@@ -69,7 +69,7 @@ export function DataLibraryHero() {
         <circle cx="90" cy="0" r="2.2" fill="#5B4BC4"/>
         <circle cx="108" cy="0" r="2.2" fill="#5B4BC4"/>
         <rect x="8" y="3" width="116" height="30" fill="#5B4BC4" rx="2"/>
-        <text x="66" y="22" fill="#fff" fontFamily="sans-serif" fontSize="10" fontWeight="500" textAnchor="middle">Savings</text>
+        <text x="66" y="22" fill="#fff" fontFamily="sans-serif" fontSize="9" fontWeight="500" textAnchor="middle">Variant · Savings</text>
       </g>
 
       <g transform="translate(390, 145)">
@@ -86,7 +86,7 @@ export function DataLibraryHero() {
         <circle cx="90" cy="0" r="2.2" fill="#b8cf45"/>
         <circle cx="108" cy="0" r="2.2" fill="#b8cf45"/>
         <rect x="8" y="3" width="116" height="30" fill="#4E4577" stroke="#E1FB62" strokeWidth="1.25" rx="2"/>
-        <text x="66" y="22" fill="#E1FB62" fontFamily="sans-serif" fontSize="10" fontWeight="600" textAnchor="middle">P&amp;C</text>
+        <text x="66" y="22" fill="#E1FB62" fontFamily="sans-serif" fontSize="9" fontWeight="600" textAnchor="middle">Variant · P&amp;C</text>
       </g>
 
       <g transform="translate(390, 220)">
@@ -103,7 +103,7 @@ export function DataLibraryHero() {
         <circle cx="90" cy="0" r="2.2" fill="#3D9C7A"/>
         <circle cx="108" cy="0" r="2.2" fill="#3D9C7A"/>
         <rect x="8" y="3" width="116" height="30" fill="#3D9C7A" rx="2"/>
-        <text x="66" y="22" fill="#fff" fontFamily="sans-serif" fontSize="10" fontWeight="500" textAnchor="middle">TradLife</text>
+        <text x="66" y="22" fill="#fff" fontFamily="sans-serif" fontSize="9" fontWeight="500" textAnchor="middle">Variant · TradLife</text>
       </g>
 
       <g opacity="0.22">
