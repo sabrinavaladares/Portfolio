@@ -350,10 +350,10 @@ function HomePage({ setPage }) {
                   Designer.<br />System Thinker.<br />Foundation Builder.
                 </h1>
                 <p style={{ margin: "0 0 16px", color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75, maxWidth: 480 }}>
-                  Hello, I'm Sabrina. Over the past 8 years, I've been designing a complex B2B insurance product — creating user experiences that simplify complexity, and building the DesignOps infrastructure that makes the whole team more effective.
+                  Hello, I'm Sabrina. Over the past 8 years, I've been designing a complex B2B insurance product that serves multiple insurance lines for clients across several countries.
                 </p>
                 <p style={{ margin: 0, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75, maxWidth: 480 }}>
-                  From interviewing users to building the design infrastructure that scales teams — I cover the full end-to-end design spectrum.
+                  From interviewing users to building the cross-cutting design system that scales it — I cover the full end-to-end design spectrum and I'm the hub for design decisions.
                 </p>
               </div>
 
