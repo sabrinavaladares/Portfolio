@@ -18,115 +18,105 @@ const C = {
 // ─── Data Library Hero Illustration (Lego concept) ───────────────────────
 export function DataLibraryHero() {
   return (
-    <svg width="100%" viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+    <svg width="100%" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
       <title>Data Library</title>
-      <desc>Illustration: one master component connected by dashed lines to three variant instances, like Lego bricks snapping together.</desc>
+      <desc>One master component connected by dashed lines to three variant instances, like Lego bricks snapping together.</desc>
 
-      <rect width="680" height="380" fill="#2d1f5e"/>
+      <rect width="680" height="340" fill="#2d1f5e"/>
 
-      <g fill="rgba(255,255,255,0.045)">
-        <circle cx="40" cy="40" r="1.5"/><circle cx="100" cy="40" r="1.5"/><circle cx="160" cy="40" r="1.5"/><circle cx="220" cy="40" r="1.5"/><circle cx="280" cy="40" r="1.5"/><circle cx="340" cy="40" r="1.5"/><circle cx="400" cy="40" r="1.5"/><circle cx="460" cy="40" r="1.5"/><circle cx="520" cy="40" r="1.5"/><circle cx="580" cy="40" r="1.5"/><circle cx="640" cy="40" r="1.5"/>
-        <circle cx="40" cy="100" r="1.5"/><circle cx="100" cy="100" r="1.5"/><circle cx="160" cy="100" r="1.5"/><circle cx="220" cy="100" r="1.5"/><circle cx="280" cy="100" r="1.5"/><circle cx="340" cy="100" r="1.5"/><circle cx="400" cy="100" r="1.5"/><circle cx="460" cy="100" r="1.5"/><circle cx="520" cy="100" r="1.5"/><circle cx="580" cy="100" r="1.5"/><circle cx="640" cy="100" r="1.5"/>
-        <circle cx="40" cy="160" r="1.5"/><circle cx="100" cy="160" r="1.5"/><circle cx="160" cy="160" r="1.5"/><circle cx="220" cy="160" r="1.5"/><circle cx="280" cy="160" r="1.5"/><circle cx="340" cy="160" r="1.5"/><circle cx="400" cy="160" r="1.5"/><circle cx="460" cy="160" r="1.5"/><circle cx="520" cy="160" r="1.5"/><circle cx="580" cy="160" r="1.5"/><circle cx="640" cy="160" r="1.5"/>
-        <circle cx="40" cy="220" r="1.5"/><circle cx="100" cy="220" r="1.5"/><circle cx="160" cy="220" r="1.5"/><circle cx="220" cy="220" r="1.5"/><circle cx="280" cy="220" r="1.5"/><circle cx="340" cy="220" r="1.5"/><circle cx="400" cy="220" r="1.5"/><circle cx="460" cy="220" r="1.5"/><circle cx="520" cy="220" r="1.5"/><circle cx="580" cy="220" r="1.5"/><circle cx="640" cy="220" r="1.5"/>
-        <circle cx="40" cy="280" r="1.5"/><circle cx="100" cy="280" r="1.5"/><circle cx="160" cy="280" r="1.5"/><circle cx="220" cy="280" r="1.5"/><circle cx="280" cy="280" r="1.5"/><circle cx="340" cy="280" r="1.5"/><circle cx="400" cy="280" r="1.5"/><circle cx="460" cy="280" r="1.5"/><circle cx="520" cy="280" r="1.5"/><circle cx="580" cy="280" r="1.5"/><circle cx="640" cy="280" r="1.5"/>
-        <circle cx="40" cy="340" r="1.5"/><circle cx="100" cy="340" r="1.5"/><circle cx="160" cy="340" r="1.5"/><circle cx="220" cy="340" r="1.5"/><circle cx="280" cy="340" r="1.5"/><circle cx="340" cy="340" r="1.5"/><circle cx="400" cy="340" r="1.5"/><circle cx="460" cy="340" r="1.5"/><circle cx="520" cy="340" r="1.5"/><circle cx="580" cy="340" r="1.5"/><circle cx="640" cy="340" r="1.5"/>
+      <g fill="rgba(255,255,255,0.04)">
+        <circle cx="60" cy="50" r="1.2"/><circle cx="140" cy="50" r="1.2"/><circle cx="220" cy="50" r="1.2"/><circle cx="300" cy="50" r="1.2"/><circle cx="380" cy="50" r="1.2"/><circle cx="460" cy="50" r="1.2"/><circle cx="540" cy="50" r="1.2"/><circle cx="620" cy="50" r="1.2"/>
+        <circle cx="60" cy="130" r="1.2"/><circle cx="140" cy="130" r="1.2"/><circle cx="220" cy="130" r="1.2"/><circle cx="300" cy="130" r="1.2"/><circle cx="380" cy="130" r="1.2"/><circle cx="460" cy="130" r="1.2"/><circle cx="540" cy="130" r="1.2"/><circle cx="620" cy="130" r="1.2"/>
+        <circle cx="60" cy="210" r="1.2"/><circle cx="140" cy="210" r="1.2"/><circle cx="220" cy="210" r="1.2"/><circle cx="300" cy="210" r="1.2"/><circle cx="380" cy="210" r="1.2"/><circle cx="460" cy="210" r="1.2"/><circle cx="540" cy="210" r="1.2"/><circle cx="620" cy="210" r="1.2"/>
+        <circle cx="60" cy="290" r="1.2"/><circle cx="140" cy="290" r="1.2"/><circle cx="220" cy="290" r="1.2"/><circle cx="300" cy="290" r="1.2"/><circle cx="380" cy="290" r="1.2"/><circle cx="460" cy="290" r="1.2"/><circle cx="540" cy="290" r="1.2"/><circle cx="620" cy="290" r="1.2"/>
       </g>
 
-      <g transform="translate(60, 130)">
-        <rect width="240" height="160" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.3)" strokeWidth="1" strokeDasharray="6 4" rx="8"/>
-        <text x="0" y="-14" fill="rgba(255,255,255,0.75)" fontFamily="sans-serif" fontSize="10" fontWeight="600" letterSpacing="2">❖ MASTER COMPONENT</text>
+      <g transform="translate(120, 115)">
+        <rect width="180" height="120" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.22)" strokeWidth="0.75" strokeDasharray="5 3" rx="6"/>
+        <text x="0" y="-10" fill="rgba(255,255,255,0.6)" fontFamily="sans-serif" fontSize="9" fontWeight="600" letterSpacing="2">❖ MASTER COMPONENT</text>
 
-        <circle cx="30" cy="50" r="9" fill="#EDE8FF"/>
-        <circle cx="62" cy="50" r="9" fill="#EDE8FF"/>
-        <circle cx="94" cy="50" r="9" fill="#EDE8FF"/>
-        <circle cx="126" cy="50" r="9" fill="#EDE8FF"/>
-        <circle cx="158" cy="50" r="9" fill="#EDE8FF"/>
-        <circle cx="190" cy="50" r="9" fill="#EDE8FF"/>
-        <circle cx="30" cy="50" r="5" fill="#C4B8F0"/>
-        <circle cx="62" cy="50" r="5" fill="#C4B8F0"/>
-        <circle cx="94" cy="50" r="5" fill="#C4B8F0"/>
-        <circle cx="126" cy="50" r="5" fill="#C4B8F0"/>
-        <circle cx="158" cy="50" r="5" fill="#C4B8F0"/>
-        <circle cx="190" cy="50" r="5" fill="#C4B8F0"/>
+        <circle cx="32" cy="40" r="6.5" fill="#EDE8FF"/>
+        <circle cx="58" cy="40" r="6.5" fill="#EDE8FF"/>
+        <circle cx="84" cy="40" r="6.5" fill="#EDE8FF"/>
+        <circle cx="110" cy="40" r="6.5" fill="#EDE8FF"/>
+        <circle cx="136" cy="40" r="6.5" fill="#EDE8FF"/>
+        <circle cx="32" cy="40" r="3.5" fill="#C4B8F0"/>
+        <circle cx="58" cy="40" r="3.5" fill="#C4B8F0"/>
+        <circle cx="84" cy="40" r="3.5" fill="#C4B8F0"/>
+        <circle cx="110" cy="40" r="3.5" fill="#C4B8F0"/>
+        <circle cx="136" cy="40" r="3.5" fill="#C4B8F0"/>
 
-        <rect x="15" y="56" width="210" height="80" fill="#EDE8FF" rx="4"/>
-        <text x="120" y="92" fill="#3d2f7a" fontFamily="sans-serif" fontSize="15" fontWeight="700" textAnchor="middle">Block</text>
-        <text x="120" y="112" fill="#5a4a8a" fontFamily="sans-serif" fontSize="11" textAnchor="middle">Contract Details</text>
+        <rect x="17" y="44" width="146" height="60" fill="#EDE8FF" rx="3"/>
+        <text x="90" y="76" fill="#3d2f7a" fontFamily="sans-serif" fontSize="13" fontWeight="700" textAnchor="middle">Block</text>
+        <text x="90" y="93" fill="#5a4a8a" fontFamily="sans-serif" fontSize="10" textAnchor="middle">Contract Details</text>
       </g>
 
-      <path d="M 300 200 Q 350 110 400 100" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1" strokeDasharray="4 4"/>
-      <path d="M 300 210 Q 350 205 400 200" fill="none" stroke="rgba(225,251,98,0.55)" strokeWidth="1.5" strokeDasharray="4 4"/>
-      <path d="M 300 220 Q 350 290 400 300" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1" strokeDasharray="4 4"/>
+      <path d="M 300 165 Q 350 100 400 95" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="0.75" strokeDasharray="3 3"/>
+      <path d="M 300 175 Q 350 170 400 165" fill="none" stroke="rgba(225,251,98,0.5)" strokeWidth="1.25" strokeDasharray="3 3"/>
+      <path d="M 300 185 Q 350 235 400 235" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="0.75" strokeDasharray="3 3"/>
 
-      <g transform="translate(400, 78)">
-        <circle cx="25" cy="0" r="7" fill="#7F77DD"/>
-        <circle cx="55" cy="0" r="7" fill="#7F77DD"/>
-        <circle cx="85" cy="0" r="7" fill="#7F77DD"/>
-        <circle cx="115" cy="0" r="7" fill="#7F77DD"/>
-        <circle cx="145" cy="0" r="7" fill="#7F77DD"/>
-        <circle cx="175" cy="0" r="7" fill="#7F77DD"/>
-        <circle cx="25" cy="0" r="4" fill="#5B4BC4"/>
-        <circle cx="55" cy="0" r="4" fill="#5B4BC4"/>
-        <circle cx="85" cy="0" r="4" fill="#5B4BC4"/>
-        <circle cx="115" cy="0" r="4" fill="#5B4BC4"/>
-        <circle cx="145" cy="0" r="4" fill="#5B4BC4"/>
-        <circle cx="175" cy="0" r="4" fill="#5B4BC4"/>
-        <rect x="10" y="4" width="180" height="44" fill="#5B4BC4" rx="3"/>
-        <text x="100" y="30" fill="#fff" fontFamily="sans-serif" fontSize="12" fontWeight="500" textAnchor="middle">Variant · Savings</text>
-      </g>
-
-      <g transform="translate(400, 178)">
-        <circle cx="25" cy="0" r="7" fill="#E1FB62"/>
-        <circle cx="55" cy="0" r="7" fill="#E1FB62"/>
-        <circle cx="85" cy="0" r="7" fill="#E1FB62"/>
-        <circle cx="115" cy="0" r="7" fill="#E1FB62"/>
-        <circle cx="145" cy="0" r="7" fill="#E1FB62"/>
-        <circle cx="175" cy="0" r="7" fill="#E1FB62"/>
-        <circle cx="25" cy="0" r="4" fill="#b8cf45"/>
-        <circle cx="55" cy="0" r="4" fill="#b8cf45"/>
-        <circle cx="85" cy="0" r="4" fill="#b8cf45"/>
-        <circle cx="115" cy="0" r="4" fill="#b8cf45"/>
-        <circle cx="145" cy="0" r="4" fill="#b8cf45"/>
-        <circle cx="175" cy="0" r="4" fill="#b8cf45"/>
-        <rect x="10" y="4" width="180" height="44" fill="#4E4577" stroke="#E1FB62" strokeWidth="2" rx="3"/>
-        <text x="100" y="30" fill="#E1FB62" fontFamily="sans-serif" fontSize="12" fontWeight="600" textAnchor="middle">Variant · P&amp;C</text>
+      <g transform="translate(400, 70)">
+        <circle cx="22" cy="0" r="5" fill="#7F77DD"/>
+        <circle cx="44" cy="0" r="5" fill="#7F77DD"/>
+        <circle cx="66" cy="0" r="5" fill="#7F77DD"/>
+        <circle cx="88" cy="0" r="5" fill="#7F77DD"/>
+        <circle cx="110" cy="0" r="5" fill="#7F77DD"/>
+        <circle cx="132" cy="0" r="5" fill="#7F77DD"/>
+        <circle cx="22" cy="0" r="2.8" fill="#5B4BC4"/>
+        <circle cx="44" cy="0" r="2.8" fill="#5B4BC4"/>
+        <circle cx="66" cy="0" r="2.8" fill="#5B4BC4"/>
+        <circle cx="88" cy="0" r="2.8" fill="#5B4BC4"/>
+        <circle cx="110" cy="0" r="2.8" fill="#5B4BC4"/>
+        <circle cx="132" cy="0" r="2.8" fill="#5B4BC4"/>
+        <rect x="10" y="3" width="140" height="36" fill="#5B4BC4" rx="2.5"/>
+        <text x="80" y="26" fill="#fff" fontFamily="sans-serif" fontSize="11" fontWeight="500" textAnchor="middle">Savings</text>
       </g>
 
-      <g transform="translate(400, 278)">
-        <circle cx="25" cy="0" r="7" fill="#7AB8A0"/>
-        <circle cx="55" cy="0" r="7" fill="#7AB8A0"/>
-        <circle cx="85" cy="0" r="7" fill="#7AB8A0"/>
-        <circle cx="115" cy="0" r="7" fill="#7AB8A0"/>
-        <circle cx="145" cy="0" r="7" fill="#7AB8A0"/>
-        <circle cx="175" cy="0" r="7" fill="#7AB8A0"/>
-        <circle cx="25" cy="0" r="4" fill="#3D9C7A"/>
-        <circle cx="55" cy="0" r="4" fill="#3D9C7A"/>
-        <circle cx="85" cy="0" r="4" fill="#3D9C7A"/>
-        <circle cx="115" cy="0" r="4" fill="#3D9C7A"/>
-        <circle cx="145" cy="0" r="4" fill="#3D9C7A"/>
-        <circle cx="175" cy="0" r="4" fill="#3D9C7A"/>
-        <rect x="10" y="4" width="180" height="44" fill="#3D9C7A" rx="3"/>
-        <text x="100" y="30" fill="#fff" fontFamily="sans-serif" fontSize="12" fontWeight="500" textAnchor="middle">Variant · TradLife</text>
+      <g transform="translate(400, 140)">
+        <circle cx="22" cy="0" r="5" fill="#E1FB62"/>
+        <circle cx="44" cy="0" r="5" fill="#E1FB62"/>
+        <circle cx="66" cy="0" r="5" fill="#E1FB62"/>
+        <circle cx="88" cy="0" r="5" fill="#E1FB62"/>
+        <circle cx="110" cy="0" r="5" fill="#E1FB62"/>
+        <circle cx="132" cy="0" r="5" fill="#E1FB62"/>
+        <circle cx="22" cy="0" r="2.8" fill="#b8cf45"/>
+        <circle cx="44" cy="0" r="2.8" fill="#b8cf45"/>
+        <circle cx="66" cy="0" r="2.8" fill="#b8cf45"/>
+        <circle cx="88" cy="0" r="2.8" fill="#b8cf45"/>
+        <circle cx="110" cy="0" r="2.8" fill="#b8cf45"/>
+        <circle cx="132" cy="0" r="2.8" fill="#b8cf45"/>
+        <rect x="10" y="3" width="140" height="36" fill="#4E4577" stroke="#E1FB62" strokeWidth="1.5" rx="2.5"/>
+        <text x="80" y="26" fill="#E1FB62" fontFamily="sans-serif" fontSize="11" fontWeight="600" textAnchor="middle">P&amp;C</text>
       </g>
 
-      <g opacity="0.25">
-        <rect x="40" y="335" width="36" height="12" fill="#EDE8FF" rx="2"/>
-        <circle cx="48" cy="333" r="2.5" fill="#EDE8FF"/>
-        <circle cx="58" cy="333" r="2.5" fill="#EDE8FF"/>
-        <circle cx="68" cy="333" r="2.5" fill="#EDE8FF"/>
+      <g transform="translate(400, 210)">
+        <circle cx="22" cy="0" r="5" fill="#7AB8A0"/>
+        <circle cx="44" cy="0" r="5" fill="#7AB8A0"/>
+        <circle cx="66" cy="0" r="5" fill="#7AB8A0"/>
+        <circle cx="88" cy="0" r="5" fill="#7AB8A0"/>
+        <circle cx="110" cy="0" r="5" fill="#7AB8A0"/>
+        <circle cx="132" cy="0" r="5" fill="#7AB8A0"/>
+        <circle cx="22" cy="0" r="2.8" fill="#3D9C7A"/>
+        <circle cx="44" cy="0" r="2.8" fill="#3D9C7A"/>
+        <circle cx="66" cy="0" r="2.8" fill="#3D9C7A"/>
+        <circle cx="88" cy="0" r="2.8" fill="#3D9C7A"/>
+        <circle cx="110" cy="0" r="2.8" fill="#3D9C7A"/>
+        <circle cx="132" cy="0" r="2.8" fill="#3D9C7A"/>
+        <rect x="10" y="3" width="140" height="36" fill="#3D9C7A" rx="2.5"/>
+        <text x="80" y="26" fill="#fff" fontFamily="sans-serif" fontSize="11" fontWeight="500" textAnchor="middle">TradLife</text>
       </g>
-      <g opacity="0.2">
-        <rect x="130" y="350" width="36" height="12" fill="#EDE8FF" rx="2"/>
-        <circle cx="138" cy="348" r="2.5" fill="#EDE8FF"/>
-        <circle cx="148" cy="348" r="2.5" fill="#EDE8FF"/>
-        <circle cx="158" cy="348" r="2.5" fill="#EDE8FF"/>
-      </g>
+
       <g opacity="0.18">
-        <rect x="600" y="345" width="36" height="12" fill="#EDE8FF" rx="2"/>
-        <circle cx="608" cy="343" r="2.5" fill="#EDE8FF"/>
-        <circle cx="618" cy="343" r="2.5" fill="#EDE8FF"/>
-        <circle cx="628" cy="343" r="2.5" fill="#EDE8FF"/>
+        <rect x="50" y="305" width="28" height="10" fill="#EDE8FF" rx="1.5"/>
+        <circle cx="56" cy="303.5" r="2" fill="#EDE8FF"/>
+        <circle cx="64" cy="303.5" r="2" fill="#EDE8FF"/>
+        <circle cx="72" cy="303.5" r="2" fill="#EDE8FF"/>
+      </g>
+      <g opacity="0.15">
+        <rect x="605" y="305" width="28" height="10" fill="#EDE8FF" rx="1.5"/>
+        <circle cx="611" cy="303.5" r="2" fill="#EDE8FF"/>
+        <circle cx="619" cy="303.5" r="2" fill="#EDE8FF"/>
+        <circle cx="627" cy="303.5" r="2" fill="#EDE8FF"/>
       </g>
     </svg>
   );
