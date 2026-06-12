@@ -325,7 +325,7 @@ function CaseStudyCard({ setPage, config, index }) {
 
   // Alternate sides on desktop — first card image-left, second image-right
   const imageOnRight = !isMobile && index % 2 === 1;
-  const washColor = wash || C.lilacBg;
+  const washColor = wash === null ? "transparent" : (wash || C.lilacBg);
 
   return (
     <article
@@ -344,7 +344,7 @@ function CaseStudyCard({ setPage, config, index }) {
           style={{
             background: washColor,
             borderRadius: 16,
-            padding: isMobile ? 24 : 40,
+            padding: wash ? (isMobile ? 16 : 24) : 0,
             aspectRatio: "4 / 3",
             display: "flex",
             alignItems: "center",
@@ -360,11 +360,10 @@ function CaseStudyCard({ setPage, config, index }) {
               src={image}
               alt={title + " hero"}
               style={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                objectFit: "contain",
-                borderRadius: 6,
-                boxShadow: "0 16px 40px rgba(45, 31, 94, 0.18)",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: wash ? 6 : 16,
                 display: "block",
               }}
             />
@@ -455,7 +454,7 @@ export const CASE_STUDIES = [
     description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
     tags: ["UX Design", "DesignOps", "Design System"],
     image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781267060/hero-image_lk73mq.png",
-    wash: "#EDE8FF",
+    wash: null,
   },
   {
     targetPage: "datalibrary",
