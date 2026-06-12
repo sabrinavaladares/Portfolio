@@ -332,8 +332,8 @@ function CaseStudyCard({ setPage, config, index }) {
       onClick={() => setPage(targetPage)}
       style={{
         display: "grid",
-        gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-        gap: isMobile ? 24 : 80,
+        gridTemplateColumns: isMobile ? "1fr" : (imageOnRight ? "1fr 1.4fr" : "1.4fr 1fr"),
+        gap: isMobile ? 24 : 60,
         alignItems: "center",
         cursor: "pointer",
       }}
@@ -379,11 +379,11 @@ function CaseStudyCard({ setPage, config, index }) {
       <div style={{ order: isMobile ? 2 : (imageOnRight ? 1 : 2) }}>
         <h3
           style={{
-            fontSize: isMobile ? 26 : 34,
+            fontSize: isMobile ? 24 : 28,
             fontWeight: 700,
             margin: "0 0 16px",
             color: C.ink,
-            letterSpacing: -0.4,
+            letterSpacing: -0.3,
             lineHeight: 1.2,
           }}
         >
@@ -394,7 +394,7 @@ function CaseStudyCard({ setPage, config, index }) {
           style={{
             margin: "0 0 20px",
             color: "#555",
-            fontSize: isMobile ? 17 : 18,
+            fontSize: isMobile ? 17 : 19,
             lineHeight: 1.65,
             maxWidth: 480,
           }}
@@ -405,7 +405,7 @@ function CaseStudyCard({ setPage, config, index }) {
         {/* Tags — below the description */}
         <div
           style={{
-            fontSize: 14,
+            fontSize: 15,
             color: C.muted,
             marginBottom: 32,
             fontWeight: 400,
@@ -537,7 +537,7 @@ function HomePage({ setPage }) {
         <div style={shell}>
           <div style={{ marginBottom: isMobile ? 32 : 48 }}>
             <Label>Selected Work</Label>
-            <h2 style={{ fontSize: isMobile ? 32 : 44, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.4 }}>Case Studies</h2>
+            <h2 style={{ fontSize: isMobile ? 38 : 56, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.5 }}>Case Studies</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 80 : 140 }}>
             {CASE_STUDIES.map((cs, idx) => (
