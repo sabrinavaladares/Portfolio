@@ -395,12 +395,12 @@ function CaseStudyCard({ setPage, config, index }) {
 
         <h3
           style={{
-            fontSize: isMobile ? 28 : 36,
+            fontSize: isMobile ? 22 : 28,
             fontWeight: 700,
             margin: "0 0 18px",
             color: C.ink,
-            letterSpacing: -0.5,
-            lineHeight: 1.15,
+            letterSpacing: -0.3,
+            lineHeight: 1.2,
           }}
         >
           {title}
@@ -454,7 +454,7 @@ export const CASE_STUDIES = [
     title: "PathFinder",
     description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
     tags: ["UX Design", "DesignOps", "Design System"],
-    image: "https://res.cloudinary.com/diso2uvpx/image/upload/hero-image_omdqpa.png",
+    image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781267060/hero-image_lk73mq.png",
     wash: "#EDE8FF",
   },
   {
