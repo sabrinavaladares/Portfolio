@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useIsMobile } from "./App";
+import { useIsMobile, CASE_STUDIES } from "./App";
 
 // ─── Palette (matches App.jsx) ─────────────────────────────────────────────
 const C = {
@@ -400,6 +400,59 @@ function ImpactPill({ icon, text }) {
   );
 }
 
+// ─── Next case study card (purple — used at the bottom of PathFinder) ─────
+function NextCaseStudyCard({ setPage, currentPage }) {
+  const isMobile = useIsMobile();
+  const next = CASE_STUDIES.find(cs => cs.targetPage !== currentPage);
+  if (!next) return null;
+
+  return (
+    <div style={{ marginTop: isMobile ? 56 : 80 }}>
+      <div style={{ fontSize: 10, color: C.muted, letterSpacing: 3, textTransform: "uppercase", marginBottom: 16, fontWeight: 500 }}>
+        Next case study
+      </div>
+      <button
+        type="button"
+        onClick={() => setPage(next.targetPage)}
+        style={{
+          display: "block",
+          width: "100%",
+          background: C.purple,
+          border: "none",
+          borderRadius: 16,
+          padding: isMobile ? "24px" : "32px 40px",
+          cursor: "pointer",
+          textAlign: "left",
+          fontFamily: "sans-serif",
+          transition: "transform 0.25s, box-shadow 0.25s",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 12px 32px rgba(45, 31, 94, 0.25)"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+      >
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr auto", gap: isMobile ? 20 : 32, alignItems: "center" }}>
+          <div>
+            <h3 style={{ fontSize: isMobile ? 22 : 26, fontWeight: 700, margin: "0 0 10px", color: "#fff", letterSpacing: -0.3 }}>{next.title}</h3>
+            <p style={{ margin: "0 0 16px", color: "rgba(255,255,255,0.85)", fontSize: isMobile ? 14 : 15, lineHeight: 1.7 }}>
+              {next.description}
+            </p>
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {next.tags.map(t => (
+                <span key={t} style={{ display: "inline-block", fontSize: 11, padding: "4px 12px", borderRadius: 20, background: C.purpleDark, color: "#e8e0ff", fontWeight: 500 }}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, color: C.neon, fontWeight: 600, fontSize: 14, flexShrink: 0, justifySelf: isMobile ? "flex-start" : "end" }}>
+            Read case study
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </button>
+    </div>
+  );
+}
+
 function TestimonialCard({ name, role, text }) {
   const initials = name.split(" ").map(n => n[0]).slice(0, 2).join("");
   return (
@@ -702,7 +755,7 @@ function RestitutionComposition() {
 }
 
 // ─── Main ─────────────────────────────────────────────
-export default function CaseStudy() {
+export default function CaseStudy({ setPage }) {
   const [active, setActive] = useState("context");
   const isMobile = useIsMobile();
 
@@ -1069,6 +1122,9 @@ export default function CaseStudy() {
             ].map((t, i) => <TestimonialCard key={i} {...t} />)}
           </div>
         </div>
+
+        {/* Next case study */}
+        <NextCaseStudyCard setPage={setPage} currentPage="pathfinder" />
 
         {/* Back to top */}
         <div style={{ display: "flex", justifyContent: "center", marginTop: isMobile ? 56 : 80 }}>
