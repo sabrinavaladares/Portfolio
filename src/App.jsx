@@ -433,7 +433,7 @@ export const CASE_STUDIES = [
     targetPage: "pathfinder",
     title: "PathFinder",
     description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
-    tags: ["UX Design", "DesignOps", "Design System"],
+    tags: ["UX Design", "User Research", "Information Architecture"],
     image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781269013/hero-image_tn8nwf.png",
     frame: false,
     wash: null,
@@ -520,10 +520,6 @@ function HomePage({ setPage }) {
 
       <div style={{ background: C.bg }} id="work">
         <div style={shell}>
-          <div style={{ marginBottom: isMobile ? 32 : 48 }}>
-            <Label>Selected Work</Label>
-            <h2 style={{ fontSize: isMobile ? 42 : 64, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.5 }}>Case Studies</h2>
-          </div>
           <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 80 : 140 }}>
             {CASE_STUDIES.map((cs, idx) => (
               <CaseStudyCard key={cs.targetPage} setPage={setPage} config={cs} index={idx} />
