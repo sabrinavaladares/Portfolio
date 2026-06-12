@@ -321,62 +321,49 @@ function Nav({ page, setPage }) {
 
 function CaseStudyCard({ setPage, config, index }) {
   const isMobile = useIsMobile();
-  const { targetPage, title, description, tags, image, wash } = config;
-
-  // Alternate sides on desktop — first card image-left, second image-right
-  const imageOnRight = !isMobile && index % 2 === 1;
-  const washColor = wash === null ? "transparent" : (wash || C.lilacBg);
+  const { targetPage, title, description, tags, image } = config;
 
   return (
     <article
       onClick={() => setPage(targetPage)}
       style={{
-        display: "grid",
-        gridTemplateColumns: isMobile ? "1fr" : (imageOnRight ? "1fr 1.8fr" : "1.8fr 1fr"),
-        gap: isMobile ? 24 : 48,
-        alignItems: "center",
         cursor: "pointer",
       }}
     >
-      {/* Image side */}
-      <div style={{ order: isMobile ? 1 : (imageOnRight ? 2 : 1) }}>
-        <div
-          style={{
-            background: washColor,
-            borderRadius: 16,
-            padding: wash ? (isMobile ? 16 : 24) : 0,
-            ...(!image && { aspectRatio: "4 / 3" }),
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
-            transition: "transform 0.35s ease",
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
-        >
-          {image ? (
-            <img
-              src={image}
-              alt={title + " hero"}
-              style={{
-                width: "100%",
-                height: "auto",
-                borderRadius: wash ? 6 : 16,
-                display: "block",
-              }}
-            />
-          ) : (
-            <div style={{ color: C.faint, textAlign: "center" }}>
-              <div style={{ fontSize: 44, marginBottom: 10, opacity: 0.4 }}>🖼️</div>
-              <div style={{ fontSize: 12, letterSpacing: 0.5 }}>Hero image — to add</div>
-            </div>
-          )}
-        </div>
+      {/* Full-width image with lilac frame (matches case study hero styling) */}
+      <div
+        style={{
+          background: C.lilacBg,
+          borderRadius: 12,
+          padding: 4,
+          overflow: "hidden",
+          marginBottom: 32,
+          transition: "transform 0.35s ease",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
+      >
+        {image ? (
+          <img
+            src={image}
+            alt={title + " hero"}
+            style={{
+              width: "100%",
+              height: "auto",
+              borderRadius: 8,
+              display: "block",
+            }}
+          />
+        ) : (
+          <div style={{ color: C.faint, textAlign: "center", aspectRatio: "16 / 9", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", borderRadius: 8 }}>
+            <div style={{ fontSize: 44, marginBottom: 10, opacity: 0.4 }}>🖼️</div>
+            <div style={{ fontSize: 12, letterSpacing: 0.5 }}>Hero image — to add</div>
+          </div>
+        )}
       </div>
 
-      {/* Text side */}
-      <div style={{ order: isMobile ? 2 : (imageOnRight ? 1 : 2) }}>
+      {/* Text below */}
+      <div>
         <h3
           style={{
             fontSize: isMobile ? 28 : 36,
@@ -396,13 +383,12 @@ function CaseStudyCard({ setPage, config, index }) {
             color: "#555",
             fontSize: isMobile ? 17 : 19,
             lineHeight: 1.65,
-            maxWidth: 480,
+            maxWidth: 680,
           }}
         >
           {description}
         </p>
 
-        {/* Tags — below the description */}
         <div
           style={{
             fontSize: 15,
