@@ -345,7 +345,7 @@ function CaseStudyCard({ setPage, config, index }) {
             background: washColor,
             borderRadius: 16,
             padding: wash ? (isMobile ? 16 : 24) : 0,
-            aspectRatio: "4 / 3",
+            ...(!image && { aspectRatio: "4 / 3" }),
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -361,8 +361,7 @@ function CaseStudyCard({ setPage, config, index }) {
               alt={title + " hero"}
               style={{
                 width: "100%",
-                height: "100%",
-                objectFit: "contain",
+                height: "auto",
                 borderRadius: wash ? 6 : 16,
                 display: "block",
               }}
@@ -380,11 +379,11 @@ function CaseStudyCard({ setPage, config, index }) {
       <div style={{ order: isMobile ? 2 : (imageOnRight ? 1 : 2) }}>
         <h3
           style={{
-            fontSize: isMobile ? 22 : 28,
+            fontSize: isMobile ? 26 : 34,
             fontWeight: 700,
-            margin: "0 0 14px",
+            margin: "0 0 16px",
             color: C.ink,
-            letterSpacing: -0.3,
+            letterSpacing: -0.4,
             lineHeight: 1.2,
           }}
         >
@@ -393,10 +392,10 @@ function CaseStudyCard({ setPage, config, index }) {
 
         <p
           style={{
-            margin: "0 0 18px",
+            margin: "0 0 20px",
             color: "#555",
-            fontSize: isMobile ? 15 : 16,
-            lineHeight: 1.7,
+            fontSize: isMobile ? 17 : 18,
+            lineHeight: 1.65,
             maxWidth: 480,
           }}
         >
@@ -406,8 +405,8 @@ function CaseStudyCard({ setPage, config, index }) {
         {/* Tags — below the description */}
         <div
           style={{
-            fontSize: 12,
-            color: C.faint,
+            fontSize: 14,
+            color: C.muted,
             marginBottom: 32,
             fontWeight: 400,
           }}
@@ -423,8 +422,8 @@ function CaseStudyCard({ setPage, config, index }) {
             color: "#fff",
             border: "none",
             borderRadius: 50,
-            padding: "12px 24px",
-            fontSize: 13,
+            padding: "14px 26px",
+            fontSize: 14,
             fontWeight: 500,
             cursor: "pointer",
             display: "inline-flex",
@@ -538,7 +537,7 @@ function HomePage({ setPage }) {
         <div style={shell}>
           <div style={{ marginBottom: isMobile ? 32 : 48 }}>
             <Label>Selected Work</Label>
-            <h2 style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.3 }}>Case Studies</h2>
+            <h2 style={{ fontSize: isMobile ? 32 : 44, fontWeight: 700, margin: 0, color: C.ink, letterSpacing: -0.4 }}>Case Studies</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 80 : 140 }}>
             {CASE_STUDIES.map((cs, idx) => (
