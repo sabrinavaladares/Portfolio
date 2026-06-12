@@ -262,7 +262,7 @@ function AfterView() {
   );
 }
 
-function DataLibraryDiagram() {
+export function DataLibraryDiagram() {
   const isMobile = useIsMobile();
   const [view, setView] = useState("before");
   const [animating, setAnimating] = useState(false);
@@ -294,7 +294,7 @@ function DataLibraryDiagram() {
 // Adoption (how it's received) on the right, with a thin vertical divider.
 // On mobile, stacks vertically. Uses the same #3F3863 background as the
 // Data Library diagram card for visual coherence inside System Thinking.
-function StateOfPlayBlock() {
+export function StateOfPlayBlock() {
   const isMobile = useIsMobile();
 
   const EyebrowLabel = ({ children }) => (
