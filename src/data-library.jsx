@@ -15,6 +15,123 @@ const C = {
   neon: "#E1FB62",
 };
 
+// ─── Data Library Hero Illustration (Lego concept) ───────────────────────
+export function DataLibraryHero() {
+  return (
+    <svg width="100%" viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+      <title>Data Library</title>
+      <desc>Illustration: one master component connected by dashed lines to three variant instances, like Lego bricks snapping together.</desc>
+
+      <rect width="680" height="380" fill="#2d1f5e"/>
+
+      <g fill="rgba(255,255,255,0.045)">
+        <circle cx="40" cy="40" r="1.5"/><circle cx="100" cy="40" r="1.5"/><circle cx="160" cy="40" r="1.5"/><circle cx="220" cy="40" r="1.5"/><circle cx="280" cy="40" r="1.5"/><circle cx="340" cy="40" r="1.5"/><circle cx="400" cy="40" r="1.5"/><circle cx="460" cy="40" r="1.5"/><circle cx="520" cy="40" r="1.5"/><circle cx="580" cy="40" r="1.5"/><circle cx="640" cy="40" r="1.5"/>
+        <circle cx="40" cy="100" r="1.5"/><circle cx="100" cy="100" r="1.5"/><circle cx="160" cy="100" r="1.5"/><circle cx="220" cy="100" r="1.5"/><circle cx="280" cy="100" r="1.5"/><circle cx="340" cy="100" r="1.5"/><circle cx="400" cy="100" r="1.5"/><circle cx="460" cy="100" r="1.5"/><circle cx="520" cy="100" r="1.5"/><circle cx="580" cy="100" r="1.5"/><circle cx="640" cy="100" r="1.5"/>
+        <circle cx="40" cy="160" r="1.5"/><circle cx="100" cy="160" r="1.5"/><circle cx="160" cy="160" r="1.5"/><circle cx="220" cy="160" r="1.5"/><circle cx="280" cy="160" r="1.5"/><circle cx="340" cy="160" r="1.5"/><circle cx="400" cy="160" r="1.5"/><circle cx="460" cy="160" r="1.5"/><circle cx="520" cy="160" r="1.5"/><circle cx="580" cy="160" r="1.5"/><circle cx="640" cy="160" r="1.5"/>
+        <circle cx="40" cy="220" r="1.5"/><circle cx="100" cy="220" r="1.5"/><circle cx="160" cy="220" r="1.5"/><circle cx="220" cy="220" r="1.5"/><circle cx="280" cy="220" r="1.5"/><circle cx="340" cy="220" r="1.5"/><circle cx="400" cy="220" r="1.5"/><circle cx="460" cy="220" r="1.5"/><circle cx="520" cy="220" r="1.5"/><circle cx="580" cy="220" r="1.5"/><circle cx="640" cy="220" r="1.5"/>
+        <circle cx="40" cy="280" r="1.5"/><circle cx="100" cy="280" r="1.5"/><circle cx="160" cy="280" r="1.5"/><circle cx="220" cy="280" r="1.5"/><circle cx="280" cy="280" r="1.5"/><circle cx="340" cy="280" r="1.5"/><circle cx="400" cy="280" r="1.5"/><circle cx="460" cy="280" r="1.5"/><circle cx="520" cy="280" r="1.5"/><circle cx="580" cy="280" r="1.5"/><circle cx="640" cy="280" r="1.5"/>
+        <circle cx="40" cy="340" r="1.5"/><circle cx="100" cy="340" r="1.5"/><circle cx="160" cy="340" r="1.5"/><circle cx="220" cy="340" r="1.5"/><circle cx="280" cy="340" r="1.5"/><circle cx="340" cy="340" r="1.5"/><circle cx="400" cy="340" r="1.5"/><circle cx="460" cy="340" r="1.5"/><circle cx="520" cy="340" r="1.5"/><circle cx="580" cy="340" r="1.5"/><circle cx="640" cy="340" r="1.5"/>
+      </g>
+
+      <g transform="translate(60, 130)">
+        <rect width="240" height="160" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.3)" strokeWidth="1" strokeDasharray="6 4" rx="8"/>
+        <text x="0" y="-14" fill="rgba(255,255,255,0.75)" fontFamily="sans-serif" fontSize="10" fontWeight="600" letterSpacing="2">❖ MASTER COMPONENT</text>
+
+        <circle cx="30" cy="50" r="9" fill="#EDE8FF"/>
+        <circle cx="62" cy="50" r="9" fill="#EDE8FF"/>
+        <circle cx="94" cy="50" r="9" fill="#EDE8FF"/>
+        <circle cx="126" cy="50" r="9" fill="#EDE8FF"/>
+        <circle cx="158" cy="50" r="9" fill="#EDE8FF"/>
+        <circle cx="190" cy="50" r="9" fill="#EDE8FF"/>
+        <circle cx="30" cy="50" r="5" fill="#C4B8F0"/>
+        <circle cx="62" cy="50" r="5" fill="#C4B8F0"/>
+        <circle cx="94" cy="50" r="5" fill="#C4B8F0"/>
+        <circle cx="126" cy="50" r="5" fill="#C4B8F0"/>
+        <circle cx="158" cy="50" r="5" fill="#C4B8F0"/>
+        <circle cx="190" cy="50" r="5" fill="#C4B8F0"/>
+
+        <rect x="15" y="56" width="210" height="80" fill="#EDE8FF" rx="4"/>
+        <text x="120" y="92" fill="#3d2f7a" fontFamily="sans-serif" fontSize="15" fontWeight="700" textAnchor="middle">Block</text>
+        <text x="120" y="112" fill="#5a4a8a" fontFamily="sans-serif" fontSize="11" textAnchor="middle">Contract Details</text>
+      </g>
+
+      <path d="M 300 200 Q 350 110 400 100" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1" strokeDasharray="4 4"/>
+      <path d="M 300 210 Q 350 205 400 200" fill="none" stroke="rgba(225,251,98,0.55)" strokeWidth="1.5" strokeDasharray="4 4"/>
+      <path d="M 300 220 Q 350 290 400 300" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1" strokeDasharray="4 4"/>
+
+      <g transform="translate(400, 78)">
+        <circle cx="25" cy="0" r="7" fill="#7F77DD"/>
+        <circle cx="55" cy="0" r="7" fill="#7F77DD"/>
+        <circle cx="85" cy="0" r="7" fill="#7F77DD"/>
+        <circle cx="115" cy="0" r="7" fill="#7F77DD"/>
+        <circle cx="145" cy="0" r="7" fill="#7F77DD"/>
+        <circle cx="175" cy="0" r="7" fill="#7F77DD"/>
+        <circle cx="25" cy="0" r="4" fill="#5B4BC4"/>
+        <circle cx="55" cy="0" r="4" fill="#5B4BC4"/>
+        <circle cx="85" cy="0" r="4" fill="#5B4BC4"/>
+        <circle cx="115" cy="0" r="4" fill="#5B4BC4"/>
+        <circle cx="145" cy="0" r="4" fill="#5B4BC4"/>
+        <circle cx="175" cy="0" r="4" fill="#5B4BC4"/>
+        <rect x="10" y="4" width="180" height="44" fill="#5B4BC4" rx="3"/>
+        <text x="100" y="30" fill="#fff" fontFamily="sans-serif" fontSize="12" fontWeight="500" textAnchor="middle">Variant · Savings</text>
+      </g>
+
+      <g transform="translate(400, 178)">
+        <circle cx="25" cy="0" r="7" fill="#E1FB62"/>
+        <circle cx="55" cy="0" r="7" fill="#E1FB62"/>
+        <circle cx="85" cy="0" r="7" fill="#E1FB62"/>
+        <circle cx="115" cy="0" r="7" fill="#E1FB62"/>
+        <circle cx="145" cy="0" r="7" fill="#E1FB62"/>
+        <circle cx="175" cy="0" r="7" fill="#E1FB62"/>
+        <circle cx="25" cy="0" r="4" fill="#b8cf45"/>
+        <circle cx="55" cy="0" r="4" fill="#b8cf45"/>
+        <circle cx="85" cy="0" r="4" fill="#b8cf45"/>
+        <circle cx="115" cy="0" r="4" fill="#b8cf45"/>
+        <circle cx="145" cy="0" r="4" fill="#b8cf45"/>
+        <circle cx="175" cy="0" r="4" fill="#b8cf45"/>
+        <rect x="10" y="4" width="180" height="44" fill="#4E4577" stroke="#E1FB62" strokeWidth="2" rx="3"/>
+        <text x="100" y="30" fill="#E1FB62" fontFamily="sans-serif" fontSize="12" fontWeight="600" textAnchor="middle">Variant · P&amp;C</text>
+      </g>
+
+      <g transform="translate(400, 278)">
+        <circle cx="25" cy="0" r="7" fill="#7AB8A0"/>
+        <circle cx="55" cy="0" r="7" fill="#7AB8A0"/>
+        <circle cx="85" cy="0" r="7" fill="#7AB8A0"/>
+        <circle cx="115" cy="0" r="7" fill="#7AB8A0"/>
+        <circle cx="145" cy="0" r="7" fill="#7AB8A0"/>
+        <circle cx="175" cy="0" r="7" fill="#7AB8A0"/>
+        <circle cx="25" cy="0" r="4" fill="#3D9C7A"/>
+        <circle cx="55" cy="0" r="4" fill="#3D9C7A"/>
+        <circle cx="85" cy="0" r="4" fill="#3D9C7A"/>
+        <circle cx="115" cy="0" r="4" fill="#3D9C7A"/>
+        <circle cx="145" cy="0" r="4" fill="#3D9C7A"/>
+        <circle cx="175" cy="0" r="4" fill="#3D9C7A"/>
+        <rect x="10" y="4" width="180" height="44" fill="#3D9C7A" rx="3"/>
+        <text x="100" y="30" fill="#fff" fontFamily="sans-serif" fontSize="12" fontWeight="500" textAnchor="middle">Variant · TradLife</text>
+      </g>
+
+      <g opacity="0.25">
+        <rect x="40" y="335" width="36" height="12" fill="#EDE8FF" rx="2"/>
+        <circle cx="48" cy="333" r="2.5" fill="#EDE8FF"/>
+        <circle cx="58" cy="333" r="2.5" fill="#EDE8FF"/>
+        <circle cx="68" cy="333" r="2.5" fill="#EDE8FF"/>
+      </g>
+      <g opacity="0.2">
+        <rect x="130" y="350" width="36" height="12" fill="#EDE8FF" rx="2"/>
+        <circle cx="138" cy="348" r="2.5" fill="#EDE8FF"/>
+        <circle cx="148" cy="348" r="2.5" fill="#EDE8FF"/>
+        <circle cx="158" cy="348" r="2.5" fill="#EDE8FF"/>
+      </g>
+      <g opacity="0.18">
+        <rect x="600" y="345" width="36" height="12" fill="#EDE8FF" rx="2"/>
+        <circle cx="608" cy="343" r="2.5" fill="#EDE8FF"/>
+        <circle cx="618" cy="343" r="2.5" fill="#EDE8FF"/>
+        <circle cx="628" cy="343" r="2.5" fill="#EDE8FF"/>
+      </g>
+    </svg>
+  );
+}
+
 const NAV = [
   { id: "context",      label: "Context" },
   { id: "problem",      label: "Problem" },
@@ -176,12 +293,11 @@ export default function DataLibrary({ setPage }) {
         </div>
       </div>
 
-      {/* Hero placeholder — to replace with real image later */}
+      {/* Hero illustration */}
       <div style={{ background: C.bgDarker, paddingTop: 8 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 16px" : "0 60px" }}>
-          <div style={{ background: C.bgDark, borderRadius: "12px 12px 0 0", padding: isMobile ? "60px 24px" : "80px 60px", border: "2px dashed rgba(255,255,255,0.18)", borderBottom: "none", textAlign: "center", color: "rgba(255,255,255,0.5)" }}>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>🖼️</div>
-            <div style={{ fontSize: 14, fontWeight: 500 }}>Hero image — to replace</div>
+          <div style={{ borderRadius: "12px 12px 0 0", overflow: "hidden" }}>
+            <DataLibraryHero />
           </div>
         </div>
       </div>
