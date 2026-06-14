@@ -293,7 +293,7 @@ export function DataLibraryDiagram() {
 // Two-column layout on desktop: Components (what's built) on the left,
 // Adoption (how it's received) on the right, with a thin vertical divider.
 // On mobile, stacks vertically. Uses the same #3F3863 background as the
-// Data Library diagram card for visual coherence inside System Thinking.
+// Data Library diagram card — exported for use in the Data Library case study.
 export function StateOfPlayBlock() {
   const isMobile = useIsMobile();
 
@@ -363,7 +363,6 @@ const NAV = [
   { id: "context",      label: "Project Context" },
   { id: "discovery",    label: "Discovery" },
   { id: "improvements", label: "Design Improvements" },
-  { id: "system",       label: "System Thinking" },
   { id: "lessons",      label: "Lessons" },
   { id: "testimonials", label: "Appreciations" },
 ];
@@ -980,114 +979,9 @@ export default function CaseStudy({ setPage }) {
 
         <CSDivider />
 
-        {/* 04 System Thinking — wrapped in saturated purple background.
-            Negative margins cancel the adjacent CSDivider's vertical margins,
-            so the gap between sections matches the rest of the page. */}
-        <div id="system" style={{ background: "#4E4577", marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", paddingLeft: "calc(50vw - 50%)", paddingRight: "calc(50vw - 50%)", paddingTop: isMobile ? 48 : 72, paddingBottom: isMobile ? 48 : 72, marginTop: isMobile ? -48 : -72, marginBottom: isMobile ? -48 : -72 }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", boxSizing: "border-box" }}>
-          <div style={{ fontSize: 11, color: "#EDE5FA", letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>04 — System Thinking</div>
-          <h2 style={{ fontSize: isMobile ? 32 : 50, fontWeight: 700, color: "#fff", marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.5, lineHeight: 1.15 }}>When the Product Grows Faster Than the System</h2>
-
-          {/* Problem */}
-          <h3 style={{ fontSize: isMobile ? 17 : 18, fontWeight: 700, color: "#fff", margin: "0 0 12px" }}>Problem</h3>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 40 }}>
-            As the product evolved and the team grew, inconsistencies began to spread. With no single source of truth, QA testers couldn't tell whether the spec, the design file, or the live app held the correct version — leading to duplicate tickets, alignment calls, and client complaints. In one retrospective, my manager named inconsistency and duplicate tickets as a recurring pain point.
-          </p>
-
-          {/* Solution */}
-          <h3 style={{ fontSize: isMobile ? 17 : 18, fontWeight: 700, color: "#fff", margin: "0 0 12px" }}>Solution</h3>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 16 }}>
-            I led the creation of the Data Library: a system of data-aware patterns built on top of the core design system, enabling consistent representation of complex insurance data across all workflows.
-          </p>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32 }}>
-            The diagram below illustrates how the team worked before — and how the Data Library reshaped that workflow.
-          </p>
-
-          <DataLibraryDiagram />
-
-          {/* Where it stands today — inline caption above the StateOfPlay card */}
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: "8px 0 0", maxWidth: 820 }}>
-            <span style={{ color: "#fff", fontWeight: 600 }}>Where it stands today:</span> below, what's built and how it's being adopted.
-          </p>
-          <StateOfPlayBlock />
-
-          {/* Trade-offs */}
-          <div style={{ marginTop: 56, marginBottom: 32 }}>
-            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>Trade-offs</h3>
-            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
-              For the moment, the library stays under single ownership — even though this might not be the optimal solution and could become a bottleneck. Figma branches were also considered, and discarded. These are the reasons:
-            </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 24, maxWidth: 820 }}>
-              {[
-                { label: "The library is still maturing.", text: "I'm refining the construction logic as patterns emerge. Distributing edit rights now would lock in decisions that aren't stable yet." },
-                { label: "Single-author ownership keeps debugging tight.", text: "When something breaks, the root cause is one decision away, not four." },
-                { label: "Figma branches review the surface, not the structure.", text: "The library's value is in how components are constructed — variants, data shapes, nesting. Branches validate visuals; they don't validate architecture." },
-              ].map((item, i) => (
-                <div key={i} style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", opacity: 0.5, letterSpacing: 1, flexShrink: 0, width: 24, paddingTop: 3 }}>
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0 }}>
-                    <span style={{ color: "#fff", fontWeight: 500 }}>{item.label}</span> {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
-              Designers can work in parallel in their files, without being blocked by the library. But integration into the source of truth still passes through me. Scaling this right now would be premature — it would multiply debt on an immature library. Keeping it small and slow is deliberate. Distributing ownership is the next phase — when the construction logic is stable enough to teach, and when the mandate makes governance reviewable rather than personal.
-            </p>
-          </div>
-
-          {/* Challenges — 4 cards: DesignOps, Team practices, Governance, AI. Full-width single column. */}
-          <div style={{ marginTop: 56, marginBottom: 32 }}>
-            <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
-            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
-              Implementing the Data Library requires a shift in how the team works and organizes itself.
-            </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 28 : 32 }}>
-              <div>
-                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>DesignOps</h4>
-                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  Someone has to feed the system continuously — defining patterns, maintaining variants, and keeping the library alive. This requires a transversal view of the product, not a single workflow perspective, and constant communication about what changes and why.
-                </p>
-              </div>
-
-              <div>
-                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Team practices</h4>
-                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  The system reshapes how designers work day-to-day — how they pick variants, when to propose new ones, and how they collaborate.
-                </p>
-              </div>
-
-              <div>
-                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Governance</h4>
-                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  Every change to a master component needs review and approval before reaching production — the reviewer becomes the gatekeeper of the cross-product experience.
-                  <br /><br />
-                  Today, I'm the only person on the team with the transversal view to play this role — a real risk. Distributing this responsibility is the next step.
-                </p>
-              </div>
-
-              <div>
-                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>AI's role in this</h4>
-                <p style={{ color: "#F5F1FC", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                  AI can be a real ally here — spotting inconsistencies, identifying missing Lego pieces in the architecture, and generating documentation about what changes between versions. Defining how it fits into the workflow — as a contributor that supports the team without replacing the transversal judgment — is part of what comes next.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          </div>
-        </div>
-
-        <CSDivider />
-
-        {/* 05 Lessons */}
+        {/* 04 Lessons */}
         <div id="lessons">
-          <SectionLabel num="05">Lessons</SectionLabel>
+          <SectionLabel num="04">Lessons</SectionLabel>
           <SectionTitle>Growing With the Product</SectionTitle>
           <div style={{ maxWidth: 820 }}>
             <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 24 }}>
@@ -1107,9 +1001,9 @@ export default function CaseStudy({ setPage }) {
 
         <CSDivider />
 
-        {/* 06 Appreciations */}
+        {/* 05 Appreciations */}
         <div id="testimonials">
-          <SectionLabel num="06">Appreciations</SectionLabel>
+          <SectionLabel num="05">Appreciations</SectionLabel>
           <SectionTitle>What the Team Says</SectionTitle>
           <div style={{ marginTop: 24, background: C.bgAlt, borderRadius: 16, padding: isMobile ? "20px" : "32px", columnCount: isMobile ? 1 : 3, columnGap: 16 }}>
             {[
