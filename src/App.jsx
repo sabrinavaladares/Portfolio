@@ -459,7 +459,7 @@ function HomePage({ setPage }) {
       <div style={{ background: C.bg, minHeight: isMobile ? "auto" : HERO_MIN_HEIGHT, display: "flex", flexDirection: "column" }}>
         <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 24px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 20 : 80, alignItems: "start" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 20 : 80, alignItems: "center" }}>
               {/* Text first on both — on mobile, photo follows underneath */}
               <div style={{ paddingTop: isMobile ? 24 : 0 }}>
                 <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.1, letterSpacing: isMobile ? -0.5 : -1 }}>
