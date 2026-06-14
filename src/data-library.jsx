@@ -23,14 +23,14 @@ export function DataLibraryHero() {
   return (
     <svg width="100%" viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
       <title>Data Library</title>
-      <desc>A master section component shown in detail, with a grid of variant cards behind it representing the cross-cutting design library.</desc>
+      <desc>A master section component from the Pathfinder design library, with its variant properties shown in the Figma inspector panel.</desc>
 
       <defs>
         <filter id="masterShadow" x="-20%" y="-20%" width="140%" height="140%">
           <feDropShadow dx="0" dy="14" stdDeviation="18" floodColor="#5B4BC4" floodOpacity="0.22"/>
         </filter>
         <filter id="liftedShadow" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#5B4BC4" floodOpacity="0.15"/>
+          <feDropShadow dx="0" dy="8" stdDeviation="14" floodColor="#000" floodOpacity="0.25"/>
         </filter>
         <pattern id="dotGrid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
           <circle cx="16" cy="16" r="1" fill="#5B4BC4" fillOpacity="0.07"/>
@@ -40,205 +40,125 @@ export function DataLibraryHero() {
       <rect width="800" height="480" fill="#EDE8FF"/>
       <rect width="800" height="480" fill="url(#dotGrid)"/>
 
-      <text x="40" y="48" fill="#5B4BC4" fontFamily="sans-serif" fontSize="10" fontWeight="700" letterSpacing="3" opacity="0.65">❖  DATA LIBRARY</text>
+      <text x="40" y="48" fill="#5B4BC4" fontFamily="sans-serif" fontSize="10" fontWeight="700" letterSpacing="3" opacity="0.7">❖  DATA LIBRARY</text>
       <text x="40" y="62" fill="#9388B3" fontFamily="sans-serif" fontSize="10" letterSpacing="0.5">6 sections · 18 variants · 4 flows</text>
       <text x="760" y="58" fill="#9388B3" fontFamily="sans-serif" fontSize="9" letterSpacing="0.5" textAnchor="end">Pathfinder · DXC Technology</text>
 
-      <g opacity="0.6">
-        <g transform="translate(40, 100)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#7F77DD" rx="2"/>
-          <rect x="10" y="18" width="50" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="80" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="60" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="74" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#EDE8FF" rx="1.5"/>
-        </g>
-        <g transform="translate(162, 100)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#AFA9EC" rx="2"/>
-          <rect x="10" y="18" width="60" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="74" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="50" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="80" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#EDE8FF" rx="1.5"/>
-        </g>
-        <g transform="translate(284, 100)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#3D9C7A" rx="2"/>
-          <rect x="10" y="18" width="46" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="80" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="64" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="70" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#D6F2E4" rx="1.5"/>
-        </g>
-        <g transform="translate(406, 100)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#5B4BC4" rx="2"/>
-          <rect x="10" y="18" width="68" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="50" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="78" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="60" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#EDE8FF" rx="1.5"/>
-        </g>
-        <g transform="translate(528, 100)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#C97A3D" rx="2"/>
-          <rect x="10" y="18" width="54" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="76" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="62" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="70" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#FAEEDF" rx="1.5"/>
-        </g>
-        <g transform="translate(650, 100)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#AFA9EC" rx="2"/>
-          <rect x="10" y="18" width="44" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="80" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="58" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="72" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#EDE8FF" rx="1.5"/>
-        </g>
+      <g opacity="0.35">
+        <g transform="translate(40, 90)"><rect width="110" height="65" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/><rect width="110" height="6" fill="#7F77DD" rx="2"/><rect x="10" y="18" width="50" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="26" width="80" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="36" width="60" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="44" width="74" height="3" fill="#E4E2DA" rx="1"/></g>
+        <g transform="translate(162, 90)"><rect width="110" height="65" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/><rect width="110" height="6" fill="#AFA9EC" rx="2"/><rect x="10" y="18" width="60" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="26" width="74" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="36" width="50" height="3" fill="#E4E2DA" rx="1"/></g>
+        <g transform="translate(284, 90)"><rect width="110" height="65" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/><rect width="110" height="6" fill="#3D9C7A" rx="2"/><rect x="10" y="18" width="46" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="26" width="80" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="36" width="64" height="3" fill="#E4E2DA" rx="1"/></g>
+        <g transform="translate(528, 90)"><rect width="110" height="65" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/><rect width="110" height="6" fill="#C97A3D" rx="2"/><rect x="10" y="18" width="54" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="26" width="76" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="36" width="62" height="3" fill="#E4E2DA" rx="1"/></g>
+        <g transform="translate(650, 90)"><rect width="110" height="65" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/><rect width="110" height="6" fill="#AFA9EC" rx="2"/><rect x="10" y="18" width="44" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="26" width="80" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="36" width="58" height="3" fill="#E4E2DA" rx="1"/></g>
 
-        <g transform="translate(40, 187)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#C4B8F0" rx="2"/>
-          <rect x="10" y="18" width="60" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="74" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="48" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="80" height="3" fill="#E4E2DA" rx="1"/>
-        </g>
-        <g transform="translate(528, 187)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#7F77DD" rx="2"/>
-          <rect x="10" y="18" width="68" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="50" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="76" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="62" height="3" fill="#E4E2DA" rx="1"/>
-        </g>
-        <g transform="translate(650, 187)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#3D9C7A" rx="2"/>
-          <rect x="10" y="18" width="58" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="70" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="56" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="76" height="3" fill="#E4E2DA" rx="1"/>
-        </g>
-
-        <g transform="translate(40, 274)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#5B4BC4" rx="2"/>
-          <rect x="10" y="18" width="50" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="78" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="62" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="74" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#EDE8FF" rx="1.5"/>
-        </g>
-        <g transform="translate(162, 274)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#C97A3D" rx="2"/>
-          <rect x="10" y="18" width="64" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="50" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="76" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="58" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#FAEEDF" rx="1.5"/>
-        </g>
-        <g transform="translate(284, 274)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#AFA9EC" rx="2"/>
-          <rect x="10" y="18" width="56" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="74" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="48" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="80" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#EDE8FF" rx="1.5"/>
-        </g>
-        <g transform="translate(406, 274)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#7F77DD" rx="2"/>
-          <rect x="10" y="18" width="52" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="78" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="60" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="74" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#EDE8FF" rx="1.5"/>
-        </g>
-        <g transform="translate(528, 274)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#C4B8F0" rx="2"/>
-          <rect x="10" y="18" width="60" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="50" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="78" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="58" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#EDE8FF" rx="1.5"/>
-        </g>
-        <g transform="translate(650, 274)">
-          <rect width="110" height="75" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-          <rect width="110" height="6" fill="#3D9C7A" rx="2"/>
-          <rect x="10" y="18" width="62" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="26" width="76" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="36" width="50" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="44" width="78" height="3" fill="#E4E2DA" rx="1"/>
-          <rect x="10" y="56" width="30" height="6" fill="#D6F2E4" rx="1.5"/>
-        </g>
+        <g transform="translate(40, 380)"><rect width="110" height="65" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/><rect width="110" height="6" fill="#5B4BC4" rx="2"/><rect x="10" y="18" width="50" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="26" width="78" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="36" width="62" height="3" fill="#E4E2DA" rx="1"/></g>
+        <g transform="translate(162, 380)"><rect width="110" height="65" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/><rect width="110" height="6" fill="#C97A3D" rx="2"/><rect x="10" y="18" width="64" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="26" width="50" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="36" width="76" height="3" fill="#E4E2DA" rx="1"/></g>
+        <g transform="translate(528, 380)"><rect width="110" height="65" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/><rect width="110" height="6" fill="#C4B8F0" rx="2"/><rect x="10" y="18" width="60" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="26" width="50" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="36" width="78" height="3" fill="#E4E2DA" rx="1"/></g>
+        <g transform="translate(650, 380)"><rect width="110" height="65" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/><rect width="110" height="6" fill="#3D9C7A" rx="2"/><rect x="10" y="18" width="62" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="26" width="76" height="3" fill="#E4E2DA" rx="1"/><rect x="10" y="36" width="50" height="3" fill="#E4E2DA" rx="1"/></g>
       </g>
 
-      <g transform="translate(420, 200)" opacity="0.85" filter="url(#liftedShadow)">
-        <rect width="120" height="80" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
-        <rect width="120" height="7" fill="#3D9C7A" rx="2"/>
-        <text x="10" y="22" fill="#3D9C7A" fontFamily="sans-serif" fontSize="7" fontWeight="700" letterSpacing="1">VARIANT · TRADLIFE</text>
-        <rect x="10" y="28" width="64" height="3" fill="#E4E2DA" rx="1"/>
-        <rect x="10" y="36" width="80" height="3" fill="#E4E2DA" rx="1"/>
-        <rect x="10" y="44" width="56" height="3" fill="#E4E2DA" rx="1"/>
-        <rect x="10" y="52" width="74" height="3" fill="#E4E2DA" rx="1"/>
-        <rect x="10" y="62" width="50" height="8" fill="#D6F2E4" rx="2"/>
-        <text x="35" y="68" fill="#3D9C7A" fontFamily="sans-serif" fontSize="6" fontWeight="700" textAnchor="middle">PUBLISHED</text>
+      <rect x="68" y="92" width="384" height="276" fill="none" stroke="#9747FF" strokeWidth="1.5" strokeDasharray="5 4" rx="2" opacity="0.9"/>
+      <rect x="74" y="78" width="124" height="16" fill="#9747FF" rx="3"/>
+      <text x="136" y="89" fill="#fff" fontFamily="sans-serif" fontSize="9" fontWeight="700" letterSpacing="1.2" textAnchor="middle">❖ MAIN COMPONENT</text>
+
+      <g transform="translate(80, 104)" filter="url(#masterShadow)">
+        <rect width="360" height="252" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="6"/>
+
+        <text x="20" y="30" fill="#1a1a1a" fontFamily="sans-serif" fontSize="14" fontWeight="700"><tspan fill="#5B4BC4">❖ </tspan>Dates and Duration</text>
+        <line x1="0" y1="48" x2="360" y2="48" stroke="#F0EEEA"/>
+
+        <text x="20" y="68" fill="#888" fontFamily="sans-serif" fontSize="9">Effective Date</text>
+        <text x="20" y="86" fill="#1a1a1a" fontFamily="sans-serif" fontSize="11" fontWeight="500">05/07/2024</text>
+
+        <text x="192" y="68" fill="#888" fontFamily="sans-serif" fontSize="9">Term Type</text>
+        <text x="192" y="86" fill="#1a1a1a" fontFamily="sans-serif" fontSize="11" fontWeight="500">Fixed with Automatic Renewal</text>
+
+        <text x="20" y="114" fill="#888" fontFamily="sans-serif" fontSize="9">Renewal</text>
+        <rect x="20" y="120" width="148" height="26" fill="#fff" stroke="#E4E2DA" rx="4"/>
+        <text x="28" y="137" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10">Anniversary Date</text>
+        <path d="M 152 132 L 156 136 L 160 132" stroke="#888" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
+
+        <text x="192" y="114" fill="#888" fontFamily="sans-serif" fontSize="9">Renewal Date</text>
+        <rect x="192" y="120" width="60" height="26" fill="#fff" stroke="#E4E2DA" rx="4"/>
+        <text x="200" y="137" fill="#C4C4C4" fontFamily="sans-serif" fontSize="10">00</text>
+        <rect x="256" y="120" width="84" height="26" fill="#fff" stroke="#E4E2DA" rx="4"/>
+        <text x="264" y="137" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10">March</text>
+        <path d="M 324 132 L 328 136 L 332 132" stroke="#888" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
+
+        <text x="20" y="168" fill="#888" fontFamily="sans-serif" fontSize="9">Expiry Duration</text>
+        <rect x="20" y="174" width="60" height="26" fill="#fff" stroke="#E4E2DA" rx="4"/>
+        <text x="28" y="191" fill="#C4C4C4" fontFamily="sans-serif" fontSize="10">00</text>
+        <rect x="84" y="174" width="84" height="26" fill="#fff" stroke="#E4E2DA" rx="4"/>
+        <text x="92" y="191" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10">Years</text>
+        <path d="M 152 186 L 156 190 L 160 186" stroke="#888" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
+
+        <text x="192" y="168" fill="#888" fontFamily="sans-serif" fontSize="9">Expire Date</text>
+        <rect x="192" y="174" width="148" height="26" fill="#fff" stroke="#E4E2DA" rx="4"/>
+        <text x="200" y="191" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10" fontWeight="500">05/07/2034</text>
+        <rect x="316" y="180" width="14" height="14" fill="none" stroke="#888" strokeWidth="1" rx="2"/>
+
+        <text x="20" y="220" fill="#888" fontFamily="sans-serif" fontSize="9">Signature Date <tspan fill="#E74C3C">*</tspan></text>
+        <rect x="20" y="226" width="148" height="22" fill="#fff" stroke="#E4E2DA" rx="4"/>
+        <text x="28" y="241" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10" fontWeight="500">05/07/2024</text>
+
+        <text x="192" y="220" fill="#888" fontFamily="sans-serif" fontSize="9">Postmark Date</text>
+        <rect x="192" y="226" width="148" height="22" fill="#fff" stroke="#E4E2DA" rx="4"/>
+        <text x="200" y="241" fill="#C4C4C4" fontFamily="sans-serif" fontSize="10">dd/mm/yyyy</text>
       </g>
 
-      <g transform="translate(80, 130)" filter="url(#masterShadow)">
-        <rect width="380" height="220" fill="#fff" rx="8"/>
-        <path d="M 0 8 Q 0 0 8 0 L 372 0 Q 380 0 380 8 L 380 40 L 0 40 Z" fill="#5B4BC4"/>
+      <rect x="64" y="88" width="8" height="8" fill="#fff" stroke="#9747FF" strokeWidth="1.2"/>
+      <rect x="448" y="88" width="8" height="8" fill="#fff" stroke="#9747FF" strokeWidth="1.2"/>
+      <rect x="64" y="364" width="8" height="8" fill="#fff" stroke="#9747FF" strokeWidth="1.2"/>
+      <rect x="448" y="364" width="8" height="8" fill="#fff" stroke="#9747FF" strokeWidth="1.2"/>
 
-        <text x="18" y="25" fill="#fff" fontFamily="sans-serif" fontSize="12" fontWeight="700">❖ Dates {"&"} Duration</text>
-        <rect x="318" y="13" width="48" height="16" fill="#E1FB62" rx="3"/>
-        <text x="342" y="24" fill="#1a1a1a" fontFamily="sans-serif" fontSize="8" fontWeight="800" letterSpacing="0.8" textAnchor="middle">MASTER</text>
+      <g transform="translate(478, 104)" filter="url(#liftedShadow)">
+        <rect width="220" height="252" fill="#1F1F1F" rx="6"/>
 
-        <text x="18" y="64" fill="#9B9B9B" fontFamily="sans-serif" fontSize="8" letterSpacing="1.2">EFFECTIVE DATE</text>
-        <rect x="18" y="70" width="162" height="24" fill="#F5F3F0" rx="4"/>
-        <text x="26" y="86" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10" fontWeight="500">05/07/2024</text>
+        <text x="14" y="22" fill="#fff" fontFamily="sans-serif" fontSize="10" fontWeight="600">Dates and Duration</text>
+        <path d="M 130 17 L 134 21 L 138 17" stroke="#aaa" strokeWidth="1" fill="none" strokeLinecap="round"/>
+        <rect x="156" y="14" width="9" height="9" fill="none" stroke="#888" strokeWidth="0.8"/>
+        <text x="180" y="22" fill="#9747FF" fontFamily="sans-serif" fontSize="11">◊</text>
+        <circle cx="198" cy="18" r="1" fill="#888"/>
+        <circle cx="202" cy="18" r="1" fill="#888"/>
+        <circle cx="206" cy="18" r="1" fill="#888"/>
 
-        <text x="200" y="64" fill="#9B9B9B" fontFamily="sans-serif" fontSize="8" letterSpacing="1.2">TERM TYPE</text>
-        <rect x="200" y="70" width="162" height="24" fill="#F5F3F0" rx="4"/>
-        <text x="208" y="86" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10" fontWeight="500">Fixed with Auto Renewal</text>
+        <text x="14" y="44" fill="#888" fontFamily="sans-serif" fontSize="9">From this file</text>
+        <text x="76" y="44" fill="#9747FF" fontFamily="sans-serif" fontSize="11">◊</text>
 
-        <text x="18" y="114" fill="#9B9B9B" fontFamily="sans-serif" fontSize="8" letterSpacing="1.2">RENEWAL</text>
-        <rect x="18" y="120" width="162" height="24" fill="#fff" stroke="#E4E2DA" rx="4"/>
-        <text x="26" y="136" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10">Anniversary Date</text>
-        <path d="M 166 132 L 170 136 L 174 132" stroke="#9B9B9B" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
+        <text x="14" y="60" fill="#888" fontFamily="sans-serif" fontSize="9">Used on: Activity Request Step</text>
 
-        <text x="200" y="114" fill="#9B9B9B" fontFamily="sans-serif" fontSize="8" letterSpacing="1.2">RENEWAL DATE</text>
-        <rect x="200" y="120" width="60" height="24" fill="#fff" stroke="#E4E2DA" rx="4"/>
-        <text x="208" y="136" fill="#C4C4C4" fontFamily="sans-serif" fontSize="10">00</text>
-        <rect x="266" y="120" width="96" height="24" fill="#fff" stroke="#E4E2DA" rx="4"/>
-        <text x="274" y="136" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10">March</text>
-        <path d="M 348 132 L 352 136 L 356 132" stroke="#9B9B9B" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
+        <line x1="14" y1="74" x2="206" y2="74" stroke="#3D3D3D" strokeWidth="0.5"/>
 
-        <text x="18" y="164" fill="#9B9B9B" fontFamily="sans-serif" fontSize="8" letterSpacing="1.2">EXPIRY DURATION</text>
-        <rect x="18" y="170" width="76" height="24" fill="#fff" stroke="#E4E2DA" rx="4"/>
-        <text x="26" y="186" fill="#C4C4C4" fontFamily="sans-serif" fontSize="10">00</text>
-        <rect x="100" y="170" width="80" height="24" fill="#fff" stroke="#E4E2DA" rx="4"/>
-        <text x="108" y="186" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10">Years</text>
+        <text x="14" y="100" fill="#888" fontFamily="sans-serif" fontSize="10">Product</text>
+        <rect x="90" y="88" width="116" height="20" fill="#2C2C2C" stroke="#3D3D3D" rx="3"/>
+        <text x="96" y="102" fill="#fff" fontFamily="sans-serif" fontSize="9">Savings Fourgous</text>
+        <path d="M 192 97 L 196 101 L 200 97" stroke="#888" strokeWidth="1" fill="none" strokeLinecap="round"/>
 
-        <text x="200" y="164" fill="#9B9B9B" fontFamily="sans-serif" fontSize="8" letterSpacing="1.2">EXPIRE DATE</text>
-        <rect x="200" y="170" width="162" height="24" fill="#F5F3F0" rx="4"/>
-        <text x="208" y="186" fill="#1a1a1a" fontFamily="sans-serif" fontSize="10" fontWeight="500">05/07/2034</text>
+        <text x="14" y="130" fill="#888" fontFamily="sans-serif" fontSize="10">Context</text>
+        <rect x="90" y="118" width="116" height="20" fill="#2196F3" rx="3"/>
+        <text x="96" y="132" fill="#fff" fontFamily="sans-serif" fontSize="9" fontWeight="600">✓ Create Proposal</text>
 
-        <line x1="18" y1="208" x2="362" y2="208" stroke="#F0EEEA" strokeWidth="0.5"/>
+        <text x="14" y="160" fill="#888" fontFamily="sans-serif" fontSize="10">Term</text>
+        <rect x="90" y="148" width="116" height="20" fill="#2C2C2C" stroke="#3D3D3D" rx="3"/>
+        <text x="96" y="162" fill="#fff" fontFamily="sans-serif" fontSize="9">Fixed with Autom...</text>
+        <path d="M 192 157 L 196 161 L 200 157" stroke="#888" strokeWidth="1" fill="none" strokeLinecap="round"/>
+
+        <text x="14" y="190" fill="#888" fontFamily="sans-serif" fontSize="10">Read Only</text>
+        <rect x="178" y="182" width="28" height="14" fill="#3D3D3D" rx="7"/>
+        <circle cx="185" cy="189" r="5" fill="#888"/>
+
+        <line x1="14" y1="212" x2="206" y2="212" stroke="#3D3D3D" strokeWidth="0.5"/>
+
+        <text x="14" y="228" fill="#888" fontFamily="sans-serif" fontSize="8" letterSpacing="0.8">VARIANT INSTANCES</text>
+        <text x="14" y="244" fill="#fff" fontFamily="sans-serif" fontSize="11" fontWeight="700">18</text>
+        <text x="36" y="244" fill="#888" fontFamily="sans-serif" fontSize="9">across 4 flows</text>
       </g>
 
-      <g transform="translate(80, 358)" opacity="0.95">
-        <rect width="380" height="22" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
+      <g transform="translate(80, 395)" opacity="0.95">
+        <rect width="360" height="22" fill="#fff" stroke="#E4E2DA" strokeWidth="0.5" rx="4"/>
         <circle cx="14" cy="11" r="4" fill="#3D9C7A"/>
         <text x="26" y="15" fill="#1a1a1a" fontFamily="sans-serif" fontSize="9" fontWeight="600">Published to Pathfinder library</text>
-        <text x="320" y="15" fill="#6B6B6B" fontFamily="sans-serif" fontSize="9">18 instances</text>
+        <text x="300" y="15" fill="#6B6B6B" fontFamily="sans-serif" fontSize="9">18 instances</text>
       </g>
 
     </svg>
