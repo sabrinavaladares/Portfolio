@@ -983,7 +983,7 @@ export default function CaseStudy({ setPage }) {
         <div id="lessons">
           <SectionLabel num="04">Lessons</SectionLabel>
           <SectionTitle>Growing With the Product</SectionTitle>
-          <div style={{ maxWidth: 820 }}>
+          <div>
             <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 24 }}>
               Working on a project of this magnitude — and being there from the very beginning — is a rare professional experience. I lived through every phase of it.
             </p>
