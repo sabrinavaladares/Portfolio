@@ -345,18 +345,29 @@ function CaseStudyCard({ setPage, config, index }) {
         {title}
       </h3>
 
-      {/* Description right under title */}
+      {/* Description */}
       <p
         style={{
-          margin: "0 0 32px",
+          margin: "0 0 20px",
           color: "#555",
           fontSize: isMobile ? 16 : 18,
           lineHeight: 1.65,
-          maxWidth: 720,
         }}
       >
         {description}
       </p>
+
+      {/* Tags */}
+      <div
+        style={{
+          fontSize: 15,
+          color: C.muted,
+          marginBottom: 32,
+          fontWeight: 400,
+        }}
+      >
+        {tags.join("  ·  ")}
+      </div>
 
       {/* Image — optionally framed with lilac wash */}
       <div
@@ -389,18 +400,8 @@ function CaseStudyCard({ setPage, config, index }) {
         )}
       </div>
 
-      {/* Tags + button below image */}
+      {/* Button alone below image */}
       <div>
-        <div
-          style={{
-            fontSize: 15,
-            color: C.muted,
-            marginBottom: 32,
-            fontWeight: 400,
-          }}
-        >
-          {tags.join("  ·  ")}
-        </div>
 
         <button
           type="button"
