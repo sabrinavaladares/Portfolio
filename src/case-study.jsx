@@ -384,7 +384,7 @@ function SectionLabel({ num, children }) {
 
 function SectionTitle({ children }) {
   const isMobile = useIsMobile();
-  return <h2 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 700, color: C.ink, marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>{children}</h2>;
+  return <h2 style={{ fontSize: isMobile ? 32 : 50, fontWeight: 700, color: C.ink, marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.5, lineHeight: 1.15 }}>{children}</h2>;
 }
 
 function CSDivider() {
@@ -777,8 +777,8 @@ export default function CaseStudy({ setPage }) {
       {/* Hero */}
       <div style={{ background: "#3d2f7a", display: "flex", alignItems: "center", paddingTop: isMobile ? 96 : 128 }}>
         <div style={{ padding: isMobile ? "32px 24px 24px" : "64px 60px 32px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
-          <h1 style={{ fontSize: isMobile ? 36 : 56, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>PathFinder</h1>
-          <p style={{ fontSize: isMobile ? 15 : 20, color: "#f5f0ff", lineHeight: 1.5, margin: isMobile ? "0 0 32px" : "0 0 48px" }}>
+          <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>PathFinder</h1>
+          <p style={{ fontSize: isMobile ? 16 : 20, color: "#f5f0ff", lineHeight: 1.5, margin: isMobile ? "0 0 32px" : "0 0 48px" }}>
             Redesigning a complex, content-heavy B2B insurance software — and building the systems that scale it.
           </p>
 
@@ -878,7 +878,7 @@ export default function CaseStudy({ setPage }) {
         <div id="context">
           <SectionLabel num="01">Project Context</SectionLabel>
           <SectionTitle>From Legacy to Modern UX</SectionTitle>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32 }}>
             GrathTalk is a B2B software solution for managing insurance contracts across multiple lines. Originally built in the 1990s, the platform had become outdated — cluttered screens, confusing navigation, poor content scanning, and an old-fashioned interface. Launched in 2020, the redesign aimed to improve the user experience and modernize the UI through a complete overhaul of the application.
           </p>
           <div>
@@ -895,10 +895,10 @@ export default function CaseStudy({ setPage }) {
         <div id="discovery">
           <SectionLabel num="02">Discovery</SectionLabel>
           <SectionTitle>Listening Before Designing</SectionTitle>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 24 }}>
             The project started with a deep research phase. Covea — one of the clients — operates through 3 distinct insurance brands under the same group. Each brand had its own workflows, terminology, and user expectations. The goal was ambitious: unify the UX experience across all 3 brands within a single platform.
           </p>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 48 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 48 }}>
             To achieve this, we conducted user interviews with a range of profiles across the brands — from managers to brokers — to capture different perspectives, needs, and pain points.
           </p>
 
@@ -922,14 +922,14 @@ export default function CaseStudy({ setPage }) {
           </div>
 
           <h3 style={{ fontSize: isMobile ? 18 : 20, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.2 }}>Interviews Restitution</h3>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 24 }}>
             The interviews led to a structured restitution document — combining personas, main pain points per category, and a complete list of needs to be addressed in the redesign.
           </p>
 
           <RestitutionComposition />
 
           <h3 style={{ fontSize: isMobile ? 18 : 20, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.2 }}>Legacy Audit</h3>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32 }}>
             A thorough UX audit of the existing platform revealed a wide range of structural issues. Among the most critical were navigation, content hierarchy, heavy screens, and an outdated UI.
           </p>
 
@@ -966,7 +966,7 @@ export default function CaseStudy({ setPage }) {
         <div id="improvements">
           <SectionLabel num="03">Design Improvements</SectionLabel>
           <SectionTitle>Changes That Transformed the Experience</SectionTitle>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 40 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 40 }}>
             The audit revealed clear patterns. A set of structural improvements had the highest impact on usability, navigation clarity, and information hierarchy across the entire platform.
           </p>
 
@@ -986,20 +986,20 @@ export default function CaseStudy({ setPage }) {
         <div id="system" style={{ background: "#4E4577", marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", paddingLeft: "calc(50vw - 50%)", paddingRight: "calc(50vw - 50%)", paddingTop: isMobile ? 48 : 72, paddingBottom: isMobile ? 48 : 72, marginTop: isMobile ? -48 : -72, marginBottom: isMobile ? -48 : -72 }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", boxSizing: "border-box" }}>
           <div style={{ fontSize: 11, color: "#EDE5FA", letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>04 — System Thinking</div>
-          <h2 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 700, color: "#fff", marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>When the Product Grows Faster Than the System</h2>
+          <h2 style={{ fontSize: isMobile ? 32 : 50, fontWeight: 700, color: "#fff", marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.5, lineHeight: 1.15 }}>When the Product Grows Faster Than the System</h2>
 
           {/* Problem */}
           <h3 style={{ fontSize: isMobile ? 17 : 18, fontWeight: 700, color: "#fff", margin: "0 0 12px" }}>Problem</h3>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 40 }}>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 40 }}>
             As the product evolved and the team grew, inconsistencies began to spread. With no single source of truth, QA testers couldn't tell whether the spec, the design file, or the live app held the correct version — leading to duplicate tickets, alignment calls, and client complaints. In one retrospective, my manager named inconsistency and duplicate tickets as a recurring pain point.
           </p>
 
           {/* Solution */}
           <h3 style={{ fontSize: isMobile ? 17 : 18, fontWeight: 700, color: "#fff", margin: "0 0 12px" }}>Solution</h3>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 16 }}>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 16 }}>
             I led the creation of the Data Library: a system of data-aware patterns built on top of the core design system, enabling consistent representation of complex insurance data across all workflows.
           </p>
-          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32 }}>
             The diagram below illustrates how the team worked before — and how the Data Library reshaped that workflow.
           </p>
 
@@ -1014,7 +1014,7 @@ export default function CaseStudy({ setPage }) {
           {/* Trade-offs */}
           <div style={{ marginTop: 56, marginBottom: 32 }}>
             <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 16, letterSpacing: -0.3 }}>Trade-offs</h3>
-            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
+            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
               For the moment, the library stays under single ownership — even though this might not be the optimal solution and could become a bottleneck. Figma branches were also considered, and discarded. These are the reasons:
             </p>
 
@@ -1028,14 +1028,14 @@ export default function CaseStudy({ setPage }) {
                   <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", opacity: 0.5, letterSpacing: 1, flexShrink: 0, width: 24, paddingTop: 3 }}>
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, margin: 0 }}>
+                  <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0 }}>
                     <span style={{ color: "#fff", fontWeight: 500 }}>{item.label}</span> {item.text}
                   </p>
                 </div>
               ))}
             </div>
 
-            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
+            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
               Designers can work in parallel in their files, without being blocked by the library. But integration into the source of truth still passes through me. Scaling this right now would be premature — it would multiply debt on an immature library. Keeping it small and slow is deliberate. Distributing ownership is the next phase — when the construction logic is stable enough to teach, and when the mandate makes governance reviewable rather than personal.
             </p>
           </div>
@@ -1043,7 +1043,7 @@ export default function CaseStudy({ setPage }) {
           {/* Challenges — 4 cards: DesignOps, Team practices, Governance, AI. Full-width single column. */}
           <div style={{ marginTop: 56, marginBottom: 32 }}>
             <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: "#fff", marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
-            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
+            <p style={{ color: "#F5F1FC", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
               Implementing the Data Library requires a shift in how the team works and organizes itself.
             </p>
 
@@ -1090,16 +1090,16 @@ export default function CaseStudy({ setPage }) {
           <SectionLabel num="05">Lessons</SectionLabel>
           <SectionTitle>Growing With the Product</SectionTitle>
           <div style={{ maxWidth: 820 }}>
-            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 24 }}>
               Working on a project of this magnitude — and being there from the very beginning — is a rare professional experience. I lived through every phase of it.
             </p>
-            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 24 }}>
               It started with deep exploration: user interviews with a large group of insurers like Covea, understanding how they work, where their pain points live, and what shapes their day-to-day. Then came the design phase, where I had to learn the insurance domain itself — the legacy screens, the vocabulary, the workflows — while collaborating with very different profiles across the team. Each iteration meant proposing solutions, gathering feedback, and refining patterns step by step.
             </p>
-            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 24 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 24 }}>
               I was also the first person to build a UI system on the project, before we eventually hired someone dedicated to it. Then came the migration from XD to Figma — which became the moment I understood why we had to do things differently. The product was getting more complex, the inconsistencies were growing, and the way we were working couldn't scale.
             </p>
-            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 0 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 0 }}>
               That's how the Data Library was born. Building it while still producing designs, explaining its value to the team, taking real risks and responsibilities, and keeping clarity through all of it — these were intense phases, each with their own lessons. Together, they taught me what it really takes to redesign a back-end as complex as GrathTalk: not just good design, but the patience to build the systems that make good design possible.
             </p>
           </div>
