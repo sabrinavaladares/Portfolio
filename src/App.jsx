@@ -331,12 +331,12 @@ function CaseStudyCard({ setPage, config, index }) {
         cursor: "pointer",
       }}
     >
-      {/* Title above the image */}
+      {/* Title */}
       <h3
         style={{
           fontSize: isMobile ? 32 : 50,
           fontWeight: 700,
-          margin: "0 0 24px",
+          margin: "0 0 20px",
           color: C.ink,
           letterSpacing: -0.5,
           lineHeight: 1.15,
@@ -344,6 +344,19 @@ function CaseStudyCard({ setPage, config, index }) {
       >
         {title}
       </h3>
+
+      {/* Description right under title */}
+      <p
+        style={{
+          margin: "0 0 32px",
+          color: "#555",
+          fontSize: isMobile ? 16 : 18,
+          lineHeight: 1.65,
+          maxWidth: 720,
+        }}
+      >
+        {description}
+      </p>
 
       {/* Image — optionally framed with lilac wash */}
       <div
@@ -376,19 +389,8 @@ function CaseStudyCard({ setPage, config, index }) {
         )}
       </div>
 
-      {/* Description + tags below image */}
+      {/* Tags + button below image */}
       <div>
-        <p
-          style={{
-            margin: "0 0 20px",
-            color: "#555",
-            fontSize: isMobile ? 16 : 18,
-            lineHeight: 1.65,
-          }}
-        >
-          {description}
-        </p>
-
         <div
           style={{
             fontSize: 15,
