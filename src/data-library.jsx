@@ -37,7 +37,7 @@ export function DataLibraryHero() {
         </pattern>
       </defs>
 
-      <rect width="800" height="480" fill="#FAFAF7"/>
+      <rect width="800" height="480" fill="#EDE8FF"/>
       <rect width="800" height="480" fill="url(#dotGrid)"/>
 
       <text x="40" y="48" fill="#5B4BC4" fontFamily="sans-serif" fontSize="10" fontWeight="700" letterSpacing="3" opacity="0.65">❖  DATA LIBRARY</text>
