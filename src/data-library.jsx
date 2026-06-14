@@ -148,7 +148,7 @@ function SectionLabel({ num, children }) {
 
 function SectionTitle({ children }) {
   const isMobile = useIsMobile();
-  return <h2 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 700, color: C.ink, marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.4, lineHeight: 1.2 }}>{children}</h2>;
+  return <h2 style={{ fontSize: isMobile ? 32 : 50, fontWeight: 700, color: C.ink, marginBottom: isMobile ? 20 : 28, marginTop: 0, letterSpacing: -0.5, lineHeight: 1.15 }}>{children}</h2>;
 }
 
 function CSDivider() {
@@ -229,8 +229,8 @@ export default function DataLibrary({ setPage }) {
       {/* Hero */}
       <div style={{ background: C.bgDarker, paddingTop: isMobile ? 96 : 128 }}>
         <div style={{ padding: isMobile ? "32px 24px 24px" : "64px 60px 32px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
-          <h1 style={{ fontSize: isMobile ? 36 : 56, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>Data Library</h1>
-          <p style={{ fontSize: isMobile ? 15 : 20, color: "#f5f0ff", lineHeight: 1.5, margin: isMobile ? "0 0 32px" : "0 0 48px" }}>
+          <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>Data Library</h1>
+          <p style={{ fontSize: isMobile ? 16 : 20, color: "#f5f0ff", lineHeight: 1.5, margin: isMobile ? "0 0 32px" : "0 0 48px" }}>
             Building cross-cutting design infrastructure for a complex B2B platform.
           </p>
 
@@ -327,13 +327,13 @@ export default function DataLibrary({ setPage }) {
           <SectionLabel num="01">Context</SectionLabel>
           <SectionTitle>How the Data Library Started</SectionTitle>
           <div style={{ maxWidth: 820 }}>
-            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 20 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20 }}>
               The Data Library was born from a tension I lived inside the team for years. PathFinder is DXC Technology's B2B insurance platform — a product that has grown to serve multiple insurance lines for clients across several countries. The design team has grown alongside it. But the way we worked together hadn't.
             </p>
-            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 20 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20 }}>
               Designs lived in separate Figma files. The same component existed in dozens of places, drifting slightly each time. QA testers couldn't tell which version was the source of truth — the spec, the design file, or the live app. Inconsistencies multiplied faster than we could absorb.
             </p>
-            <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 0 }}>
+            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 0 }}>
               This case study is about what I built to fix that, the trade-offs along the way, and what I'm still learning about building systems inside a product team.
             </p>
           </div>
@@ -345,7 +345,7 @@ export default function DataLibrary({ setPage }) {
         <div id="problem">
           <SectionLabel num="02">Problem</SectionLabel>
           <SectionTitle>When the Product Grows Faster Than the System</SectionTitle>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 0, maxWidth: 820 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 0, maxWidth: 820 }}>
             As the product evolved and the team grew, inconsistencies began to spread. With no single source of truth, QA testers couldn't tell whether the spec, the design file, or the live app held the correct version — leading to duplicate tickets, alignment calls, and client complaints. In one retrospective, my manager named inconsistency and duplicate tickets as a recurring pain point.
           </p>
         </div>
@@ -356,10 +356,10 @@ export default function DataLibrary({ setPage }) {
         <div id="solution">
           <SectionLabel num="03">Solution</SectionLabel>
           <SectionTitle>The Data Library</SectionTitle>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 16, maxWidth: 820 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 16, maxWidth: 820 }}>
             I led the creation of the Data Library: a system of data-aware patterns built on top of the core design system, enabling consistent representation of complex insurance data across all workflows.
           </p>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
             The diagram below illustrates how the team worked before — and how the Data Library reshaped that workflow.
           </p>
           <DataLibraryDiagram />
@@ -371,7 +371,7 @@ export default function DataLibrary({ setPage }) {
         <div id="state">
           <SectionLabel num="04">State of Play</SectionLabel>
           <SectionTitle>Where It Stands Today</SectionTitle>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
             Below, what's built and how it's being adopted.
           </p>
           <StateOfPlayBlock />
@@ -383,7 +383,7 @@ export default function DataLibrary({ setPage }) {
         <div id="tradeoffs">
           <SectionLabel num="05">Trade-offs</SectionLabel>
           <SectionTitle>What I Chose Not to Do</SectionTitle>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
             For the moment, the library stays under single ownership — even though this might not be the optimal solution and could become a bottleneck. Figma branches were also considered, and discarded. These are the reasons:
           </p>
 
@@ -397,14 +397,14 @@ export default function DataLibrary({ setPage }) {
                 <div style={{ fontSize: 14, fontWeight: 700, color: C.ink, opacity: 0.5, letterSpacing: 1, flexShrink: 0, width: 24, paddingTop: 3 }}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, margin: 0 }}>
+                <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0 }}>
                   <span style={{ color: C.ink, fontWeight: 500 }}>{item.label}</span> {item.text}
                 </p>
               </div>
             ))}
           </div>
 
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
             Designers can work in parallel in their files, without being blocked by the library. But integration into the source of truth still passes through me. Scaling this right now would be premature — it would multiply debt on an immature library. Keeping it small and slow is deliberate. Distributing ownership is the next phase — when the construction logic is stable enough to teach, and when the mandate makes governance reviewable rather than personal.
           </p>
         </div>
@@ -415,7 +415,7 @@ export default function DataLibrary({ setPage }) {
         <div id="challenges">
           <SectionLabel num="06">Challenges</SectionLabel>
           <SectionTitle>What It Demands From the Team</SectionTitle>
-          <p style={{ color: "#555", fontSize: isMobile ? 15 : 17, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
             Implementing the Data Library requires a shift in how the team works and organizes itself.
           </p>
 
