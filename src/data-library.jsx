@@ -166,13 +166,10 @@ export function DataLibraryHero() {
 }
 
 const NAV = [
-  { id: "context",      label: "Context" },
   { id: "problem",      label: "Problem" },
   { id: "solution",     label: "Solution" },
-  { id: "state",        label: "State of Play" },
   { id: "tradeoffs",    label: "Trade-offs" },
   { id: "challenges",   label: "Challenges" },
-  { id: "reflections",  label: "Reflections" },
 ];
 
 // ─── Small local helpers ─────────────────────────────────────────────────
@@ -356,29 +353,16 @@ export default function DataLibrary({ setPage }) {
       {/* Sections */}
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "32px 24px 56px" : "32px 60px 56px", boxSizing: "border-box" }}>
 
-        {/* 01 Context */}
-        <div id="context">
-          <SectionLabel num="01">Context</SectionLabel>
-          <SectionTitle>How the Data Library Started</SectionTitle>
-          <div style={{ maxWidth: 820 }}>
-            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20 }}>
-              The Data Library was born from a tension I lived inside the team for years. PathFinder is DXC Technology's B2B insurance platform — a product that has grown to serve multiple insurance lines for clients across several countries. The design team has grown alongside it. But the way we worked together hadn't.
-            </p>
-            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20 }}>
-              Designs lived in separate Figma files. The same component existed in dozens of places, drifting slightly each time. QA testers couldn't tell which version was the source of truth — the spec, the design file, or the live app. Inconsistencies multiplied faster than we could absorb.
-            </p>
-            <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 0 }}>
-              This case study is about what I built to fix that, the trade-offs along the way, and what I'm still learning about building systems inside a product team.
-            </p>
-          </div>
+        {/* Main section — mirrors PathFinder's System Thinking */}
+        <div>
+          <SectionTitle>When the product grows faster than the system</SectionTitle>
         </div>
 
         <CSDivider />
 
-        {/* 02 Problem */}
+        {/* Problem */}
         <div id="problem">
-          <SectionLabel num="02">Problem</SectionLabel>
-          <SectionTitle>When the Product Grows Faster Than the System</SectionTitle>
+          <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.3 }}>Problem</h3>
           <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 0, maxWidth: 820 }}>
             As the product evolved and the team grew, inconsistencies began to spread. With no single source of truth, QA testers couldn't tell whether the spec, the design file, or the live app held the correct version — leading to duplicate tickets, alignment calls, and client complaints. In one retrospective, my manager named inconsistency and duplicate tickets as a recurring pain point.
           </p>
@@ -386,37 +370,29 @@ export default function DataLibrary({ setPage }) {
 
         <CSDivider />
 
-        {/* 03 Solution */}
+        {/* Solution */}
         <div id="solution">
-          <SectionLabel num="03">Solution</SectionLabel>
-          <SectionTitle>The Data Library</SectionTitle>
+          <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, margin: "0 0 16px", letterSpacing: -0.3 }}>Solution</h3>
           <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 16, maxWidth: 820 }}>
             I led the creation of the Data Library: a system of data-aware patterns built on top of the core design system, enabling consistent representation of complex insurance data across all workflows.
           </p>
           <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
             The diagram below illustrates how the team worked before — and how the Data Library reshaped that workflow.
           </p>
+
           <DataLibraryDiagram />
-        </div>
 
-        <CSDivider />
-
-        {/* 04 State of Play */}
-        <div id="state">
-          <SectionLabel num="04">State of Play</SectionLabel>
-          <SectionTitle>Where It Stands Today</SectionTitle>
-          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
-            Below, what's built and how it's being adopted.
+          <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: "8px 0 0", maxWidth: 820 }}>
+            <span style={{ color: C.ink, fontWeight: 600 }}>Where it stands today:</span> below, what's built and how it's being adopted.
           </p>
           <StateOfPlayBlock />
         </div>
 
         <CSDivider />
 
-        {/* 05 Trade-offs */}
+        {/* Trade-offs */}
         <div id="tradeoffs">
-          <SectionLabel num="05">Trade-offs</SectionLabel>
-          <SectionTitle>What I Chose Not to Do</SectionTitle>
+          <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, marginBottom: 16, letterSpacing: -0.3 }}>Trade-offs</h3>
           <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
             For the moment, the library stays under single ownership — even though this might not be the optimal solution and could become a bottleneck. Figma branches were also considered, and discarded. These are the reasons:
           </p>
@@ -428,11 +404,11 @@ export default function DataLibrary({ setPage }) {
               { label: "Figma branches review the surface, not the structure.", text: "The library's value is in how components are constructed — variants, data shapes, nesting. Branches validate visuals; they don't validate architecture." },
             ].map((item, i) => (
               <div key={i} style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
-                <div style={{ fontSize: 14, fontWeight: 700, color: C.ink, opacity: 0.5, letterSpacing: 1, flexShrink: 0, width: 24, paddingTop: 3 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: C.muted, opacity: 0.7, letterSpacing: 1, flexShrink: 0, width: 24, paddingTop: 3 }}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0 }}>
-                  <span style={{ color: C.ink, fontWeight: 500 }}>{item.label}</span> {item.text}
+                  <span style={{ color: C.ink, fontWeight: 600 }}>{item.label}</span> {item.text}
                 </p>
               </div>
             ))}
@@ -445,32 +421,31 @@ export default function DataLibrary({ setPage }) {
 
         <CSDivider />
 
-        {/* 06 Challenges */}
+        {/* Challenges */}
         <div id="challenges">
-          <SectionLabel num="06">Challenges</SectionLabel>
-          <SectionTitle>What It Demands From the Team</SectionTitle>
+          <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
           <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
             Implementing the Data Library requires a shift in how the team works and organizes itself.
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 28 : 32, maxWidth: 820 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 28 : 32 }}>
             <div>
               <h4 style={{ fontSize: 14, fontWeight: 700, color: C.ink, marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>DesignOps</h4>
-              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
+              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
                 Someone has to feed the system continuously — defining patterns, maintaining variants, and keeping the library alive. This requires a transversal view of the product, not a single workflow perspective, and constant communication about what changes and why.
               </p>
             </div>
 
             <div>
               <h4 style={{ fontSize: 14, fontWeight: 700, color: C.ink, marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Team practices</h4>
-              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
+              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
                 The system reshapes how designers work day-to-day — how they pick variants, when to propose new ones, and how they collaborate.
               </p>
             </div>
 
             <div>
               <h4 style={{ fontSize: 14, fontWeight: 700, color: C.ink, marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Governance</h4>
-              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
+              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
                 Every change to a master component needs review and approval before reaching production — the reviewer becomes the gatekeeper of the cross-product experience.
                 <br /><br />
                 Today, I'm the only person on the team with the transversal view to play this role — a real risk. Distributing this responsibility is the next step.
@@ -479,26 +454,10 @@ export default function DataLibrary({ setPage }) {
 
             <div>
               <h4 style={{ fontSize: 14, fontWeight: 700, color: C.ink, marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>AI's role in this</h4>
-              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0 }}>
-                AI can be a real ally here — spotting inconsistencies, identifying missing Lego pieces in the architecture, and generating documentation about what changes between versions. Defining how it fits into the workflow — as a contributor that supports the team without replacing the transversal judgment — is part of what comes next.
+              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
+                AI is reshaping how we feed and maintain the system — helping spot pattern drift, suggesting variant consolidation, and reducing the cost of governance. The challenge is integrating it without losing the design judgment that makes the system coherent.
               </p>
             </div>
-          </div>
-        </div>
-
-        <CSDivider />
-
-        {/* 07 Reflections — placeholder */}
-        <div id="reflections">
-          <SectionLabel num="07">Reflections</SectionLabel>
-          <SectionTitle>What I'm Still Learning</SectionTitle>
-          <div style={{ maxWidth: 820, padding: isMobile ? "32px 24px" : "40px 32px", borderRadius: 12, border: "2px dashed " + C.border, textAlign: "center", color: C.faint }}>
-            <p style={{ margin: "0 0 8px", fontSize: 14, fontWeight: 600, color: C.muted }}>
-              Placeholder — to write
-            </p>
-            <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6 }}>
-              What I've learned about building systems inside a product team: when to push, when to wait, when single ownership is right, and when distributing responsibility becomes the bottleneck-removing move.
-            </p>
           </div>
         </div>
 
