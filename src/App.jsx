@@ -345,28 +345,57 @@ function CaseStudyCard({ setPage, config, index }) {
         {title}
       </h3>
 
-      {/* Description */}
-      <p
-        style={{
-          margin: "0 0 20px",
-          color: "#555",
-          fontSize: isMobile ? 16 : 18,
-          lineHeight: 1.65,
-        }}
-      >
-        {description}
-      </p>
+      {/* Description + tags on left, See more button on right */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 32, marginBottom: 32, flexDirection: isMobile ? "column" : "row" }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <p
+            style={{
+              margin: "0 0 16px",
+              color: "#555",
+              fontSize: isMobile ? 16 : 18,
+              lineHeight: 1.65,
+            }}
+          >
+            {description}
+          </p>
 
-      {/* Tags */}
-      <div
-        style={{
-          fontSize: 15,
-          color: C.muted,
-          marginBottom: 32,
-          fontWeight: 400,
-        }}
-      >
-        {tags.join("  ·  ")}
+          <div
+            style={{
+              fontSize: 15,
+              color: C.muted,
+              fontWeight: 400,
+            }}
+          >
+            {tags.join("  ·  ")}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); setPage(targetPage); }}
+          style={{
+            background: C.purple,
+            color: "#fff",
+            border: "none",
+            borderRadius: 50,
+            padding: "14px 26px",
+            fontSize: 14,
+            fontWeight: 500,
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            fontFamily: "sans-serif",
+            transition: "background 0.2s",
+            flexShrink: 0,
+            alignSelf: isMobile ? "flex-start" : "flex-end",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = C.purpleDark; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = C.purple; }}
+        >
+          See more
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
       </div>
 
       {/* Image — optionally framed with lilac wash */}
@@ -376,7 +405,6 @@ function CaseStudyCard({ setPage, config, index }) {
           borderRadius: hasFrame ? 12 : 8,
           padding: hasFrame ? 4 : 0,
           overflow: "hidden",
-          marginBottom: 32,
         }}
       >
         {ImageComponent ? (
@@ -398,35 +426,6 @@ function CaseStudyCard({ setPage, config, index }) {
             <div style={{ fontSize: 12, letterSpacing: 0.5 }}>Hero image — to add</div>
           </div>
         )}
-      </div>
-
-      {/* Button alone below image */}
-      <div>
-
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); setPage(targetPage); }}
-          style={{
-            background: C.purple,
-            color: "#fff",
-            border: "none",
-            borderRadius: 50,
-            padding: "14px 26px",
-            fontSize: 14,
-            fontWeight: 500,
-            cursor: "pointer",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            fontFamily: "sans-serif",
-            transition: "background 0.2s",
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = C.purpleDark; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = C.purple; }}
-        >
-          See more
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
       </div>
     </article>
   );
