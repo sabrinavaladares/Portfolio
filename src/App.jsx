@@ -52,7 +52,7 @@ const HERO_MIN_HEIGHT = "calc(100vh - 64px)";
 function useShell() {
   const isMobile = useIsMobile();
   return {
-    maxWidth: 1100,
+    maxWidth: 1280,
     margin: "0 auto",
     padding: isMobile ? "48px 24px" : "80px 60px",
     boxSizing: "border-box",
@@ -242,7 +242,7 @@ function Nav({ page, setPage }) {
 
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: navBg, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderBottom: navBorder, transition: "background 0.25s ease, border-color 0.25s ease" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px", display: "flex", justifyContent: "space-between", alignItems: "center", height: 64, boxSizing: "border-box", width: "100%", gap: 12 }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px", display: "flex", justifyContent: "space-between", alignItems: "center", height: 64, boxSizing: "border-box", width: "100%", gap: 12 }}>
         <button onClick={() => setPage("home")} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "sans-serif", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 1, padding: 0, minWidth: 0, flex: isMobile ? "1 1 auto" : "0 0 auto", textAlign: "left" }}>
           <span style={{ color: nameColor, fontWeight: 700, fontSize: isMobile ? 14 : 15, lineHeight: 1.2, transition: "color 0.25s ease", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "100%" }}>Sabrina Valadares</span>
           <span style={{ fontSize: isMobile ? 11 : 13, color: subtitleColor, fontWeight: 400, lineHeight: 1.3, transition: "color 0.25s ease", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "100%" }}>Brazilian designer based in France</span>
@@ -331,6 +331,20 @@ function CaseStudyCard({ setPage, config, index }) {
         cursor: "pointer",
       }}
     >
+      {/* Title above the image */}
+      <h3
+        style={{
+          fontSize: isMobile ? 32 : 50,
+          fontWeight: 700,
+          margin: "0 0 24px",
+          color: C.ink,
+          letterSpacing: -0.5,
+          lineHeight: 1.15,
+        }}
+      >
+        {title}
+      </h3>
+
       {/* Image — optionally framed with lilac wash */}
       <div
         style={{
@@ -362,21 +376,8 @@ function CaseStudyCard({ setPage, config, index }) {
         )}
       </div>
 
-      {/* Text below */}
+      {/* Description + tags below image */}
       <div>
-        <h3
-          style={{
-            fontSize: isMobile ? 32 : 50,
-            fontWeight: 700,
-            margin: "0 0 16px",
-            color: C.ink,
-            letterSpacing: -0.5,
-            lineHeight: 1.15,
-          }}
-        >
-          {title}
-        </h3>
-
         <p
           style={{
             margin: "0 0 20px",
@@ -458,7 +459,7 @@ function HomePage({ setPage }) {
     <div style={{ paddingTop: 64, overflowX: "hidden" }}>
       <div style={{ background: C.bg, minHeight: isMobile ? "auto" : HERO_MIN_HEIGHT, display: "flex", flexDirection: "column" }}>
         <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 24px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "0 24px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 20 : 80, alignItems: "center" }}>
               {/* Text first on both — on mobile, photo follows underneath */}
               <div style={{ paddingTop: isMobile ? 24 : 0 }}>
@@ -486,7 +487,7 @@ function HomePage({ setPage }) {
         <Divider />
 
         <div style={{ width: "100%" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "8px 24px 24px" : "24px 60px", boxSizing: "border-box", width: "100%" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "8px 24px 24px" : "24px 60px", boxSizing: "border-box", width: "100%" }}>
             {isMobile ? (
               <div>
                 {[
