@@ -459,18 +459,16 @@ function HomePage({ setPage }) {
       <div style={{ background: C.bg, minHeight: isMobile ? "auto" : HERO_MIN_HEIGHT, display: "flex", flexDirection: "column" }}>
         <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 24px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
-            {/* Title — full width */}
-            <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: isMobile ? "24px 0 32px" : "0 0 56px", color: C.ink, lineHeight: 1.1, letterSpacing: isMobile ? -0.5 : -1 }}>
-              Designer.<br />System Thinker.<br />Foundation Builder.
-            </h1>
-
-            {/* Image + paragraph */}
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 20 : 80, alignItems: "center" }}>
-              <div>
-                <p style={{ margin: "0 0 16px", color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 20 : 80, alignItems: "start" }}>
+              {/* Text first on both — on mobile, photo follows underneath */}
+              <div style={{ paddingTop: isMobile ? 24 : 0 }}>
+                <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.1, letterSpacing: isMobile ? -0.5 : -1 }}>
+                  Designer.<br />System Thinker.<br />Foundation Builder.
+                </h1>
+                <p style={{ margin: "0 0 16px", color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
                   Hello, I'm Sabrina. Over the past 8 years, I've been designing a complex B2B insurance product that serves multiple insurance lines for clients across several countries.
                 </p>
-                <p style={{ margin: 0, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
+                <p style={{ margin: 0, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
                   From interviewing users to building the cross-cutting design system that scales it — I cover the full end-to-end design spectrum and I'm the hub for design decisions.
                 </p>
               </div>
