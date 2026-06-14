@@ -22,7 +22,7 @@ const C = {
 export function DataLibraryHero() {
   return (
     <img
-      src="https://res.cloudinary.com/diso2uvpx/image/upload/v1781455895/Hero_-_Data_Library_cp3pyn.png"
+      src="https://res.cloudinary.com/diso2uvpx/image/upload/v1781456996/Hero_-_Data_Library_x34qw0.png"
       alt="Data Library — cross-cutting design infrastructure"
       style={{ width: "100%", height: "auto", display: "block" }}
     />
