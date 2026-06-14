@@ -366,12 +366,12 @@ function CaseStudyCard({ setPage, config, index }) {
       <div>
         <h3
           style={{
-            fontSize: isMobile ? 28 : 36,
+            fontSize: isMobile ? 32 : 50,
             fontWeight: 700,
             margin: "0 0 16px",
             color: C.ink,
-            letterSpacing: -0.3,
-            lineHeight: 1.2,
+            letterSpacing: -0.5,
+            lineHeight: 1.15,
           }}
         >
           {title}
@@ -381,7 +381,7 @@ function CaseStudyCard({ setPage, config, index }) {
           style={{
             margin: "0 0 20px",
             color: "#555",
-            fontSize: isMobile ? 17 : 19,
+            fontSize: isMobile ? 16 : 18,
             lineHeight: 1.65,
           }}
         >
@@ -462,13 +462,13 @@ function HomePage({ setPage }) {
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 20 : 80, alignItems: "center" }}>
               {/* Text first on both — on mobile, photo follows underneath */}
               <div style={{ paddingTop: isMobile ? 24 : 0 }}>
-                <h1 style={{ fontSize: isMobile ? 30 : 56, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.15, letterSpacing: isMobile ? -0.5 : 0 }}>
+                <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.1, letterSpacing: isMobile ? -0.5 : -1 }}>
                   Designer.<br />System Thinker.<br />Foundation Builder.
                 </h1>
-                <p style={{ margin: "0 0 16px", color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75, maxWidth: 480 }}>
+                <p style={{ margin: "0 0 16px", color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
                   Hello, I'm Sabrina. Over the past 8 years, I've been designing a complex B2B insurance product that serves multiple insurance lines for clients across several countries.
                 </p>
-                <p style={{ margin: 0, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75, maxWidth: 480 }}>
+                <p style={{ margin: 0, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
                   From interviewing users to building the cross-cutting design system that scales it — I cover the full end-to-end design spectrum and I'm the hub for design decisions.
                 </p>
               </div>
@@ -495,8 +495,8 @@ function HomePage({ setPage }) {
                   { label: "Company", value: "DXC Technology" },
                 ].map((item, i, arr) => (
                   <div key={item.label} style={{ display: "grid", gridTemplateColumns: "92px 1fr", gap: 12, padding: "12px 0", borderBottom: i < arr.length - 1 ? "1px solid " + C.border : "none", alignItems: "baseline" }}>
-                    <div style={{ fontSize: 9, color: "#555", letterSpacing: 2, textTransform: "uppercase", fontWeight: 500 }}>{item.label}</div>
-                    <div style={{ fontSize: 13, color: C.ink, fontWeight: 400, lineHeight: 1.4 }}>{item.value}</div>
+                    <div style={{ fontSize: 13, color: "#555", letterSpacing: 2, textTransform: "uppercase", fontWeight: 500 }}>{item.label}</div>
+                    <div style={{ fontSize: 15, color: C.ink, fontWeight: 400, lineHeight: 1.4 }}>{item.value}</div>
                   </div>
                 ))}
               </div>
@@ -508,8 +508,8 @@ function HomePage({ setPage }) {
                   { label: "Company", value: "DXC Technology" },
                 ].map((item, i) => (
                   <div key={item.label} style={{ paddingRight: 40, borderRight: i < 2 ? "1px solid " + C.border : "none" }}>
-                    <div style={{ fontSize: 9, color: "#555", letterSpacing: 2, textTransform: "uppercase", marginBottom: 3 }}>{item.label}</div>
-                    <div style={{ fontSize: 13, color: C.ink, fontWeight: 500 }}>{item.value}</div>
+                    <div style={{ fontSize: 13, color: "#555", letterSpacing: 2, textTransform: "uppercase", marginBottom: 3 }}>{item.label}</div>
+                    <div style={{ fontSize: 15, color: C.ink, fontWeight: 500 }}>{item.value}</div>
                   </div>
                 ))}
               </div>
@@ -540,20 +540,20 @@ function AboutPage() {
   return (
     <div style={{ paddingTop: 64, background: C.bg, minHeight: "100vh", overflowX: "hidden" }}>
       <div style={shell}>
-        <h1 style={{ fontSize: isMobile ? 32 : 42, fontWeight: 800, margin: isMobile ? "0 0 20px" : "0 0 32px", color: C.ink, letterSpacing: isMobile ? -0.5 : 0, lineHeight: 1.1 }}>Hi, I'm Sabrina</h1>
+        <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: isMobile ? "0 0 20px" : "0 0 32px", color: C.ink, letterSpacing: isMobile ? -0.5 : -1, lineHeight: 1.05 }}>Hi, I'm Sabrina</h1>
 
         {/* Bio — full width now that the profile photo block is removed */}
         <div style={{ maxWidth: 720, marginBottom: isMobile ? 56 : 80 }}>
-          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
+          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
             I'm a curious, creative Brazilian with a love for adventure!
           </p>
-          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
+          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
             I studied Industrial Design in Rio de Janeiro before moving to France to pursue a Master's in Design &amp; Management, where I wrote my thesis on Design Thinking. 
           </p>
-          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
+          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
             My career shifted from physical to digital products when I joined DXC Technology — where I've spent the past 8 years redesigning a complex B2B insurance platform. What started as a UX redesign became something much bigger: building the systems, frameworks, and foundations that help a whole team design better.
           </p>
-          <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.75 }}>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
             What drives me most is spotting tensions — the moments where something feels harder than it should — and finding the clearest, simplest path through. My mission is the same whether I'm designing for users or guiding my team: make it so obvious that nobody needs to ask. I am driven by the title of a book: <em>Don't Make Me Think.</em>
           </p>
         </div>
