@@ -18,116 +18,14 @@ const C = {
   neon: "#E1FB62",
 };
 
-// ─── Data Library Hero Illustration (Lego concept) ───────────────────────
+// ─── Data Library Hero Illustration ──────────────────────────────────────
 export function DataLibraryHero() {
   return (
-    <svg width="100%" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
-      <title>Data Library</title>
-      <desc>One master component connected by dashed lines to three variant instances, like Lego bricks snapping together.</desc>
-
-      <rect width="680" height="340" fill="#2d1f5e"/>
-
-      <g fill="rgba(255,255,255,0.04)">
-        <circle cx="60" cy="50" r="1.2"/><circle cx="140" cy="50" r="1.2"/><circle cx="220" cy="50" r="1.2"/><circle cx="300" cy="50" r="1.2"/><circle cx="380" cy="50" r="1.2"/><circle cx="460" cy="50" r="1.2"/><circle cx="540" cy="50" r="1.2"/><circle cx="620" cy="50" r="1.2"/>
-        <circle cx="60" cy="130" r="1.2"/><circle cx="140" cy="130" r="1.2"/><circle cx="220" cy="130" r="1.2"/><circle cx="300" cy="130" r="1.2"/><circle cx="380" cy="130" r="1.2"/><circle cx="460" cy="130" r="1.2"/><circle cx="540" cy="130" r="1.2"/><circle cx="620" cy="130" r="1.2"/>
-        <circle cx="60" cy="210" r="1.2"/><circle cx="140" cy="210" r="1.2"/><circle cx="220" cy="210" r="1.2"/><circle cx="300" cy="210" r="1.2"/><circle cx="380" cy="210" r="1.2"/><circle cx="460" cy="210" r="1.2"/><circle cx="540" cy="210" r="1.2"/><circle cx="620" cy="210" r="1.2"/>
-        <circle cx="60" cy="290" r="1.2"/><circle cx="140" cy="290" r="1.2"/><circle cx="220" cy="290" r="1.2"/><circle cx="300" cy="290" r="1.2"/><circle cx="380" cy="290" r="1.2"/><circle cx="460" cy="290" r="1.2"/><circle cx="540" cy="290" r="1.2"/><circle cx="620" cy="290" r="1.2"/>
-      </g>
-
-      <g transform="translate(140, 130)">
-        <rect width="150" height="100" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.22)" strokeWidth="0.75" strokeDasharray="5 3" rx="6"/>
-        <text x="0" y="-10" fill="rgba(255,255,255,0.6)" fontFamily="sans-serif" fontSize="9" fontWeight="600" letterSpacing="2">❖ MASTER COMPONENT</text>
-
-        <circle cx="30" cy="33" r="5.5" fill="#EDE8FF"/>
-        <circle cx="52" cy="33" r="5.5" fill="#EDE8FF"/>
-        <circle cx="74" cy="33" r="5.5" fill="#EDE8FF"/>
-        <circle cx="96" cy="33" r="5.5" fill="#EDE8FF"/>
-        <circle cx="118" cy="33" r="5.5" fill="#EDE8FF"/>
-        <circle cx="30" cy="33" r="3" fill="#C4B8F0"/>
-        <circle cx="52" cy="33" r="3" fill="#C4B8F0"/>
-        <circle cx="74" cy="33" r="3" fill="#C4B8F0"/>
-        <circle cx="96" cy="33" r="3" fill="#C4B8F0"/>
-        <circle cx="118" cy="33" r="3" fill="#C4B8F0"/>
-
-        <rect x="17" y="36" width="116" height="50" fill="#EDE8FF" rx="3"/>
-        <text x="75" y="60" fill="#3d2f7a" fontFamily="sans-serif" fontSize="11" fontWeight="700" textAnchor="middle">Block</text>
-        <text x="75" y="75" fill="#5a4a8a" fontFamily="sans-serif" fontSize="9" textAnchor="middle">Contract Details</text>
-      </g>
-
-      <path d="M 290 160 Q 340 95 390 90" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="0.75" strokeDasharray="3 3"/>
-      <path d="M 290 175 Q 340 170 390 165" fill="none" stroke="rgba(225,251,98,0.5)" strokeWidth="1.25" strokeDasharray="3 3"/>
-      <path d="M 290 190 Q 340 235 390 240" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="0.75" strokeDasharray="3 3"/>
-
-      <g transform="translate(390, 70)">
-        <circle cx="18" cy="0" r="4" fill="#7F77DD"/>
-        <circle cx="36" cy="0" r="4" fill="#7F77DD"/>
-        <circle cx="54" cy="0" r="4" fill="#7F77DD"/>
-        <circle cx="72" cy="0" r="4" fill="#7F77DD"/>
-        <circle cx="90" cy="0" r="4" fill="#7F77DD"/>
-        <circle cx="108" cy="0" r="4" fill="#7F77DD"/>
-        <circle cx="18" cy="0" r="2.2" fill="#5B4BC4"/>
-        <circle cx="36" cy="0" r="2.2" fill="#5B4BC4"/>
-        <circle cx="54" cy="0" r="2.2" fill="#5B4BC4"/>
-        <circle cx="72" cy="0" r="2.2" fill="#5B4BC4"/>
-        <circle cx="90" cy="0" r="2.2" fill="#5B4BC4"/>
-        <circle cx="108" cy="0" r="2.2" fill="#5B4BC4"/>
-        <rect x="8" y="3" width="116" height="30" fill="#5B4BC4" rx="2"/>
-        <text x="66" y="22" fill="#fff" fontFamily="sans-serif" fontSize="9" fontWeight="500" textAnchor="middle">Variant · Savings</text>
-      </g>
-
-      <g transform="translate(390, 145)">
-        <circle cx="18" cy="0" r="4" fill="#E1FB62"/>
-        <circle cx="36" cy="0" r="4" fill="#E1FB62"/>
-        <circle cx="54" cy="0" r="4" fill="#E1FB62"/>
-        <circle cx="72" cy="0" r="4" fill="#E1FB62"/>
-        <circle cx="90" cy="0" r="4" fill="#E1FB62"/>
-        <circle cx="108" cy="0" r="4" fill="#E1FB62"/>
-        <circle cx="18" cy="0" r="2.2" fill="#b8cf45"/>
-        <circle cx="36" cy="0" r="2.2" fill="#b8cf45"/>
-        <circle cx="54" cy="0" r="2.2" fill="#b8cf45"/>
-        <circle cx="72" cy="0" r="2.2" fill="#b8cf45"/>
-        <circle cx="90" cy="0" r="2.2" fill="#b8cf45"/>
-        <circle cx="108" cy="0" r="2.2" fill="#b8cf45"/>
-        <rect x="8" y="3" width="116" height="30" fill="#4E4577" stroke="#E1FB62" strokeWidth="1.25" rx="2"/>
-        <text x="66" y="22" fill="#E1FB62" fontFamily="sans-serif" fontSize="9" fontWeight="600" textAnchor="middle">Variant · P&amp;C</text>
-      </g>
-
-      <g transform="translate(390, 220)">
-        <circle cx="18" cy="0" r="4" fill="#7AB8A0"/>
-        <circle cx="36" cy="0" r="4" fill="#7AB8A0"/>
-        <circle cx="54" cy="0" r="4" fill="#7AB8A0"/>
-        <circle cx="72" cy="0" r="4" fill="#7AB8A0"/>
-        <circle cx="90" cy="0" r="4" fill="#7AB8A0"/>
-        <circle cx="108" cy="0" r="4" fill="#7AB8A0"/>
-        <circle cx="18" cy="0" r="2.2" fill="#3D9C7A"/>
-        <circle cx="36" cy="0" r="2.2" fill="#3D9C7A"/>
-        <circle cx="54" cy="0" r="2.2" fill="#3D9C7A"/>
-        <circle cx="72" cy="0" r="2.2" fill="#3D9C7A"/>
-        <circle cx="90" cy="0" r="2.2" fill="#3D9C7A"/>
-        <circle cx="108" cy="0" r="2.2" fill="#3D9C7A"/>
-        <rect x="8" y="3" width="116" height="30" fill="#3D9C7A" rx="2"/>
-        <text x="66" y="22" fill="#fff" fontFamily="sans-serif" fontSize="9" fontWeight="500" textAnchor="middle">Variant · TradLife</text>
-      </g>
-
-      <g opacity="0.22">
-        <rect x="60" y="295" width="32" height="11" fill="#EDE8FF" rx="1.5"/>
-        <circle cx="66" cy="293.5" r="2.2" fill="#EDE8FF"/>
-        <circle cx="76" cy="293.5" r="2.2" fill="#EDE8FF"/>
-        <circle cx="86" cy="293.5" r="2.2" fill="#EDE8FF"/>
-      </g>
-      <g opacity="0.18">
-        <rect x="324" y="308" width="32" height="11" fill="#EDE8FF" rx="1.5"/>
-        <circle cx="330" cy="306.5" r="2.2" fill="#EDE8FF"/>
-        <circle cx="340" cy="306.5" r="2.2" fill="#EDE8FF"/>
-        <circle cx="350" cy="306.5" r="2.2" fill="#EDE8FF"/>
-      </g>
-      <g opacity="0.2">
-        <rect x="588" y="295" width="32" height="11" fill="#EDE8FF" rx="1.5"/>
-        <circle cx="594" cy="293.5" r="2.2" fill="#EDE8FF"/>
-        <circle cx="604" cy="293.5" r="2.2" fill="#EDE8FF"/>
-        <circle cx="614" cy="293.5" r="2.2" fill="#EDE8FF"/>
-      </g>
-    </svg>
+    <img
+      src="https://res.cloudinary.com/diso2uvpx/image/upload/v1781455895/Hero_-_Data_Library_cp3pyn.png"
+      alt="Data Library — cross-cutting design infrastructure"
+      style={{ width: "100%", height: "auto", display: "block" }}
+    />
   );
 }
 
@@ -228,7 +126,7 @@ export default function DataLibrary({ setPage }) {
 
       {/* Hero */}
       <div style={{ background: C.bgDarker, paddingTop: isMobile ? 96 : 128 }}>
-        <div style={{ padding: isMobile ? "32px 24px 24px" : "64px 60px 32px", maxWidth: 1100, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
+        <div style={{ padding: isMobile ? "32px 24px 24px" : "64px 60px 32px", maxWidth: 1280, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
           <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>Data Library</h1>
           <p style={{ fontSize: isMobile ? 16 : 20, color: "#f5f0ff", lineHeight: 1.5, margin: isMobile ? "0 0 32px" : "0 0 48px" }}>
             Building cross-cutting design infrastructure for a complex B2B platform.
@@ -294,7 +192,7 @@ export default function DataLibrary({ setPage }) {
 
       {/* Hero illustration */}
       <div style={{ background: C.bgDarker, paddingTop: 8 }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 16px" : "0 60px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "0 16px" : "0 60px" }}>
           <div style={{ borderRadius: "12px 12px 0 0", overflow: "hidden" }}>
             <DataLibraryHero />
           </div>
@@ -306,7 +204,7 @@ export default function DataLibrary({ setPage }) {
 
       {/* Sticky Nav */}
       <div style={{ position: "sticky", top: 64, zIndex: 50, background: C.bg, borderBottom: "1px solid " + C.border }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 16px" : "0 60px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "0 16px" : "0 60px" }}>
           <div style={{ display: "flex", gap: 0, overflowX: isMobile ? "auto" : "visible", WebkitOverflowScrolling: "touch", scrollbarWidth: "none", msOverflowStyle: "none" }}>
             <style>{`.dl-nav-scroll::-webkit-scrollbar{display:none}`}</style>
             {NAV.map(n => (
@@ -320,7 +218,7 @@ export default function DataLibrary({ setPage }) {
       </div>
 
       {/* Sections */}
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "32px 24px 56px" : "32px 60px 56px", boxSizing: "border-box" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "32px 24px 56px" : "32px 60px 56px", boxSizing: "border-box" }}>
 
         {/* 01 Context */}
         <div id="context">
