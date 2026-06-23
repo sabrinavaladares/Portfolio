@@ -557,7 +557,7 @@ function AboutPage() {
             My career shifted from physical to digital products when I joined DXC Technology — where I've spent the past 8 years redesigning a complex B2B insurance platform. What started as a UX redesign became something much bigger: building the systems, frameworks, and foundations that help a whole team design better.
           </p>
           <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
-            What drives me most is spotting tensions — the moments where something feels harder than it should — and finding the clearest, simplest path through. My mission is the same whether I'm designing for users or guiding my team: make it so obvious that nobody needs to ask. I am driven by the title of a book: <em>Don't Make Me Think.</em>
+            What drives me most is spotting tensions — the moments where something feels harder than it should — and finding the clearest, simplest path through. My mission is the same whether I'm designing for users or guiding my team: make it so obvious that nobody needs to ask. I am driven by the concept of the book: <em>Don't Make Me Think.</em>
           </p>
         </div>
 
