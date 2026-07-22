@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import CaseStudy from "./case-study";
 import DataLibrary, { DataLibraryHero } from "./data-library";
 import SelectedWork from "./selected-work";
+import CategoryPage, { CATEGORY_PAGES } from "./category-page";
 
 const C = {
   bg: "#FAFAF7",
@@ -536,7 +537,7 @@ function HomePage({ setPage }) {
 
       <Divider />
 
-      <SelectedWork />
+      <SelectedWork setPage={setPage} />
     </div>
   );
 }
@@ -634,6 +635,7 @@ export default function App() {
       {page === "about" && <AboutPage />}
       {page === "pathfinder" && <CaseStudy setPage={setPage} />}
       {page === "datalibrary" && <DataLibrary setPage={setPage} />}
+      {CATEGORY_PAGES[page] && <CategoryPage data={CATEGORY_PAGES[page]} setPage={setPage} />}
       <ContactBar />
     </div>
   );
