@@ -8,7 +8,6 @@ const C = {
   border: "#E4E2DA",
 };
 
-// Soft tints used behind the image placeholders
 const TINT = {
   lilac: { bg: "#E4DFF4", icon: "#a99ed6" },
   lilac2: { bg: "#EDE8FF", icon: "#b3a9d9" },
@@ -16,19 +15,18 @@ const TINT = {
 };
 
 // ─── Categories ─────────────────────────────────────────────────────────────
-// Chronological order of the redesign. `area` maps to the desktop grid below.
-// Drop a Cloudinary (or any) URL into `image` to replace the placeholder.
+// `page` = the id passed to setPage(...) when the card is clicked.
+// Leave `page` null until that category's page exists (card stays inert).
 const CATEGORIES = [
-  { title: "Information Architecture", area: "ia",     tint: "lilac",  image: null },
-  { title: "Key Features",            area: "kf",     tint: "lilac2", image: null },
-  { title: "User Journeys & Flows",   area: "flows",  tint: "gold",   image: null, horizontal: true },
-  { title: "User Research",           area: "ur",     tint: "lilac2", image: null },
-  { title: "Audits",                  area: "audits", tint: "gold",   image: null },
-  { title: "Design System",           area: "ds",     tint: "lilac",  image: null },
-  { title: "Leadership",              area: "lead",   tint: "lilac2", image: null },
+  { title: "Information Architecture", area: "ia",     tint: "lilac",  image: null, page: null },
+  { title: "Key Features",            area: "kf",     tint: "lilac2", image: null, page: null },
+  { title: "User Journeys & Flows",   area: "flows",  tint: "gold",   image: null, page: "flows", horizontal: true },
+  { title: "User Research",           area: "ur",     tint: "lilac2", image: null, page: null },
+  { title: "Audits",                  area: "audits", tint: "gold",   image: null, page: null },
+  { title: "Design System",           area: "ds",     tint: "lilac",  image: null, page: null },
+  { title: "Leadership",              area: "lead",   tint: "lilac2", image: null, page: null },
 ];
 
-// Desktop mosaic — 4 columns × 5 rows, fully filled (no gaps)
 const DESKTOP_AREAS = [
   '"ia ia kf kf"',
   '"ia ia kf kf"',
@@ -37,7 +35,6 @@ const DESKTOP_AREAS = [
   '"ur audits ds lead"',
 ].join(" ");
 
-// Mobile — single column, chronological
 const MOBILE_AREAS = [
   '"ia"', '"kf"', '"flows"', '"ur"', '"audits"', '"ds"', '"lead"',
 ].join(" ");
@@ -52,13 +49,32 @@ function PhotoIcon({ color, size = 24 }) {
   );
 }
 
-function Card({ cat, isMobile }) {
+function Card({ cat, isMobile, setPage }) {
   const tint = TINT[cat.tint] || TINT.lilac;
+  const clickable = Boolean(cat.page);
+
+  const clickProps = clickable
+    ? {
+        onClick: () => setPage(cat.page),
+        onMouseEnter: (e) => { e.currentTarget.style.borderColor = "#C4B8F0"; },
+        onMouseLeave: (e) => { e.currentTarget.style.borderColor = C.border; },
+      }
+    : {};
+
+  const baseStyle = {
+    gridArea: cat.area,
+    background: "#fff",
+    border: "1px solid " + C.border,
+    borderRadius: 8,
+    overflow: "hidden",
+    cursor: clickable ? "pointer" : "default",
+    transition: "border-color 0.2s",
+  };
 
   // Short/wide horizontal card (Flows) on desktop only
   if (cat.horizontal && !isMobile) {
     return (
-      <div style={{ gridArea: cat.area, background: "#fff", border: "1px solid " + C.border, borderRadius: 8, overflow: "hidden", display: "flex", alignItems: "center", gap: 14, padding: "0 16px" }}>
+      <div {...clickProps} style={{ ...baseStyle, display: "flex", alignItems: "center", gap: 14, padding: "0 16px" }}>
         <div style={{ width: 52, height: 52, borderRadius: 6, background: tint.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, overflow: "hidden" }}>
           {cat.image
             ? <img src={cat.image} alt={cat.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
@@ -70,7 +86,7 @@ function Card({ cat, isMobile }) {
   }
 
   return (
-    <div style={{ gridArea: cat.area, background: "#fff", border: "1px solid " + C.border, borderRadius: 8, overflow: "hidden", display: "flex", flexDirection: "column", minHeight: isMobile ? 150 : 0 }}>
+    <div {...clickProps} style={{ ...baseStyle, display: "flex", flexDirection: "column", minHeight: isMobile ? 150 : 0 }}>
       <div style={{ flex: 1, minHeight: 0, background: tint.bg, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
         {cat.image
           ? <img src={cat.image} alt={cat.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
@@ -84,7 +100,7 @@ function Card({ cat, isMobile }) {
 }
 
 // Home section — full-width band with its own shell + background.
-export default function SelectedWork() {
+export default function SelectedWork({ setPage }) {
   const isMobile = useIsMobile();
 
   const shell = {
@@ -111,7 +127,7 @@ export default function SelectedWork() {
         </div>
         <div style={grid}>
           {CATEGORIES.map((cat) => (
-            <Card key={cat.area} cat={cat} isMobile={isMobile} />
+            <Card key={cat.area} cat={cat} isMobile={isMobile} setPage={setPage} />
           ))}
         </div>
       </div>
