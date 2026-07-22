@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CaseStudy from "./case-study";
 import DataLibrary, { DataLibraryHero } from "./data-library";
+import SelectedWork from "./selected-work";
 
 const C = {
   bg: "#FAFAF7",
@@ -532,6 +533,10 @@ function HomePage({ setPage }) {
           </div>
         </div>
       </div>
+
+      <Divider />
+
+      <SelectedWork />
     </div>
   );
 }
