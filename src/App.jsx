@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CaseStudy from "./case-study";
 import DataLibrary, { DataLibraryHero } from "./data-library";
-import SelectedWork from "./selected-work";
+import SelectedWork from "./selected-work"; 
 import CategoryPage, { CATEGORY_PAGES } from "./category-page";
 
 const C = {
