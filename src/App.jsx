@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
 import CaseStudy from "./case-study";
-import DataLibrary, { DataLibraryHero } from "./data-library";
-import SelectedWork from "./selected-work"; 
+import DataLibrary from "./data-library";
 import CategoryPage, { CATEGORY_PAGES } from "./category-page";
 
 const C = {
@@ -181,7 +179,8 @@ function Nav({ page, setPage }) {
   const isMobile = useIsMobile();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const isWork = page === "pathfinder" || page === "datalibrary";
+  const isCategoryPage = Object.prototype.hasOwnProperty.call(CATEGORY_PAGES, page);
+  const isWork = page === "pathfinder" || page === "datalibrary" || isCategoryPage;
   const navBg = isWork ? "rgba(61, 47, 122, 0.92)" : C.bg + "f0";
   const navBorder = isWork ? "1px solid rgba(255,255,255,0.12)" : "1px solid " + C.border;
   const nameColor = isWork ? "#ffffff" : C.ink;
@@ -321,24 +320,83 @@ function Nav({ page, setPage }) {
   );
 }
 
-function CaseStudyCard({ setPage, config, index }) {
+function WorkCategoryCard({ setPage, config }) {
   const isMobile = useIsMobile();
-  const { targetPage, title, description, tags, image, imageComponent: ImageComponent, frame } = config;
+  const {
+    targetPage,
+    tag,
+    title,
+    description,
+    caseStudyCount,
+    image,
+    imageComponent: ImageComponent,
+    frame,
+  } = config;
+
   const hasFrame = frame !== false;
+  const caseLabel = caseStudyCount === 1 ? "case study" : "case studies";
 
   return (
     <article
       onClick={() => setPage(targetPage)}
-      style={{
-        cursor: "pointer",
-      }}
+      style={{ cursor: "pointer" }}
     >
-      {/* Title */}
+      {/* 1. Image */}
+      <div
+        style={{
+          background: hasFrame ? C.lilacBg : "transparent",
+          borderRadius: hasFrame ? 12 : 8,
+          padding: hasFrame ? 4 : 0,
+          overflow: "hidden",
+          marginBottom: isMobile ? 24 : 32,
+        }}
+      >
+        {ImageComponent ? (
+          <ImageComponent />
+        ) : image ? (
+          <img
+            src={image}
+            alt={title}
+            style={{
+              width: "100%",
+              height: "auto",
+              aspectRatio: "16 / 9",
+              objectFit: "cover",
+              borderRadius: 8,
+              display: "block",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              color: C.faint,
+              textAlign: "center",
+              aspectRatio: "16 / 9",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+              borderRadius: 8,
+              background: C.lilacBg,
+            }}
+          >
+            <div style={{ fontSize: 44, marginBottom: 10, opacity: 0.4 }}>🖼️</div>
+            <div style={{ fontSize: 12, letterSpacing: 0.5 }}>Image — to add</div>
+          </div>
+        )}
+      </div>
+
+      {/* 2. Tag */}
+      <div style={{ marginBottom: 14 }}>
+        <Tag>{tag}</Tag>
+      </div>
+
+      {/* 3. Title */}
       <h3
         style={{
           fontSize: isMobile ? 32 : 50,
           fontWeight: 700,
-          margin: "0 0 20px",
+          margin: "0 0 18px",
           color: C.ink,
           letterSpacing: -0.5,
           lineHeight: 1.15,
@@ -347,34 +405,45 @@ function CaseStudyCard({ setPage, config, index }) {
         {title}
       </h3>
 
-      {/* Description + tags on left, See more button on right */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 32, marginBottom: 32, flexDirection: isMobile ? "column" : "row" }}>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <p
-            style={{
-              margin: "0 0 16px",
-              color: "#555",
-              fontSize: isMobile ? 16 : 18,
-              lineHeight: 1.65,
-            }}
-          >
-            {description}
-          </p>
+      {/* 4. Description */}
+      <p
+        style={{
+          margin: "0 0 18px",
+          color: "#555",
+          fontSize: isMobile ? 16 : 18,
+          lineHeight: 1.65,
+          maxWidth: 820,
+        }}
+      >
+        {description}
+      </p>
 
-          <div
-            style={{
-              fontSize: 15,
-              color: C.muted,
-              fontWeight: 400,
-            }}
-          >
-            {tags.join("  ·  ")}
-          </div>
+      {/* 5. Number of case studies + existing CTA */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 24,
+          flexDirection: isMobile ? "column" : "row",
+        }}
+      >
+        <div
+          style={{
+            fontSize: isMobile ? 14 : 15,
+            color: C.muted,
+            fontWeight: 500,
+          }}
+        >
+          {caseStudyCount} {caseLabel}
         </div>
 
         <button
           type="button"
-          onClick={(e) => { e.stopPropagation(); setPage(targetPage); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            setPage(targetPage);
+          }}
           style={{
             background: C.purple,
             color: "#fff",
@@ -390,68 +459,97 @@ function CaseStudyCard({ setPage, config, index }) {
             fontFamily: "sans-serif",
             transition: "background 0.2s",
             flexShrink: 0,
-            alignSelf: isMobile ? "flex-start" : "flex-end",
+            alignSelf: isMobile ? "flex-start" : "auto",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = C.purpleDark; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = C.purple; }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = C.purpleDark;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = C.purple;
+          }}
         >
           See more
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </button>
-      </div>
-
-      {/* Image — optionally framed with lilac wash */}
-      <div
-        style={{
-          background: hasFrame ? C.lilacBg : "transparent",
-          borderRadius: hasFrame ? 12 : 8,
-          padding: hasFrame ? 4 : 0,
-          overflow: "hidden",
-        }}
-      >
-        {ImageComponent ? (
-          <ImageComponent />
-        ) : image ? (
-          <img
-            src={image}
-            alt={title + " hero"}
-            style={{
-              width: "100%",
-              height: "auto",
-              borderRadius: hasFrame ? 8 : 8,
-              display: "block",
-            }}
-          />
-        ) : (
-          <div style={{ color: C.faint, textAlign: "center", aspectRatio: "16 / 9", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", borderRadius: 8 }}>
-            <div style={{ fontSize: 44, marginBottom: 10, opacity: 0.4 }}>🖼️</div>
-            <div style={{ fontSize: 12, letterSpacing: 0.5 }}>Hero image — to add</div>
-          </div>
-        )}
       </div>
     </article>
   );
 }
 
-// Case study configs — easy to edit in one place
-export const CASE_STUDIES = [
+// Work-category cards shown on the home page.
+// Replace each `image` value and adjust the counts as your case studies evolve.
+export const WORK_CATEGORIES = [
   {
-    targetPage: "pathfinder",
-    title: "PathFinder",
-    description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
-    tags: ["UX Design", "User Research", "Information Architecture"],
-    image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781269013/hero-image_tn8nwf.png",
-    frame: false,
-    wash: null,
+    targetPage: "flows",
+    tag: "Workflows",
+    title: "Simplifying complex insurance workflows",
+    description:
+      "Designing end-to-end journeys that make complex insurance tasks clearer, more continuous, and easier to complete.",
+    caseStudyCount: 2,
+    image: null,
+    frame: true,
   },
   {
-    targetPage: "datalibrary",
-    title: "Data Library",
-    description: "Building cross-cutting design infrastructure for a complex B2B platform.",
-    tags: ["Design Systems", "DesignOps", "Systems Thinking"],
+    targetPage: "architecture",
+    tag: "Information Architecture",
+    title: "Restructuring complex navigation",
+    description:
+      "Reorganising content and navigation so users can understand where information lives and reach it with less effort.",
+    caseStudyCount: 3,
     image: null,
-    imageComponent: DataLibraryHero,
-    frame: false,
+    frame: true,
+  },
+  {
+    targetPage: "research",
+    tag: "User Research",
+    title: "Understanding the problem context",
+    description:
+      "Investigating user needs, business rules, and operational constraints before defining the right product direction.",
+    caseStudyCount: 2,
+    image: null,
+    frame: true,
+  },
+  {
+    targetPage: "audit",
+    tag: "UX Audit",
+    title: "Identifying usability issues",
+    description:
+      "Reviewing existing experiences to uncover friction, inconsistencies, and opportunities to simplify the product.",
+    caseStudyCount: 2,
+    image: null,
+    frame: true,
+  },
+  {
+    targetPage: "design-system",
+    tag: "Design Systems",
+    title: "Standardising complex insurance patterns",
+    description:
+      "Creating reusable patterns across products to reduce design and development effort and make the platform easier to evolve.",
+    caseStudyCount: 2,
+    image: null,
+    frame: true,
+  },
+  {
+    targetPage: "leadership",
+    tag: "Leadership",
+    title: "Elevating design quality across the team",
+    description:
+      "Reviewing work, guiding design decisions, fostering consistency, and creating standards that help the team build with confidence.",
+    caseStudyCount: 4,
+    image: null,
+    frame: true,
   },
 ];
 
@@ -528,16 +626,17 @@ function HomePage({ setPage }) {
       <div style={{ background: C.bg }} id="work">
         <div style={shell}>
           <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 80 : 140 }}>
-            {CASE_STUDIES.map((cs, idx) => (
-              <CaseStudyCard key={cs.targetPage} setPage={setPage} config={cs} index={idx} />
+            {WORK_CATEGORIES.map((category) => (
+              <WorkCategoryCard
+                key={category.targetPage}
+                setPage={setPage}
+                config={category}
+              />
             ))}
           </div>
         </div>
       </div>
 
-      <Divider />
-
-      <SelectedWork setPage={setPage} />
     </div>
   );
 }
@@ -635,7 +734,9 @@ export default function App() {
       {page === "about" && <AboutPage />}
       {page === "pathfinder" && <CaseStudy setPage={setPage} />}
       {page === "datalibrary" && <DataLibrary setPage={setPage} />}
-      {CATEGORY_PAGES[page] && <CategoryPage data={CATEGORY_PAGES[page]} setPage={setPage} />}
+      {CATEGORY_PAGES[page] && (
+        <CategoryPage data={CATEGORY_PAGES[page]} setPage={setPage} />
+      )}
       <ContactBar />
     </div>
   );
