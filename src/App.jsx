@@ -523,9 +523,6 @@ function HomePage({ setPage }) {
         </div>
       </div>
 
-      {/* Selected Work: oculto por enquanto. Troque false por true para mostrar */}
-      {false && (
-      <>
       <Divider />
 
       <div style={{ background: C.bg }} id="work">
@@ -541,8 +538,6 @@ function HomePage({ setPage }) {
       <Divider />
 
       <SelectedWork setPage={setPage} />
-      </>
-      )}
     </div>
   );
 }
