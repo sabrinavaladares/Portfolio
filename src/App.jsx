@@ -77,4 +77,571 @@ function Tag({ children, dark }) {
   );
 }
 
-function Label({ children
+function Label({ children }) {
+  return <div style={{ fontSize: 10, color: "#555", letterSpacing: 3, textTransform: "uppercase", marginBottom: 14, fontWeight: 500 }}>{children}</div>;
+}
+
+function Divider() {
+  return <div style={{ height: 1, background: C.border }} />;
+}
+
+// ─── Contact icons — used inline in the nav now ──────────────────────────
+function ContactIcons({ color, hoverColor, gap = 4 }) {
+  const baseStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 28,
+    height: 28,
+    borderRadius: 6,
+    color: color,
+    transition: "color 0.2s",
+    textDecoration: "none",
+  };
+  return (
+    <div style={{ display: "flex", gap, alignItems: "center" }}>
+      <a
+        href="mailto:sabrina.valadares@gmail.com"
+        aria-label="Email"
+        style={baseStyle}
+        onMouseEnter={(e) => { e.currentTarget.style.color = hoverColor; }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = color; }}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/sabrina-valadares-924a7074/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        style={{ ...baseStyle, fontFamily: "sans-serif", fontSize: 15, fontWeight: 700, letterSpacing: -0.5 }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = hoverColor; }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = color; }}
+      >
+        in
+      </a>
+    </div>
+  );
+}
+
+// Desktop-only floating contact bar (kept for desktop, removed on mobile)
+function ContactBar() {
+  const isMobile = useIsMobile();
+  const [onPurple, setOnPurple] = useState(false);
+
+  useEffect(() => {
+    if (isMobile) return; // disabled on mobile
+    const targetRgb = "rgb(61, 47, 122)";
+
+    const isPurpleAt = (el) => {
+      let node = el;
+      while (node && node !== document.body) {
+        const bg = getComputedStyle(node).backgroundColor;
+        if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") {
+          return bg === targetRgb;
+        }
+        node = node.parentElement;
+      }
+      return false;
+    };
+
+    const check = () => {
+      const x = window.innerWidth - 48;
+      const y = window.innerHeight - 40;
+      const bar = document.getElementById("contact-bar");
+      const prev = bar ? bar.style.pointerEvents : "";
+      if (bar) bar.style.pointerEvents = "none";
+      const el = document.elementFromPoint(x, y);
+      if (bar) bar.style.pointerEvents = prev;
+      setOnPurple(el ? isPurpleAt(el) : false);
+    };
+
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, [isMobile]);
+
+  if (isMobile) return null;
+
+  const baseColor = onPurple ? "rgba(255,255,255,0.7)" : C.muted;
+  const hoverColor = onPurple ? "#ffffff" : C.ink;
+
+  return (
+    <div id="contact-bar" style={{ position: "fixed", bottom: 24, right: 32, zIndex: 100 }}>
+      <ContactIcons color={baseColor} hoverColor={hoverColor} />
+    </div>
+  );
+}
+
+function Nav({ page, setPage }) {
+  const isMobile = useIsMobile();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const isWork = page === "pathfinder" || page === "datalibrary";
+  const navBg = isWork ? "rgba(61, 47, 122, 0.92)" : C.bg + "f0";
+  const navBorder = isWork ? "1px solid rgba(255,255,255,0.12)" : "1px solid " + C.border;
+  const nameColor = isWork ? "#ffffff" : C.ink;
+  const subtitleColor = isWork ? "rgba(255,255,255,0.72)" : "#555";
+  const activeLinkColor = isWork ? "#ffffff" : C.ink;
+  const inactiveLinkColor = isWork ? "rgba(255,255,255,0.6)" : C.faint;
+
+  // Close menu when route changes
+  useEffect(() => { setMenuOpen(false); }, [page]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [menuOpen]);
+
+  // "Work" → scroll to the Case Studies section on the home page
+  const handleWorkClick = () => {
+    if (page === "home") {
+      const el = document.getElementById("work");
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    } else {
+      setPage("home");
+      setTimeout(() => {
+        const el = document.getElementById("work");
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }, 80);
+    }
+  };
+
+  const handleNavClick = (id) => {
+    if (id === "work") handleWorkClick();
+    else setPage(id);
+  };
+
+  const links = [
+    ["home", "Home"],
+    ["work", "Work"],
+    ["about", "About"],
+  ];
+
+  // Active state — Work is "active" when on either case study
+  const isLinkActive = (id) => {
+    if (id === "work") return isWork;
+    return page === id;
+  };
+
+  // Icon colors for hamburger / contact icons inside nav
+  const iconColor = isWork ? "rgba(255,255,255,0.7)" : C.muted;
+  const iconHover = isWork ? "#ffffff" : C.ink;
+
+  return (
+    <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: navBg, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderBottom: navBorder, transition: "background 0.25s ease, border-color 0.25s ease" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px", display: "flex", justifyContent: "space-between", alignItems: "center", height: 64, boxSizing: "border-box", width: "100%", gap: 12 }}>
+        <button onClick={() => setPage("home")} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "sans-serif", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 1, padding: 0, minWidth: 0, flex: isMobile ? "1 1 auto" : "0 0 auto", textAlign: "left" }}>
+          <span style={{ color: nameColor, fontWeight: 700, fontSize: isMobile ? 14 : 15, lineHeight: 1.2, transition: "color 0.25s ease", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "100%" }}>Sabrina Valadares</span>
+          <span style={{ fontSize: isMobile ? 11 : 13, color: subtitleColor, fontWeight: 400, lineHeight: 1.3, transition: "color 0.25s ease", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "100%" }}>Brazilian designer based in France</span>
+        </button>
+
+        {/* Desktop: links + (floating ContactBar handles icons) */}
+        {!isMobile && (
+          <div style={{ display: "flex", gap: 36 }}>
+            {links.map(([id, label]) => {
+              const isActive = isLinkActive(id);
+              return (
+                <button key={id} onClick={() => handleNavClick(id)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 13, fontFamily: "sans-serif", color: isActive ? activeLinkColor : inactiveLinkColor, fontWeight: isActive ? 600 : 400, borderBottom: isActive ? "2px solid " + C.neon : "2px solid transparent", paddingBottom: 4, transition: "color 0.25s ease, border-color 0.25s ease" }}>
+                  {label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Mobile: contact icons + hamburger */}
+        {isMobile && (
+          <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+            <ContactIcons color={iconColor} hoverColor={iconHover} gap={2} />
+            <button
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              style={{ background: "none", border: "none", cursor: "pointer", padding: 8, marginLeft: 2, color: iconColor, display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36 }}
+            >
+              {menuOpen ? (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              ) : (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              )}
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Mobile dropdown menu — dark purple background, white text */}
+      {isMobile && menuOpen && (
+        <div style={{ position: "absolute", top: 64, left: 0, right: 0, background: C.purpleDark, borderBottom: "1px solid rgba(255,255,255,0.12)", padding: "8px 0 12px", animation: "navSlideDown 0.2s ease-out", boxShadow: "0 8px 24px rgba(0,0,0,0.18)" }}>
+          <style>{`@keyframes navSlideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+          {links.map(([id, label]) => {
+            const isActive = isLinkActive(id);
+            return (
+              <button
+                key={id}
+                onClick={() => handleNavClick(id)}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: 16,
+                  fontFamily: "sans-serif",
+                  color: isActive ? "#ffffff" : "rgba(255,255,255,0.65)",
+                  fontWeight: isActive ? 600 : 400,
+                  padding: "14px 24px",
+                  textAlign: "left",
+                  position: "relative",
+                  borderLeft: isActive ? "3px solid " + C.neon : "3px solid transparent",
+                  transition: "color 0.2s, border-color 0.2s",
+                }}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </nav>
+  );
+}
+
+function CaseStudyCard({ setPage, config, index }) {
+  const isMobile = useIsMobile();
+  const { targetPage, title, description, tags, image, imageComponent: ImageComponent, frame } = config;
+  const hasFrame = frame !== false;
+
+  return (
+    <article
+      onClick={() => setPage(targetPage)}
+      style={{
+        cursor: "pointer",
+      }}
+    >
+      {/* Title */}
+      <h3
+        style={{
+          fontSize: isMobile ? 32 : 50,
+          fontWeight: 700,
+          margin: "0 0 20px",
+          color: C.ink,
+          letterSpacing: -0.5,
+          lineHeight: 1.15,
+        }}
+      >
+        {title}
+      </h3>
+
+      {/* Description + tags on left, See more button on right */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 32, marginBottom: 32, flexDirection: isMobile ? "column" : "row" }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <p
+            style={{
+              margin: "0 0 16px",
+              color: "#555",
+              fontSize: isMobile ? 16 : 18,
+              lineHeight: 1.65,
+            }}
+          >
+            {description}
+          </p>
+
+          <div
+            style={{
+              fontSize: 15,
+              color: C.muted,
+              fontWeight: 400,
+            }}
+          >
+            {tags.join("  ·  ")}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); setPage(targetPage); }}
+          style={{
+            background: C.purple,
+            color: "#fff",
+            border: "none",
+            borderRadius: 50,
+            padding: "14px 26px",
+            fontSize: 14,
+            fontWeight: 500,
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            fontFamily: "sans-serif",
+            transition: "background 0.2s",
+            flexShrink: 0,
+            alignSelf: isMobile ? "flex-start" : "flex-end",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = C.purpleDark; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = C.purple; }}
+        >
+          See more
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+
+      {/* Image — optionally framed with lilac wash */}
+      <div
+        style={{
+          background: hasFrame ? C.lilacBg : "transparent",
+          borderRadius: hasFrame ? 12 : 8,
+          padding: hasFrame ? 4 : 0,
+          overflow: "hidden",
+        }}
+      >
+        {ImageComponent ? (
+          <ImageComponent />
+        ) : image ? (
+          <img
+            src={image}
+            alt={title + " hero"}
+            style={{
+              width: "100%",
+              height: "auto",
+              borderRadius: hasFrame ? 8 : 8,
+              display: "block",
+            }}
+          />
+        ) : (
+          <div style={{ color: C.faint, textAlign: "center", aspectRatio: "16 / 9", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", borderRadius: 8 }}>
+            <div style={{ fontSize: 44, marginBottom: 10, opacity: 0.4 }}>🖼️</div>
+            <div style={{ fontSize: 12, letterSpacing: 0.5 }}>Hero image — to add</div>
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
+
+// Case study configs — easy to edit in one place
+export const CASE_STUDIES = [
+  {
+    targetPage: "pathfinder",
+    title: "PathFinder",
+    description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
+    tags: ["UX Design", "User Research", "Information Architecture"],
+    image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781269013/hero-image_tn8nwf.png",
+    frame: false,
+    wash: null,
+  },
+  {
+    targetPage: "datalibrary",
+    title: "Data Library",
+    description: "Building cross-cutting design infrastructure for a complex B2B platform.",
+    tags: ["Design Systems", "DesignOps", "Systems Thinking"],
+    image: null,
+    imageComponent: DataLibraryHero,
+    frame: false,
+  },
+];
+
+function HomePage({ setPage }) {
+  const isMobile = useIsMobile();
+  const shell = useShell();
+
+  return (
+    <div style={{ paddingTop: 64, overflowX: "hidden" }}>
+      <div style={{ background: C.bg, minHeight: isMobile ? "auto" : HERO_MIN_HEIGHT, display: "flex", flexDirection: "column" }}>
+        <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "0 24px" : "60px 60px", boxSizing: "border-box", width: "100%" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 20 : 80, alignItems: "center" }}>
+              {/* Text first on both — on mobile, photo follows underneath */}
+              <div style={{ paddingTop: isMobile ? 24 : 0 }}>
+                <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.1, letterSpacing: isMobile ? -0.5 : -1 }}>
+                  Designer.<br />System Thinker.<br />Foundation Builder.
+                </h1>
+                <p style={{ margin: "0 0 16px", color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
+                  Hello, I'm Sabrina. Over the past 8 years, I've been designing a complex B2B insurance product that serves multiple insurance lines for clients across several countries.
+                </p>
+                <p style={{ margin: 0, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
+                  From interviewing users to building the cross-cutting design system that scales it — I cover the full end-to-end design spectrum and I'm the hub for design decisions.
+                </p>
+              </div>
+
+              <div style={{ position: "relative", maxWidth: isMobile ? 170 : "none", width: "100%", margin: isMobile ? "0 auto 16px" : 0 }}>
+                <div style={{ width: "100%", aspectRatio: "3/4", borderRadius: 20, overflow: "hidden", background: C.lilacBg }}>
+                  <img src="https://sabrinavaladares.github.io/portfolio-images/1516535750515.jpeg" alt="Sabrina Valadares" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+                </div>
+                <div style={{ position: "absolute", bottom: -12, right: -12, width: isMobile ? 50 : 80, height: isMobile ? 50 : 80, borderRadius: 12, background: "#FFD230", zIndex: -1 }} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Divider />
+
+        <div style={{ width: "100%" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "8px 24px 24px" : "24px 60px", boxSizing: "border-box", width: "100%" }}>
+            {isMobile ? (
+              <div>
+                {[
+                  { label: "Role", value: "Senior Product Designer" },
+                  { label: "Experience", value: "8 years" },
+                  { label: "Company", value: "DXC Technology" },
+                ].map((item, i, arr) => (
+                  <div key={item.label} style={{ display: "grid", gridTemplateColumns: "92px 1fr", gap: 12, padding: "12px 0", borderBottom: i < arr.length - 1 ? "1px solid " + C.border : "none", alignItems: "baseline" }}>
+                    <div style={{ fontSize: 13, color: "#555", letterSpacing: 2, textTransform: "uppercase", fontWeight: 500 }}>{item.label}</div>
+                    <div style={{ fontSize: 15, color: C.ink, fontWeight: 400, lineHeight: 1.4 }}>{item.value}</div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40 }}>
+                {[
+                  { label: "Role", value: "Senior Product Designer" },
+                  { label: "Experience", value: "8 years" },
+                  { label: "Company", value: "DXC Technology" },
+                ].map((item, i) => (
+                  <div key={item.label} style={{ paddingRight: 40, borderRight: i < 2 ? "1px solid " + C.border : "none" }}>
+                    <div style={{ fontSize: 13, color: "#555", letterSpacing: 2, textTransform: "uppercase", marginBottom: 3 }}>{item.label}</div>
+                    <div style={{ fontSize: 15, color: C.ink, fontWeight: 500 }}>{item.value}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Selected Work: oculto por enquanto. Troque false por true para mostrar */}
+      {false && (
+      <>
+      <Divider />
+
+      <div style={{ background: C.bg }} id="work">
+        <div style={shell}>
+          <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 80 : 140 }}>
+            {CASE_STUDIES.map((cs, idx) => (
+              <CaseStudyCard key={cs.targetPage} setPage={setPage} config={cs} index={idx} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <Divider />
+
+      <SelectedWork setPage={setPage} />
+      </>
+      )}
+    </div>
+  );
+}
+
+function AboutPage() {
+  const isMobile = useIsMobile();
+  const shell = useShell();
+
+  return (
+    <div style={{ paddingTop: 64, background: C.bg, minHeight: "100vh", overflowX: "hidden" }}>
+      <div style={shell}>
+        <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: isMobile ? "0 0 20px" : "0 0 32px", color: C.ink, letterSpacing: isMobile ? -0.5 : -1, lineHeight: 1.05 }}>Hi, I'm Sabrina</h1>
+
+        {/* Bio — full width now that the profile photo block is removed */}
+        <div style={{ maxWidth: 720, marginBottom: isMobile ? 56 : 80 }}>
+          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
+            I'm a curious, creative Brazilian with a love for adventure!
+          </p>
+          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
+            I studied Industrial Design in Rio de Janeiro before moving to France to pursue a Master's in Design &amp; Management, where I wrote my thesis on Design Thinking. 
+          </p>
+          <p style={{ marginBottom: 20, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
+            My career shifted from physical to digital products when I joined DXC Technology — where I've spent the past 8 years redesigning a complex B2B insurance platform. What started as a UX redesign became something much bigger: building the systems, frameworks, and foundations that help a whole team design better.
+          </p>
+          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7 }}>
+            What drives me most is spotting tensions — the moments where something feels harder than it should — and finding the clearest, simplest path through. My mission is the same whether I'm designing for users or guiding my team: make it so obvious that nobody needs to ask. I am driven by the concept of the book: <em>Don't Make Me Think.</em>
+          </p>
+        </div>
+
+        <Divider />
+
+        <div style={{ paddingTop: isMobile ? 40 : 64, marginBottom: isMobile ? 56 : 80 }}>
+          <Label>What I do</Label>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 16, marginTop: 8 }}>
+            {CARDS.map((item, i) => (
+              <div key={i} style={{ background: "#fff", borderRadius: 12, padding: isMobile ? "24px" : "28px", borderTop: "3px solid " + C.neon }}>
+                <div style={{ fontSize: 28, marginBottom: 16 }}>{item.icon}</div>
+                <div style={{ fontWeight: 700, fontSize: 15, color: C.ink, marginBottom: 10 }}>{item.title}</div>
+                <div style={{ fontSize: 13, color: C.muted, lineHeight: 1.8 }}>{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <Divider />
+
+        <div style={{ paddingTop: isMobile ? 40 : 64, marginBottom: isMobile ? 40 : 80 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr", gap: isMobile ? 40 : 80 }}>
+            <div>
+              <Label>Interests</Label>
+              <div style={{ display: "flex", flexDirection: "column", marginTop: 8 }}>
+                {INTERESTS.map((item, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, paddingBottom: 14, paddingTop: 14, borderBottom: "1px solid " + C.border, borderTop: i === 0 ? "1px solid " + C.border : "none" }}>
+                    <span style={{ fontSize: 20, flexShrink: 0 }}>{item[0]}</span>
+                    <span style={{ fontSize: isMobile ? 14 : 15, color: C.muted, lineHeight: 1.5 }}>{item[1]}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <Label>Languages</Label>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 8 }}>
+                {[
+                  { lang: "Portuguese", level: "Native" },
+                  { lang: "French", level: "Fluent" },
+                  { lang: "English", level: "Fluent" },
+                  { lang: "Spanish", level: "Fluent" },
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: 14, paddingTop: 14, borderBottom: "1px solid " + C.border, borderTop: i === 0 ? "1px solid " + C.border : "none" }}>
+                    <span style={{ fontSize: isMobile ? 14 : 15, color: C.muted, fontWeight: 400 }}>{item.lang}</span>
+                    <span style={{ fontSize: 12, color: C.muted, letterSpacing: 1, textTransform: "uppercase" }}>{item.level}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  const [page, setPage] = useState("home");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [page]);
+
+  return (
+    <div style={{ fontFamily: "sans-serif", background: C.bg, minHeight: "100vh", color: C.ink }}>
+      <Nav page={page} setPage={setPage} />
+      {page === "home" && <HomePage setPage={setPage} />}
+      {page === "about" && <AboutPage />}
+      {page === "pathfinder" && <CaseStudy setPage={setPage} />}
+      {page === "datalibrary" && <DataLibrary setPage={setPage} />}
+      {CATEGORY_PAGES[page] && <CategoryPage data={CATEGORY_PAGES[page]} setPage={setPage} />}
+      <ContactBar />
+    </div>
+  );
+}
