@@ -535,9 +535,12 @@ function HomePage({ setPage }) {
         </div>
       </div>
 
-      <Divider />
-
-      <SelectedWork setPage={setPage} />
+      {false && (
+        <>
+          <Divider />
+          <SelectedWork setPage={setPage} />
+        </>
+      )}
     </div>
   );
 }
