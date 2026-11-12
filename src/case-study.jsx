@@ -878,7 +878,7 @@ export default function CaseStudy({ setPage }) {
           <SectionLabel num="01">Project Context</SectionLabel>
           <SectionTitle>From Legacy to Modern UX</SectionTitle>
           <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32 }}>
-            GrathTalk is a B2B software solution for managing insurance contracts across multiple lines. Originally built in the 1990s, the platform had become outdated — cluttered screens, confusing navigation, poor content scanning, and an old-fashioned interface. Launched in 2020, the redesign aimed to improve the user experience and modernize the UI through a complete overhaul of the application.
+            GraphTalk is a B2B software solution for managing insurance contracts across multiple lines. Originally built in the 1990s, the platform had become outdated — cluttered screens, confusing navigation, poor content scanning, and an old-fashioned interface. Launched in 2020, the redesign aimed to improve the user experience and modernize the UI through a complete overhaul of the application.
           </p>
           <div>
             <div style={{ borderRadius: 8, overflow: "hidden", border: "3px solid #E5E1D2" }}>
@@ -994,7 +994,7 @@ export default function CaseStudy({ setPage }) {
               I was also the first person to build a UI system on the project, before we eventually hired someone dedicated to it. Then came the migration from XD to Figma — which became the moment I understood why we had to do things differently. The product was getting more complex, the inconsistencies were growing, and the way we were working couldn't scale.
             </p>
             <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 0 }}>
-              That's how the Data Library was born. Building it while still producing designs, explaining its value to the team, taking real risks and responsibilities, and keeping clarity through all of it — these were intense phases, each with their own lessons. Together, they taught me what it really takes to redesign a back-end as complex as GrathTalk: not just good design, but the patience to build the systems that make good design possible.
+              That's how the Data Library was born. Building it while still producing designs, explaining its value to the team, taking real risks and responsibilities, and keeping clarity through all of it — these were intense phases, each with their own lessons. Together, they taught me what it really takes to redesign a back-end as complex as GraphTalk: not just good design, but the patience to build the systems that make good design possible.
             </p>
           </div>
         </div>
