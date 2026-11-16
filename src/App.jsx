@@ -471,7 +471,7 @@ function HomePage({ setPage }) {
                   Designer.<br />Systems Thinker.<br />Foundation Builder.
                 </h1>
                 <p style={{ margin: "0 0 16px", color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
-                  Hello, I’m Sabrina. I’m a Senior Product Designer with 8 years of experience simplifying complex user journeys in a B2B insurance platform spanning multiple insurance lines and countries.
+                  Hello, I’m Sabrina. I’m a Senior Product Designer with 8 years of experience simplifying complex user journeys in a B2B insurance platform spanning multiple insurance lines and countries. 
                 </p>
                 <p style={{ margin: 0, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
                   I combine hands-on product design with building reusable patterns, frameworks, and design systems that help other designers work more effectively. Through design reviews, mentoring, and shared standards, I keep quality and consistency high across the product.
