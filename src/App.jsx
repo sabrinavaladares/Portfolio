@@ -468,13 +468,13 @@ function HomePage({ setPage }) {
               {/* Text first on both — on mobile, photo follows underneath */}
               <div style={{ paddingTop: isMobile ? 24 : 0 }}>
                 <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 20px", color: C.ink, lineHeight: 1.1, letterSpacing: isMobile ? -0.5 : -1 }}>
-                  Designer.<br />System Thinker.<br />Foundation Builder.
+                  Designer.<br />Systems Thinker.<br />Foundation Builder.
                 </h1>
                 <p style={{ margin: "0 0 16px", color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
-                  Hello, I'm Sabrina. Over the past 8 years, I've been designing a complex B2B insurance product that serves multiple insurance lines for clients across several countries.
+                  Hello, I’m Sabrina. I’m a Senior Product Designer with 8 years of experience simplifying complex user journeys in a B2B insurance platform spanning multiple insurance lines and countries.
                 </p>
                 <p style={{ margin: 0, color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, maxWidth: 540 }}>
-                  From interviewing users to building the cross-cutting design system that scales it — I cover the full end-to-end design spectrum and I'm the hub for design decisions.
+                  I combine hands-on product design with building reusable patterns, frameworks, and design systems that help other designers work more effectively. Through design reviews, mentoring, and shared standards, I keep quality and consistency high across the product.
                 </p>
               </div>
 
