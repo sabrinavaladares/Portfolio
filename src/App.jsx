@@ -34,7 +34,7 @@ export function useIsMobile(breakpoint = 768) {
 
 const CARDS = [
   { icon: "🎨", title: "Product Design", desc: "Improving screens through better navigation, clearer content organisation, and smarter visual hierarchy — surfacing what matters, hiding what doesn't, and building consistency across every interaction." },
-  { icon: "🏗️", title: "Systems & Foundations", desc: "From scalable design systems to a Data Library with 600+ components — I build the infrastructure that empowers teams to design faster, more consistently, and with full confidence." },
+  { icon: "🏗️", title: "Systems & Foundations", desc: "From scalable design systems to a Business Pattern Library with 600+ components — I build the infrastructure that empowers teams to design faster, more consistently, and with full confidence." },
   { icon: "🧭", title: "Design Hub & Mentorship", desc: "I naturally become the anchor for design decisions — the person teams turn to when clarity is needed. As Matthieu put it: 'She became the hub for all design decisions.' I guide, align, and mentor to make the whole team stronger." },
 ];
 
@@ -440,14 +440,14 @@ export const CASE_STUDIES = [
     title: "PathFinder",
     description: "Redesigning a complex B2B insurance software and building the design systems that scale it.",
     tags: ["UX Design", "User Research", "Information Architecture"],
-    image: "https://res.cloudinary.com/diso2uvpx/image/upload/v1781269013/hero-image_tn8nwf.png",
+    image: "https://res.cloudinary.com/diso2uvpx/image/upload/Summary_ContractView_Savings_pbkqtd.png",
     frame: false,
     wash: null,
   },
   {
-    targetPage: "datalibrary",
-    title: "Data Library",
-    description: "Building cross-cutting design infrastructure for a complex B2B platform.",
+    targetPage: "businesspatternlibrary",
+    title: "Business Pattern Library",
+    description: "Designing reusable components for insurance workflows with different business rules.",
     tags: ["Design Systems", "DesignOps", "Systems Thinking"],
     image: null,
     imageComponent: DataLibraryHero,
