@@ -393,7 +393,7 @@ export default function DataLibrary({ setPage }) {
        {/* Trade-offs and governance */}
 <div id="tradeoffs">
   <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, marginBottom: 16, letterSpacing: -0.3 }}>
-    Trade-offs and governance
+    Trade-offs and Governance
   </h3>
 
   <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
@@ -416,9 +416,9 @@ export default function DataLibrary({ setPage }) {
 <CSDivider />
 
 {/* AI-assisted consistency checks */}
-<div id="challenges">
+<div id="AI">
   <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, marginBottom: 16, letterSpacing: -0.3 }}>
-    AI-assisted consistency checks
+    AI-assisted Consistency Checks
   </h3>
 
   <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
@@ -431,46 +431,6 @@ export default function DataLibrary({ setPage }) {
 </div>
 
         <CSDivider />
-
-        {/* Challenges */}
-        <div id="challenges">
-          <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, marginBottom: 12, letterSpacing: -0.3 }}>Challenges</h3>
-          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 32, maxWidth: 820 }}>
-            Implementing the Data Library requires a shift in how the team works and organizes itself.
-          </p>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 28 : 32 }}>
-            <div>
-              <h4 style={{ fontSize: 14, fontWeight: 700, color: C.ink, marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>DesignOps</h4>
-              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
-                Someone has to feed the system continuously — defining patterns, maintaining variants, and keeping the library alive. This requires a transversal view of the product, not a single workflow perspective, and constant communication about what changes and why.
-              </p>
-            </div>
-
-            <div>
-              <h4 style={{ fontSize: 14, fontWeight: 700, color: C.ink, marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Team practices</h4>
-              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
-                The system reshapes how designers work day-to-day — how they pick variants, when to propose new ones, and how they collaborate.
-              </p>
-            </div>
-
-            <div>
-              <h4 style={{ fontSize: 14, fontWeight: 700, color: C.ink, marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>Governance</h4>
-              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
-                Every change to a master component needs review and approval before reaching production — the reviewer becomes the gatekeeper of the cross-product experience.
-                <br /><br />
-                Today, I'm the only person on the team with the transversal view to play this role — a real risk. Distributing this responsibility is the next step.
-              </p>
-            </div>
-
-            <div>
-              <h4 style={{ fontSize: 14, fontWeight: 700, color: C.ink, marginBottom: 8, letterSpacing: 0.3, textTransform: "uppercase" }}>AI's role in this</h4>
-              <p style={{ color: "#555", fontSize: isMobile ? 14 : 15, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
-                AI is reshaping how we feed and maintain the system — helping spot pattern drift, suggesting variant consolidation, and reducing the cost of governance. The challenge is integrating it without losing the design judgment that makes the system coherent.
-              </p>
-            </div>
-          </div>
-        </div>
 
         {/* Next case study */}
         <NextCaseStudyCard setPage={setPage} currentPage="datalibrary" />
