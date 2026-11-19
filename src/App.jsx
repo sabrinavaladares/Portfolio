@@ -445,7 +445,7 @@ export const CASE_STUDIES = [
     wash: null,
   },
   {
-    targetPage: "businesspatternlibrary",
+    targetPage: "datalibrary",
     title: "Business Pattern Library",
     description: "Designing reusable components for insurance workflows with different business rules.",
     tags: ["Design Systems", "DesignOps", "Systems Thinking"],
