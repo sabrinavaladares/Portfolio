@@ -26,7 +26,7 @@ const ACCENT = {
   goodSoft: "#7F77DD",
 };
 
-// ─── Data Library Diagram ──────────────────────────────────────────────────
+// ─── Business Pattern Library Diagram ──────────────────────────────────────────────────
 // Activities where the Contract Details block appears
 const ACTIVITIES = [
   { label: "New Quote",      countries: ["FR", "BE"] },
@@ -293,7 +293,7 @@ export function DataLibraryDiagram() {
 // Two-column layout on desktop: Components (what's built) on the left,
 // Adoption (how it's received) on the right, with a thin vertical divider.
 // On mobile, stacks vertically. Uses the same #3F3863 background as the
-// Data Library diagram card — exported for use in the Data Library case study.
+// Business Pattern Library diagram card — exported for use in the Business Pattern Library case study.
 export function StateOfPlayBlock() {
   const isMobile = useIsMobile();
 
@@ -845,7 +845,7 @@ export default function CaseStudy({ setPage }) {
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: isMobile ? "0 16px" : "0 60px" }}>
           <div style={{ background: C.lilacBg, borderRadius: "12px 12px 0 0", padding: 4, paddingBottom: 0, overflow: "hidden" }}>
             <img
-              src="https://res.cloudinary.com/diso2uvpx/image/upload/v1777553891/Summary_ContractView_Savings_xulet4.png"
+              src="https://res.cloudinary.com/diso2uvpx/image/upload/Summary_ContractView_Savings_pbkqtd.png"
               alt="PathFinder — Contract View Summary"
               style={{ width: "100%", height: "auto", display: "block", borderRadius: "8px 8px 0 0" }}
             />
@@ -994,7 +994,7 @@ export default function CaseStudy({ setPage }) {
               I was also the first person to build a UI system on the project, before we eventually hired someone dedicated to it. Then came the migration from XD to Figma — which became the moment I understood why we had to do things differently. The product was getting more complex, the inconsistencies were growing, and the way we were working couldn't scale.
             </p>
             <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 0 }}>
-              That's how the Data Library was born. Building it while still producing designs, explaining its value to the team, taking real risks and responsibilities, and keeping clarity through all of it — these were intense phases, each with their own lessons. Together, they taught me what it really takes to redesign a back-end as complex as GraphTalk: not just good design, but the patience to build the systems that make good design possible.
+              That's how the Business Pattern Library was born. Building it while still producing designs, explaining its value to the team, taking real risks and responsibilities, and keeping clarity through all of it — these were intense phases, each with their own lessons. Together, they taught me what it really takes to redesign a back-end as complex as GraphTalk: not just good design, but the patience to build the systems that make good design possible.
             </p>
           </div>
         </div>
