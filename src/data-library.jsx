@@ -390,34 +390,45 @@ export default function DataLibrary({ setPage }) {
 
         <CSDivider />
 
-        {/* Trade-offs */}
-        <div id="tradeoffs">
-          <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, marginBottom: 16, letterSpacing: -0.3 }}>Trade-offs</h3>
-          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
-            For the moment, the library stays under single ownership — even though this might not be the optimal solution and could become a bottleneck. Figma branches were also considered, and discarded. These are the reasons:
-          </p>
+       {/* Trade-offs and governance */}
+<div id="tradeoffs">
+  <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, marginBottom: 16, letterSpacing: -0.3 }}>
+    Trade-offs and governance
+  </h3>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 24, maxWidth: 820 }}>
-            {[
-              { label: "The library is still maturing.", text: "I'm refining the construction logic as patterns emerge. Distributing edit rights now would lock in decisions that aren't stable yet." },
-              { label: "Single-author ownership keeps debugging tight.", text: "When something breaks, the root cause is one decision away, not four." },
-              { label: "Figma branches review the surface, not the structure.", text: "The library's value is in how components are constructed — variants, data shapes, nesting. Branches validate visuals; they don't validate architecture." },
-            ].map((item, i) => (
-              <div key={i} style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
-                <div style={{ fontSize: 14, fontWeight: 700, color: C.muted, opacity: 0.7, letterSpacing: 1, flexShrink: 0, width: 24, paddingTop: 3 }}>
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0 }}>
-                  <span style={{ color: C.ink, fontWeight: 600 }}>{item.label}</span> {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
+  <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, marginBottom: 20, maxWidth: 820 }}>
+    I’ve kept ownership of the Business Pattern Library while refining how
+    components are built, from their variants and data structures to how
+    they’re nested. Designers work in parallel in their own files and propose
+    changes. I review how each proposal would affect other products and
+    workflows before integrating it into the shared library.
+  </p>
 
-          <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
-            Designers can work in parallel in their files, without being blocked by the library. But integration into the source of truth still passes through me. Scaling this right now would be premature — it would multiply debt on an immature library. Keeping it small and slow is deliberate. Distributing ownership is the next phase — when the construction logic is stable enough to teach, and when the mandate makes governance reviewable rather than personal.
-          </p>
-        </div>
+  <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
+    I considered using Figma branches to manage contributions. We would still
+    need shared criteria for reviewing component structure and checking how
+    changes affect the workflows that use it. Today, that review depends on me.
+    My next step is to document how I build and review components so other
+    designers can share that responsibility.
+  </p>
+</div>
+
+<CSDivider />
+
+{/* AI-assisted consistency checks */}
+<div id="challenges">
+  <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, marginBottom: 16, letterSpacing: -0.3 }}>
+    AI-assisted consistency checks
+  </h3>
+
+  <p style={{ color: "#555", fontSize: isMobile ? 16 : 18, lineHeight: 1.7, margin: 0, maxWidth: 820 }}>
+    I document recurring design inconsistencies and how to fix them. I’m
+    building an AI agent that uses this guidance to flag where a design
+    diverges from shared patterns and suggest a correction. The goal is for
+    designers to run the audit before peer review and resolve common issues
+    while they’re still working on the design.
+  </p>
+</div>
 
         <CSDivider />
 
