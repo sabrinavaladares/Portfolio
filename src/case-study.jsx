@@ -1016,11 +1016,12 @@ export default function CaseStudy({ setPage }) {
             ].map((t, i) => <TestimonialCard key={i} {...t} />)}
           </div>
         </div>
- 
+
         {/* Next case study */}
         <NextCaseStudyCard setPage={setPage} currentPage="pathfinder" />
 
-        {/* Back to top */}  
+        {/* Back to top */}
+        <div style={{ display: "flex", justifyContent: "center", marginTop: isMobile ? 56 : 80 }}>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             style={{
