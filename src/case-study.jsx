@@ -756,6 +756,7 @@ function RestitutionComposition() {
 // ─── Main ─────────────────────────────────────────────
 export default function CaseStudy({ setPage }) {
   const [active, setActive] = useState("context");
+  const [testimonialPage, setTestimonialPage] = useState(0);
   const isMobile = useIsMobile();
 
   const scrollTo = (id) => {
@@ -1005,9 +1006,14 @@ export default function CaseStudy({ setPage }) {
         <div id="testimonials">
           <SectionLabel num="05">Appreciations</SectionLabel>
           <SectionTitle>What the Team Says</SectionTitle>
-          <div style={{ marginTop: 24, background: C.bgAlt, borderRadius: 16, padding: isMobile ? "20px" : "32px", columnCount: isMobile ? 1 : 3, columnGap: 16 }}>
-            {[
-             { name: "Christele Brunesseaux", role: "Principal Solution Architect", text: (<>
+          <div style={{ marginTop: 24, background: C.bgAlt, borderRadius: 16, padding: isMobile ? "20px" : "32px" }}>
+            <div
+              id="testimonial-cards"
+              style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0 16px" }}
+            >
+              {[
+                [
+                  { name: "Christele Brunesseaux", role: "Principal Solution Architect", text: (<>
                     {"Gaining experience and maturity in the project, Sabrina became central & instrumental to the product. "}
                     <span style={{ fontWeight: 600 }}>Combining deep &amp; precise analysis with sharp &amp; efficient designs</span>
                     {", she is leading the Design of the application very proactively."}
@@ -1056,8 +1062,28 @@ export default function CaseStudy({ setPage }) {
                     {" Her ideas are priceless. Her work ethic is absolutely inspiring, and it's clear that "}
                     <span style={{ fontWeight: 600 }}>she always puts 200% into everything she does.</span>
                   </>) },
-
-            ].map((t, i) => <TestimonialCard key={i} {...t} />)}
+                ],
+              ][testimonialPage].map((testimonial) => (
+                <div key={testimonial.name} style={{ width: isMobile ? "100%" : "calc((100% - 32px) / 3)", minWidth: 0 }}>
+                  <TestimonialCard {...testimonial} />
+                </div>
+              ))}
+            </div>
+            <div role="group" aria-label="Testimonial pages" style={{ display: "flex", justifyContent: "center", gap: 4 }}>
+              {[0, 1].map((page) => (
+                <button
+                  key={page}
+                  type="button"
+                  aria-label={`Show testimonial page ${page + 1} of 2`}
+                  aria-controls="testimonial-cards"
+                  aria-pressed={testimonialPage === page}
+                  onClick={() => setTestimonialPage(page)}
+                  style={{ display: "grid", placeItems: "center", width: 32, height: 32, padding: 0, border: 0, background: "transparent", cursor: "pointer" }}
+                >
+                  <span aria-hidden="true" style={{ width: 9, height: 9, borderRadius: "50%", background: testimonialPage === page ? "#4a3a8a" : "#b7aace" }} />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
  
