@@ -168,8 +168,8 @@ export function DataLibraryHero() {
 const NAV = [
   { id: "problem",      label: "Problem" },
   { id: "solution",     label: "Solution" },
-  { id: "tradeoffs",    label: "Trade-offs" },
-  { id: "challenges",   label: "Challenges" },
+  { id: "governance",    label: "Governance" },
+  { id: "ai",   label: "AI" },
 ];
 
 // ─── Small local helpers ─────────────────────────────────────────────────
@@ -391,7 +391,7 @@ export default function DataLibrary({ setPage }) {
         <CSDivider />
 
        {/* Trade-offs and governance */}
-<div id="tradeoffs">
+<div id="governance">
   <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 700, color: C.ink, marginBottom: 16, letterSpacing: -0.3 }}>
     Trade-offs and Governance
   </h3>
