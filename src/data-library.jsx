@@ -260,7 +260,7 @@ export default function DataLibrary({ setPage }) {
       {/* Hero */}
       <div style={{ background: C.bgDarker, paddingTop: isMobile ? 96 : 128 }}>
         <div style={{ padding: isMobile ? "32px 24px 24px" : "64px 60px 32px", maxWidth: 1280, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
-          <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>Data Library</h1>
+          <h1 style={{ fontSize: isMobile ? 40 : 72, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.05, color: "#ffffff", letterSpacing: -1 }}>Business Pattern Library</h1>
           <p style={{ fontSize: isMobile ? 16 : 20, color: "#f5f0ff", lineHeight: 1.5, margin: isMobile ? "0 0 32px" : "0 0 48px" }}>
             Designing reusable components for insurance workflows with different business rules.
           </p>
