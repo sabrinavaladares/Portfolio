@@ -22,7 +22,7 @@ const C = {
 export function DataLibraryHero() {
   return (
     <svg width="100%" viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
-      <title>Data Library</title>
+      <title>Business Patternt Library</title>
       <desc>A master section component from the Pathfinder design library, with its variant properties shown in the Figma inspector panel.</desc>
 
       <defs>
